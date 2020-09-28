@@ -1,0 +1,41 @@
+<!-- Botón de la herramienta -->
+<!-- TODO activar la herramienta en el toolbar con este boton -->
+<the-button icon="fas fa-map-marker-alt" [tooltip]="tooltip" (onClick)="toggle()"
+  [styleClass]="(isActive) ? 'ui-state-active ui-button-primary':'ui-state-default ui-button-primary'">
+</the-button>
+
+<!-- Ventana overlay con los datos -->
+<div id="user-location-overlay" class="ol-popup" [hidden]="!isActive || !coordX" #overlayElement>
+
+  <div class="popup-content">
+
+    <div class="user-location-title">
+      <span>{{"TOOLS.USER_LOCATION.TITLE" | translate}}</span>
+      <i class="pi pi-times popup-icon-button" (click)="removeOverlay()"></i>
+    </div>
+
+    <!-- name -->
+    <div class="user-location-input-container">
+      <span class="user-location-input-label">{{"TOOLS.USER_LOCATION.NAME" | translate}}:</span><br>
+      <the-input-text size='30' [(ngModel)]="name" [required]='true'></the-input-text>
+    </div>
+
+    <!-- description -->
+    <div class="user-location-input-container">
+      <span class="user-location-input-label">{{"TOOLS.USER_LOCATION.DESCRIPTION" | translate}}:</span><br>
+      <the-input-text-area [(ngModel)]="description" rows="5" cols="31">
+      </the-input-text-area>
+    </div>
+
+    <div class="popup-footer">
+      <the-button label='{{"BUTTON.SAVE" | translate}}' (onClick)="saveButtonClicked()"
+        [icon]="(loading$ | async) ? 'pi pi-spin pi-spinner' :''" [disabled]="loading$ | async"></the-button>
+      <the-button label='{{"BUTTON.CANCEL" | translate}}' (onClick)="cancelButtonClicked()"></the-button>
+    </div>
+
+  </div>
+</div>
+
+<div #mouseOverlay [hidden]="editing || !isActive" class="ol-tooltip ol-tooltip-measure">
+  <span>{{'TOOLS.USER_LOCATION_HELP_TOOLTIP' | translate}}</span>
+</div>

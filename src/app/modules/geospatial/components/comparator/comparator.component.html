@@ -1,0 +1,67 @@
+<div class="container">
+
+  <div class="p-grid p-align-center p-nogutter">
+    <div class="p-col-12 p-md-6">
+      <div class="p-grid p-nogutter p-justify-start">
+        <div class='p-col-2 p-col-sm-2 '>
+          <div class="buttons-card small">
+            <cot-identify tooltip="{{'TOOLS.IDENTIFY' | translate}}"></cot-identify>
+            <cot-tool-measure [direction]="'bottom'"></cot-tool-measure>
+          </div>
+        </div>
+        <div class='p-col-5  p-col-sm-2 grid-button'>
+
+          <the-button icon="fas fa-minus" tooltip="{{'COMPARATOR.REMOVE_COLUMN' | translate}}"
+            (onClick)="deacreseRows()" [small]='true' [disabled]="numberRows == 1">
+          </the-button>
+          <span class="description-text">{{numberRows}} {{'COMPARATOR.ROWS' | translate}}</span>
+          <the-button icon="fas fa-plus" tooltip="{{'COMPARATOR.ADD_COLUMN' | translate}}" [small]='true'
+            [disabled]="numberRows == maxRows" (onClick)="increaseRows()">
+          </the-button>
+
+        </div>
+        <div class='p-col-5 p-col-sm-2 grid-button'>
+
+
+          <the-button icon="fas fa-minus" tooltip="{{'COMPARATOR.REMOVE_ROW' | translate}}" [small]='true'
+            [disabled]="numberColumns == 1" (onClick)="deacreseColumns()">
+          </the-button>
+          <span class="description-text">{{numberColumns}} {{'COMPARATOR.COLUMNS' | translate}}</span>
+          <the-button icon="fas fa-plus" tooltip="{{'COMPARATOR.ADD_ROW' | translate}}" [small]='true'
+            [disabled]="numberColumns == maxColumns" (onClick)="increaseColumns()">
+          </the-button>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="p-col-12 p-md-6">
+      <div class="p-grid p-nogutter p-justify-start">
+
+        <div class='p-col grid-button'>
+          <div class="buttons-card" *ngIf="markerVector">
+            <span class="description-text">{{'COMPARATOR.CURSOR' | translate}}</span>
+            <the-input-switch [ngModel]="markerVector.visible$ | async" (onChange)="toggleCursorTraking($event)"
+              toolTip="{{'COMPARATOR.CURSOR_TOOLTIP' | translate}}">
+            </the-input-switch>
+          </div>
+        </div>
+        <div class='p-col grid-button'>
+          <div class="buttons-card" #zoomControl></div>
+        </div>
+        <div class='p-col grid-button'>
+          <div class="buttons-card" #scaleControl></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div no-padding class="maps-container" *ngIf="mapsReady">
+    <div [ngClass]="'map-card '+'row-'+numberRows + ' col-'+numberColumns" *ngFor="let map of maps, let ind=index">
+      <cot-map-container [activateControl]="maps.length > 1" [target]="'map-comparator-'+ind" [map]="map">
+      </cot-map-container>
+    </div>
+  </div>
+
+</div>

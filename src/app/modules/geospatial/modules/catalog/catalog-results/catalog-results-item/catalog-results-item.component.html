@@ -1,0 +1,44 @@
+<the-card>
+  <div class="thumbnail-container" card-header *ngIf="imageData">
+    <img  [src]="imageData">
+  </div>
+    <div class="description-container">
+      <div class="ui-card-title ui-clickable" (click)="goToMetadata()">{{metadata.title}}</div>
+      <div class="ui-card-subtitle">{{metadata.abstract| truncate : 120}}</div>
+    </div>
+    <the-item [icon]="'mi info'" [small]='true'>
+      <the-chip [chipText]='metadata.status_text'></the-chip>
+    </the-item>
+    <the-item [icon]="'mi build'" [small]='true'>
+      Mant.: {{metadata.maintenanceAndUpdateFrequency_text}}
+    </the-item>
+    <the-item [icon]="'mi layers'" [small]='true'>
+      {{metadata.spatialRepresentationType_text}}
+    </the-item>
+    <the-item [icon]="'mi timer'" [small]='true'>
+      F. Revisión: {{metadata.revisionDate}}
+    </the-item>
+
+    <the-item *ngIf="metadata.type">
+      <the-chip *ngFor="let type of metadata.type" [chipText]='type' [styleClass]='"hightlight3"'></the-chip>
+    </the-item>
+
+    <!-- <the-item>
+      <the-chip *ngFor="let keyword of metadata.keyword" [chipText]='keyword'></the-chip>
+    </the-item> -->
+
+    <div card-footer>
+      <the-toolbar-container [itemsAlign]="'right'">
+        <the-button-split [disabled]="linksMenu.length===0" [icon]="'fas fa-link'" [tooltip]="'Enlaces'"
+          [menuItems]='linksMenu'>
+        </the-button-split>
+
+        <the-button-split [icon]="'fas fa-download'" [disabled]="downloadMenu.length===0" [tooltip]="'Descargas'"
+          [menuItems]='downloadMenu'>
+        </the-button-split>
+        <the-button-split [icon]="'mi layers'" [tooltip]="'Añadir al mapa'" [menuItems]='layerLoadMenu'
+          [disabled]="layerLoadMenu.length===0">
+        </the-button-split>
+      </the-toolbar-container>
+    </div>
+</the-card>

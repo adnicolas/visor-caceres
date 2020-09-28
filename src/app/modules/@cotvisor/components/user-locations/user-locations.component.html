@@ -1,0 +1,33 @@
+<!-- template para el data-view para mostrar cada items en el Dataview recibirá cada fila como un rowItem -->
+<ng-template #userLocationsTemplate let-userLocation="rowItem">
+  <cot-user-location-item [userLocation]="userLocation" (clicked)="userLocationClicked($event)"
+    (toggle)="toggleUserLocationFeature($event)" (delete)="showConfirmDeleteLocation($event)">
+  </cot-user-location-item>
+</ng-template>
+
+<!-- DataView, le pasamos el template para los items -->
+<the-data-view [values]="userLocations" [sortField]="sortField" [sortOrder]="sortOrder" [sortOptions]="sortOptions"
+  [itemsTemplate]='userLocationsTemplate' [filterField]="'name'">
+</the-data-view>
+
+<div class="user-locations-spinner-container">
+  <the-progress-spinner [size]="20" *ngIf="loading$ | async"></the-progress-spinner>
+</div>
+
+<!-- Ventana overlay con los datos -->
+<div id="user-location-popup" class="ol-popup" [hidden]="!showPopup" #overlayElement>
+
+  <div class="popup-content" *ngIf="selectedUserLocation">
+
+    <div class="user-location-popup-title">
+      <span>{{selectedUserLocation.name}}</span>
+      <i class="pi pi-times popup-icon-button" (click)="removeOverlay()"></i>
+    </div>
+
+    <!-- description -->
+    <div class="user-location-popup-description" *ngIf="selectedUserLocation.description">
+      <span>{{selectedUserLocation.description}}</span><br>
+      </div>
+
+    </div>
+  </div>

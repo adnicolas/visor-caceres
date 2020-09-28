@@ -1,0 +1,16 @@
+<the-button-split-tools icon="fas fa-ruler" [active]='isActive' tooltip="{{'TOOLS.MEASURE' | translate}}"
+  styleClass='tool' [direction]="direction" styleClass="ui-button-primary" [buttonItems]='splitButtonItems'>
+</the-button-split-tools>
+
+<!-- Overlay de ayuda -->
+<div #mouseOverlay [hidden]="!drawing && !isMeasure || isRemoving" class="ol-tooltip ol-tooltip-measure">
+  <span *ngIf="!drawing">{{'TOOLS.INIT_GEOMETRY_HELP' | translate}}</span>
+  <span *ngIf="measureArea && drawing">{{'TOOLS.END_POLYGON_HELP' | translate}}<br></span>
+  <span *ngIf="!measureArea && drawing">{{'TOOLS.END_MULTILINE_HELP' | translate}}<br></span>
+
+  <span *ngIf="distance && !freeHand">+{{distance}}
+    <br>
+  </span>
+  <span *ngIf="totalDistance">{{totalDistance}}</span>
+  <span *ngIf="area" [innerHTML]="area"></span>
+</div>

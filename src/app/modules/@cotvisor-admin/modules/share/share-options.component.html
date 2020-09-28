@@ -1,0 +1,42 @@
+<form [formGroup]="shareForm">
+  <the-toolbar-container>
+    <div class='p-grid'>
+      <div class="p-col-12">
+        <p-selectButton [styleClass]="'small'" formControlName="subjectsOption" [options]="subjectsOptions"
+          (onChange)="feedForm()">
+        </p-selectButton>
+        <table>
+          <thead>
+            <th>Nombre</th>
+            <th>Lectura</th>
+            <th>Escritura</th>
+            <th>Administración</th>
+          </thead>
+          <tbody>
+            <ng-container formArrayName="permissions" *ngFor="let row of permissions().controls ; let i=index">
+              <tr [formGroupName]="i">
+                <td [style.textAlign]="'center'">{{row.get('subjectName').value}}</td>
+                <td [style.textAlign]="'center'">
+                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="read">
+                </td>
+                <td [style.textAlign]="'center'">
+                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="write">
+                </td>
+                <td [style.textAlign]="'center'">
+                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="admin">
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </the-toolbar-container>
+</form>
+<!--<pre><code>{{shareForm?.value|json}}</code></pre>-->
+<the-toolbar-container>
+  <the-button [disabled]="!(shareForm.dirty && shareForm.valid)" icon="pi pi-save" [label]="'GLOBAL.SHARE' | translate"
+    (onClick)="share()">
+
+  </the-button>
+</the-toolbar-container>

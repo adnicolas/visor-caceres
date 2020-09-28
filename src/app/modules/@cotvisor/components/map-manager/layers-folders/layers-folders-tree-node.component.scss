@@ -1,0 +1,96 @@
+@import 'variables';
+
+.no-shadow {
+  box-shadow: none;
+}
+
+div.folder-header {
+  color: $tertiaryFg;
+  padding: 0.5em;
+  display: flex;
+
+  .folder-index {
+    float: left;
+  }
+
+  i {
+    font-size: 1.3em;
+  }
+
+}
+
+.deep-0 {
+
+  & > div.folder-header {
+    background-color: $tertiaryBg;
+
+
+  }
+}
+
+.deep-1 {
+
+  & > div.folder-header {
+    background-color: lighten($tertiaryBg, $colorModificationPercent);
+
+    .folder-index::before {
+      content: '\2514';
+    }
+
+  }
+}
+
+.deep-2 {
+  & > div.folder-header {
+    background-color: lighten($tertiaryBg, $colorModificationPercent*2);
+
+    .folder-index::before {
+      content: '\2514\2500';
+    }
+
+  }
+}
+
+.deep-3 {
+  & > div.folder-header {
+    background-color: lighten($tertiaryBg, $colorModificationPercent*3);
+
+    .folder-index::before {
+      content: '\2514\2500\2500';
+    }
+
+  }
+}
+
+.deep-4 {
+  & > div.folder-header {
+    background-color: lighten($tertiaryBg, $colorModificationPercent*4);
+
+    .folder-index::before {
+      content: '\2514\2500\2500';
+    }
+
+  }
+}
+
+.deep-5 {
+  & > div.folder-header {
+    background-color: lighten($tertiaryBg, $colorModificationPercent*5);
+
+    .folder-index::before {
+      content: '\2514\2500\2500';
+    }
+
+  }
+}
+
+
+ion-label {
+  margin: 0 !important;
+}
+
+div.emptyFolder {
+  min-height: 50px;
+  background: #d8d8d8;
+  border-bottom: 1px solid #ccc;
+}

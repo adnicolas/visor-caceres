@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+content-encoding: gzip
+transfer-encoding: chunked
+access-control-allow-origin: *
+access-control-allow-credentials: true
+strict-transport-security: max-age=31536000; includeSubDomains
+access-control-max-age: 3600
+access-control-allow-headers: *
+access-control-allow-methods: *

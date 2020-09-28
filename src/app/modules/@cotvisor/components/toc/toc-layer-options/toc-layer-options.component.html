@@ -1,0 +1,82 @@
+<!--icono para abrir opciones -->
+<i class="pi pi-ellipsis-v layer-options-button ui-clickable" (click)="togglePanelOpciones()"></i>
+
+<!-- panel de opciones -->
+<the-overlay-panel #panelOptions [dismissable]="true" [showCloseIcon]="false">
+
+  <div class="p-grid">
+    <div class="p-col-12 options-title">
+      <strong>{{"TOC.LAYER.OPTIONS.TITLE" | translate }} <small>{{layer.name}}</small></strong>
+    </div>
+
+    <div class="p-col-12 layer-transparency-item">
+      {{"TOC.LAYER.OPTIONS.TRANSPARENCY" | translate }}:<strong> {{layer.opacity$ | async}}%</strong>
+      <the-slider [value]="layer.opacity$ | async" (valueChange)="layer.setOpacity($event)"></the-slider>
+    </div>
+    <!-- TODO maquetar con item-container -->
+    <div *ngIf="layer.extent" class="p-col-12 layer-option-item ui-clickable" (click)="zoomToLayerExtent()">
+      <i class="fas fa-expand-arrows-alt"></i> {{"TOC.LAYER.OPTIONS.ZOOM" | translate }}
+    </div>
+
+    <div class="p-col-12 layer-option-item ui-clickable" (click)="layer.refresh()">
+      <i class="pi pi-replay"></i> {{"TOC.LAYER.OPTIONS.REFRESH" | translate }}
+    </div>
+
+    <div class="p-col-12 layer-option-item ui-clickable" (click)="showLayerProperties()">
+      <i class="pi pi-list"></i> {{"TOC.LAYER.OPTIONS.PROPERTIES" | translate }}
+    </div>
+
+    <div class="p-col-12 layer-option-item ui-clickable" (click)="showConfirmDeleteLayer()">
+      <i class="pi pi-trash"></i> {{"TOC.LAYER.OPTIONS.DELETE_LAYER" | translate }}
+    </div>
+
+
+  </div>
+</the-overlay-panel>
+
+<!-- propiedades dialog -->
+<the-dialog appendTo="body" header="Propiedades" [(visible)]="display" styleClass="responsiveDialog autoDimensions"
+  dismissableMask="true">
+  <!-- tabla propiedades -->
+  <table class="properties-table">
+    <tr *ngIf="layer.title">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.TITLE" | translate }}</th>
+      <td>{{layer.title}}</td>
+    </tr>
+
+    <tr *ngIf="$any(layer).service as lyr">
+      <th>{{"GLOBAL.URL" | translate }}</th>
+      <td>{{lyr.url}}</td>
+    </tr>
+
+    <tr *ngIf="layer.sourceType">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.SOURCE_TYPE" | translate }}</th>
+      <td>{{layer.sourceType}}</td>
+    </tr>
+
+    <tr *ngIf="layer.name">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.NAME" | translate }}</th>
+      <td>{{layer.name}}</td>
+    </tr>
+
+    <tr *ngIf="$any(layer).version as lyr">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.VERSION" | translate }}</th>
+      <td>{{lyr.version}}</td>
+    </tr>
+
+    <tr *ngIf="layer.opacity$ | async">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.OPACITY" | translate }}</th>
+      <td>{{layer.opacity}}</td>
+    </tr>
+
+    <tr *ngIf="$any(layer).format as lyr">
+      <th>{{"GLOBAL.FORMAT" | translate }}</th>
+      <td>{{lyr.format}}</td>
+    </tr>
+
+    <tr *ngIf="layer.projection">
+      <th>{{"TOC.LAYER.OPTIONS.PROPERTIES.PROJECTION" | translate }}</th>
+      <td>{{layer.projection}}</td>
+    </tr>
+  </table>
+</the-dialog>

@@ -1,0 +1,42 @@
+<!-- Botón de la herramienta -->
+<the-button icon="fas fa-globe" [tooltip]="tooltip" (onClick)="toggle()"
+  [styleClass]="(isActive) ? 'ui-state-active ui-button-primary':'ui-state-default ui-button-primary'">
+</the-button>
+
+<!-- Ventana overlay con los datos -->
+<div id="geographic-info-overlay" class="ol-popup" [hidden]="!isActive || !coordX" #overlayElement>
+
+  <div class="popup-content">
+
+    <div class="geog-info-title">
+      <span *ngIf="gms">{{gms}}</span>
+      <!-- copy to clipboard icon -->
+      <i class="pi pi-copy popup-icon-button ui-clickable copy-button" (click)="copyDataToClipboard()"></i>
+      <i class="pi pi-times popup-icon-button" (click)="removeOverlay()"></i>
+      <!-- <span id="popup-closer" class="ol-popup-closer ui-clickable" (click)="removeOverlay()"></span> -->
+    </div>
+
+    <!-- altitude -->
+    <div class="ui-g" class="popup-row">
+      🗻 {{"GEOGRAPHIC_INFO.COORDZ" | translate}} :
+      <span *ngIf="!elevation"><i class="pi pi-spin pi-spinner coord-spinner" ></i></span>
+      <span *ngIf="elevation"> {{elevation | number:'1.2-2'}} m</span>
+    </div>
+
+    <!-- TEXTO A COPIAR -->
+    <div id="copyText">
+      <!-- <ng-container *ngIf="SRS !='EPSG:4326'">{{"GEOGRAPHIC_INFO.COORDX" | translate}}:
+      </ng-container>
+      {{coordX | number:'1.2-4'}}
+      <br />
+      <ng-container *ngIf="SRS !='EPSG:4326'">{{"GEOGRAPHIC_INFO.COORDY" | translate}}:
+      </ng-container>
+      {{coordY | number:'1.2-4'}} -->
+      <br /> GMS {{gms}}
+      <br /> {{"GEOGRAPHIC_INFO.COORDZ" | translate}}: {{elevation | number:'1.2-2'}}
+      <!-- <br /> {{"GEOGRAPHIC_INFO.SCALE" | translate}}: 1/{{scale | number:'1.0'}} -->
+      <br />
+    </div>
+
+    </div>
+  </div>

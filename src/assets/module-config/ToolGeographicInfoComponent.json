@@ -1,0 +1,5 @@
+{
+  "MDT_URL": "http://www.idecyl.jcyl.es/geoserver/elevaciones/wms",
+  "LAYERS": "EL.mdt_cyl_mde_005",
+  "USE_PROXY": true
+}

@@ -1,0 +1,51 @@
+<!-- boton para abrir panel de filtros -->
+<the-button [icon]="(filterPanelOpen) ? 'fas fa-times' :'fas fa-sliders-h'" tooltip="Filtros" label=""
+  (onClick)="togglePanelFiltros($event)">
+</the-button>
+
+<!-- panel de filtros -->
+<!-- dissmissable tiene que ser false, si no las flechas del calendario cierran el overlay -->
+<the-overlay-panel #panelFiltros [dismissable]="false" [showCloseIcon]="false" styleClass="ui-filter-overlay-panel"
+  (closed)="onFilterPanelClose()">
+
+  <div class="p-grid">
+    <div class="p-col-6 filters-title">
+      <strong>{{"FILTERS.TITLE" | translate }}</strong>
+    </div>
+    <div class="p-col-6 reset-button-column">
+      <!--       <the-button icon="fas fa-undo" tooltip="{{'FILTERS.RESET' | translate }}" (click)="resetFilters()"
+        class="reset-button"></the-button> -->
+      <i class="fas fa-undo reset-icon ui-clickable" (click)="resetFilters()"></i>
+    </div>
+
+    <!-- control fechas -->
+    <div class="p-col-6 padding5">
+      <label class="filter-label">{{"FILTERS.DATEFROM" | translate }}</label>
+
+      <the-calendar [date]="scenesFilter.startDate | date:'dd/MM/yyyy'" [showIcon]="true"
+        (onChange)="startDateChanged($event)" inputStyleClass="filter-calendar">
+      </the-calendar>
+    </div>
+    <div class="p-col-6 padding5">
+      <label class="filter-label">{{"FILTERS.DATETO" | translate }}</label>
+      <the-calendar [date]="scenesFilter.endDate | date:'dd/MM/yyyy'" [showIcon]="true"
+        (onChange)="endDateChanged($event)" inputStyleClass="filter-calendar"></the-calendar>
+    </div>
+
+    <!-- sliders -->
+    <div class="p-col-12 p-col-align-center">
+      <img class="svg-icon-25" src="assets/icons/cloud.svg" alt="nube" >
+      <label class="filter-label"> {{"FILTERS.CLOUDCOVERAGE" | translate }} <span>≤ {{scenesFilter.cloudCover}}%</span>
+      </label>
+      <the-slider [(value)]="scenesFilter.cloudCover" (valueChange)="filterChangeHandler()"></the-slider>
+    </div>
+    <div class="p-col-12 p-col-align-center">
+      <img class="svg-icon-25" src="assets/icons/sun.svg" alt="sun" >
+      <label class="filter-label"> {{"FILTERS.SUNELEVATION" | translate }}
+      <span>≤ {{scenesFilter.sunElevation}}°</span>
+      </label>
+      <the-slider [(value)]="scenesFilter.sunElevation" (valueChange)="filterChangeHandler()"></the-slider>
+    </div>
+  </div>
+
+</the-overlay-panel>

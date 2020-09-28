@@ -1,0 +1,19 @@
+@import 'variables';
+
+.toc-side-panel-content {
+  padding-top: 10px;
+}
+
+.toc-add-layer-column {
+  font-size: 2rem;
+  padding: 0;
+  margin: auto;
+  color: $tertiaryFg;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.toc-add-layer-column:hover {
+  color: $secondaryFg;
+  cursor: pointer;
+}

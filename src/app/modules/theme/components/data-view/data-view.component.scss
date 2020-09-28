@@ -1,0 +1,17 @@
+.ui-dataview {
+  input.dataview-filter {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .ui-dropdown.dataview-orderby {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .ui-dataview-header {
+    border-bottom: 0 none;
+    background-color: transparent;
+    padding: 0.5em 0;
+  }
+}

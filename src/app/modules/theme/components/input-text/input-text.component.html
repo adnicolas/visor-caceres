@@ -1,0 +1,15 @@
+     <ng-container *ngIf="!floatLabel else floatTemplate">
+       <label >{{placeholder}}</label>
+       <input #inputElement [disabled]="disabled" [type]="type" [required]="required"
+    [(ngModel)]="value" (ngModelChange)="handleValueChange($event)" (blur)="onBlur()"
+     [pattern]="pattern" type="text" [size]="size" pInputText >
+    </ng-container>
+
+       <ng-template #floatTemplate>
+         <span class="ui-float-label">
+            <input #inputElement [disabled]="disabled" [type]="type" [required]="required"
+            [(ngModel)]="value" (ngModelChange)="handleValueChange($event)" (blur)="onBlur()"
+            [pattern]="pattern" type="text" [size]="size" pInputText >
+            <label for="float-input">{{placeholder}}</label>
+        </span>
+       </ng-template>

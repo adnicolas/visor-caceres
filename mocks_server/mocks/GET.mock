@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+
+<html lang="es"><head>
+  <meta charset="utf-8">
+  <title>Servidor de Mocks</title>
+  <base href="/">
+</head>
+<body>
+<h1>Servidor de Mocks OK</h1>
+Ejemplos de mocks en <a href="https://github.com/namshi/mockserver/tree/master/test/mocks" target='_blank'>https://github.com/namshi/mockserver/tree/master/test/mocks</a>
+</body>
+

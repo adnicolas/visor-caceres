@@ -1,0 +1,935 @@
+//@import 'variables';
+
+html {
+  font-family: $fontFamily;
+  cursor: default;
+}
+
+body {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $headersFontFamily;
+  font-weight: $headerFontWeight;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+}
+
+div.dashboard-container {
+  padding: 1em;
+}
+
+//Scrollbars
+
+.ui-scrollpanel-bar,
+::-webkit-scrollbar-thumb {
+  background: $secondaryFg + $defaultColorTransparency;
+  border-radius: 4px;
+
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  display: block;
+  cursor: pointer;
+}
+
+// Scroll bars
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+
+.ui {
+  &-text-center {
+    text-align: center;
+  }
+
+  &-text-right {
+    text-align: right;
+  }
+
+  &-text-left {
+    text-align: left;
+  }
+}
+
+.ui-clickable {
+  cursor: pointer;
+}
+
+.svg-icon-25 {
+  width: 25px;
+}
+
+.svg-icon-50 {
+  width: 25px;
+}
+
+.item-container {
+  border-bottom: 1px solid $secondaryFg;
+  align-items: center;
+  padding: 0 0.5em;
+
+  &.p-grid {
+    margin-top: 0;
+  }
+
+  &.ui-clickable:hover {
+    background-color: $secondaryFg + $defaultColorTransparency;
+  }
+
+  &.item-container--hidden_buttons {
+    the-button {
+      opacity: 0;
+    }
+
+    &:hover {
+
+      the-button {
+        animation: $apperar-from-right;
+      }
+    }
+
+
+  }
+
+  &__icon {
+    color: $tertiaryFg;
+    background-color: $tertiaryBg;
+    // padding-left: 1em;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    color: $primaryFg;
+  }
+
+  &__subtitle {
+    color: $secondaryFg;
+    font-size: $fontReducedSize;
+  }
+}
+
+
+// Botones
+
+// Establece los botones en pseudoestado activo con los colores
+// del state-default cuando el boton no tiene la clase ui-state-active
+// .ui-button:enabled:active,
+// .ui-fileupload-choose:not(.ui-state-disabled):active,
+.ui-button:focus:not(.ui-state-active) {
+  border-color: $stateDefaultBorderColor;
+  background-color: $stateDefaultBgColor;
+  color: $stateDefaultTextColor;
+
+}
+
+
+.ui-button:focus,
+.ui-fileupload-choose:not(.ui-state-disabled):hover {
+  border-color: transparent;
+}
+
+.ui-widget-content {
+  background-color: $widget-content-bg;
+  border: 0;
+}
+
+///Fondo de scrollpanel transparente
+// .ui-scrollpanel.ui-widget.ui-widget-content {
+//   background-color: transparent;
+//   border: 0;
+// }
+
+/* Set each toaster severity to use the light version of that
+severity color for its background. */
+.ui-toast-message,
+.ui-message,
+.ui-messages {
+
+  &-success {
+    background-color: $successColorLight;
+    color: $successColorText;
+  }
+
+  &-info {
+    background-color: $infoColorLight;
+    color: $infoColorText;
+  }
+
+  &-warn {
+    background-color: $warnColorLight;
+    color: $warnColorText;
+  }
+
+  &-error {
+    background-color: $dangerColorLight;
+    color: $dangerColorText;
+  }
+}
+
+
+.ui-togglebutton {
+  &.ui-state-active {
+    &.ui-state-focus {
+      border-color: $primaryFg;
+      background-color: $primaryFg;
+      color: $primaryBg;
+    }
+
+  }
+
+  &:not(.ui-state-active) {
+    &.ui-state-focus {
+      border-color: $primaryBg;
+      background-color: $primaryBg;
+      color: $primaryFg;
+    }
+
+  }
+}
+
+.ui-selectbutton {
+  .ui-button {
+    &.ui-state-active {
+      &.ui-state-focus {
+        border-color: $primaryFg;
+        background-color: $primaryFg;
+        color: $primaryBg;
+      }
+
+    }
+
+    &:not(.ui-state-active) {
+      &.ui-state-focus {
+        border-color: $primaryBg;
+        background-color: $primaryBg;
+        color: $primaryFg;
+      }
+    }
+
+  }
+
+  &.small {
+    .ui-button-icon-only {
+      width: $smallButton;
+      height: $smallButton;
+      font-size: 0.8em;
+
+    }
+  }
+}
+
+
+
+/* Specify the color, background, and border for each severity button */
+.ui-button {
+
+  &.ui-fileupload-choose {
+    background-color: $tertiaryBg;
+    border: 1px solid $tertiaryBg;
+    color: $tertiaryFg;
+
+    &:hover {
+      background-color: darken($tertiaryBg, $colorModificationPercent);
+      border: 1px solid darken($tertiaryBg, $colorModificationPercent);
+      color: $tertiaryFg;
+    }
+  }
+
+
+  &.ui-state-default {
+    &.ui-button-primary {
+      background-color: $stateDefaultBgColor;
+      border: 1px solid $stateDefaultBorderColor;
+      color: $stateDefaultTextColor;
+
+      &.ui-state-disabled {
+        opacity: 0.3;
+
+        &:hover {
+          background-color: $stateDefaultBgColor;
+
+        }
+
+      }
+
+      &:hover {
+        background-color: darken($stateDefaultBgColor, $colorModificationPercent);
+        border: 1px solid darken($stateDefaultBgColor, $colorModificationPercent);
+      }
+
+      &-inverse {
+        background-color: $stateDefaultTextColor;
+        border: 1px solid $stateDefaultTextColor;
+        color: $stateDefaultBgColor;
+
+        &:hover {
+          background-color: lighten($stateDefaultTextColor, $colorModificationPercent);
+          border-color: 1px solid lighten($stateDefaultTextColor, $colorModificationPercent);
+          color: $stateDefaultBgColor;
+        }
+      }
+    }
+
+    &.ui-button-secondary {
+      background-color: $secondaryColorMiddle;
+      border: 1px solid $secondaryColorMiddle;
+      color: $secondaryColorText;
+
+      &:hover {
+        background-color: $secondaryColorStrong;
+      }
+    }
+
+    &.ui-button-success {
+      background-color: $successColorMiddle;
+      border: 1px solid $successColorMiddle;
+      color: $successColorText;
+
+      &:hover {
+        background-color: $successColorStrong;
+      }
+    }
+
+    &.ui-button-info {
+      background-color: $infoColorMiddle;
+      border: 1px solid $infoColorMiddle;
+      color: $infoColorText;
+
+      &:hover {
+        background-color: $infoColorStrong;
+      }
+    }
+
+    &.ui-button-warning {
+      background-color: $warnColorMiddle;
+      border: 1px solid $warnColorMiddle;
+      color: $warnColorText;
+
+      &:hover {
+        background-color: $warnColorStrong;
+      }
+    }
+
+    &.ui-button-danger {
+      background-color: $dangerColorMiddle;
+      border: 1px solid $dangerColorMiddle;
+      color: $dangerColorText;
+
+      &:hover {
+        background-color: $dangerColorStrong;
+      }
+    }
+  }
+
+  &.ui-state-active,
+  .ui-state-active.ui-state-focus {
+
+    &.ui-button-primary {
+
+
+      background-color: darken($stateDefaultTextColor, $colorModificationPercent);
+      border-color: darken($stateDefaultTextColor, $colorModificationPercent);
+      color: $stateDefaultBgColor;
+
+      &:hover {
+        background-color: darken($stateDefaultTextColor, $colorModificationPercent);
+        border-color: darken($stateDefaultTextColor, $colorModificationPercent);
+        color: $stateDefaultBgColor;
+      }
+
+      &-inverse {
+        background-color: darken($stateDefaultTextColor, $colorModificationPercent);
+        border-color: darken($stateDefaultTextColor, $colorModificationPercent);
+      }
+    }
+
+    &.ui-button-secondary {
+      background-color: darken($stateDefaultTextColor, $colorModificationPercent);
+
+      &-inverse {
+        background-color: darken($stateDefaultTextColor, $colorModificationPercent);
+      }
+    }
+  }
+
+  // &.ui-state-focus {
+  //   box-shadow: 1px 1px 1px solid #000;
+  //   border-color: inherit;
+  //   background-color: inherit;
+  //   color: inherit;
+  // }
+}
+
+
+.ui-inputgroup {
+  .ui-inputgroup-addon {
+    border-color: $tertiaryBg;
+    background-color: $tertiaryBg;
+    color: $tertiaryFg;
+    min-width: 2em;
+    justify-content: center;
+  }
+}
+
+// Set the toaster text & close icon to use the defined toaster text color
+
+
+.ui-toast {
+  color: $toasterTextColor;
+
+  .ui-toast-message {
+    overflow: auto;
+    max-height: 80vh;
+
+    .ui-toast-message-text-content {
+      overflow-x: auto;
+    }
+
+    a.ui-toast-close-icon {
+      text-decoration: none;
+    }
+  }
+}
+
+// Disable the underline on the toaster close button
+
+
+/* Specify a width for the icon-only button because it's
+way too small otherwise. */
+.ui-button-icon-only {
+  width: 2.5em;
+  height: 2.5rem;
+}
+
+/* Imagenes responvive contenidas en flex */
+.ui-image-responsive {
+  max-width: 100%;
+}
+
+.ui-card {
+  background-color: $primaryBg;
+  color: $primaryFg;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.ui-corner-all {
+  border-radius: $borderRadius;
+}
+
+.ui-fieldset {
+  border: 1px solid $primaryFg;
+  background-color: $secondaryBg;
+  color: $primaryFg;
+}
+
+// fix para no vislualizar los tooltips de los toolbars
+body > span.ng-tooltip {
+  display: none;
+}
+
+
+.ui-tooltip {
+
+
+  .ui-tooltip-text {
+    background-color: $tooltips-background-color;
+    color: $tooltips-text-color;
+  }
+
+
+}
+
+// incrementar anchura del sidebar
+.ui-sidebar-right {
+  width: 25rem;
+}
+
+
+//fondos del slider
+//slider filtros fondo despues del punto
+.ui-slider {
+  &.ui-slider-horizontal {
+    background-color: $primaryBg;
+    margin-top: 5px;
+    height: 0.4em;
+
+    .ui-slider-range {
+      top: 0;
+    }
+
+    .ui-slider-handle {
+      top: -0.5em;
+      margin-left: -0.6em;
+    }
+  }
+
+  .ui-slider-handle {
+
+    border-radius: 50%;
+  }
+}
+
+//slider filtros fondo antes del punto
+span.ui-slider-range.ui-slider-range-min.ui-widget-header.ui-corner-all.ng-star-inserted {
+  background-color: $secondaryFg;
+}
+
+//calendario del panel de filtros de escenas
+.filter-calendar {
+  max-width: 75%;
+}
+
+.ui-print-dropdown {
+  min-width: unset;
+  width: 7rem;
+}
+
+.ui-print-multiselect {
+  width: 100%;
+}
+
+.ui-share-listbox {
+  width: 100%;
+  // max-height: 100px;
+}
+
+.ui-inputtextarea {
+  min-width: unset;
+  width: 7rem;
+}
+
+.ui-float-label {
+  margin-top: $fontSize + 0.5em;
+}
+
+.ui-slider // calendario
+
+.ui-calendar {
+  margin-top: 5px;
+}
+
+
+
+.ui-panel {
+  .ui-panel-content {
+
+    padding: 0.25em;
+  }
+}
+
+//ventana zoom box
+.dragzoom {
+  border: dotted 3px $tertiaryBg;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+//searchbar input
+.ui-autocomplete .ui-autocomplete-input {
+  height: 2.5rem;
+}
+
+//searchbar btn
+.ui-autocomplete-dd .ui-autocomplete-dropdown.ui-corner-all {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+//searchbar input spinner
+.ui-autocomplete-dd .ui-autocomplete-loader {
+  right: 3rem;
+}
+
+//autocomplete spinner
+.ui-autocomplete-loader {
+  display: none;
+}
+
+
+/********** TabMenu ********/
+.ui-tabmenu {
+  border: none;
+}
+
+.ui-tabmenu .ui-tabmenu-nav {
+  background-color: inherit;
+  border: none;
+}
+
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+  margin-bottom: 0;
+}
+
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-default {
+  opacity: 0.7;
+}
+
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+  opacity: 1;
+}
+
+/********** DinamyDialog ********/
+// Es necesaria para tener un dialogo adaptativo
+.responsiveDialog {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-height: 768px) and (min-width: 768px) {
+  .responsiveDialog {
+    max-width: 600px;
+    max-height: 600px;
+  }
+
+  .responsiveDialog.ui-dialog-maximized {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .responsiveDialog.autoDimensions {
+    height: auto;
+    width: auto;
+  }
+}
+
+// Necesario para que los dialog normales cumplan el adaptativo
+@media only screen and (max-height: 768px),
+only screen and (max-width: 768px) {
+
+  .responsiveDialog:not(.ui-confirmdialog):not(.ui-dynamicdialog) {
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+// Desplaza el botón de cerrar panel para evitar que se solape con la scrollbar
+
+.ui-sidebar-close {
+  float: right;
+  margin-right: -15px;
+}
+
+// input-switch
+.ui-inputswitch {
+  width: 2.5em;
+  height: 1.3em;
+
+
+  .ui-inputswitch-slider::before {
+    height: 1em;
+    width: 1em;
+    left: 0.15em;
+    bottom: 0.15em;
+  }
+
+  &.ui-inputswitch-checked {
+
+    //efecto hover sobre un switch activado
+    &:not(.ui-state-disabled):hover .ui-inputswitch-slider {
+      background-color: darken($tertiaryBg, $colorModificationPercent);
+    }
+
+    //color de un  un switch activado
+    .ui-inputswitch-slider {
+      background-color: $tertiaryBg;
+    }
+  }
+}
+
+
+
+//Slider
+.ui-slider {
+  .ui-slider-handle {
+    background-color: $tertiaryBg;
+
+  }
+}
+
+//overlay panel
+.ui-overlaypanel {
+  .ui-overlaypanel-content {
+    max-width: 450px;
+    padding: 0.5em;
+  }
+
+}
+
+
+// Dynamic dialog
+
+.ui-dialog.ui-dynamicdialog.ui-widget {
+  min-width: 50vw;
+  min-height: 50vh;
+}
+
+// Inputs en formularios
+
+.ui-dropdown,
+.ui-inputtext {
+  border: $inputDefaultBorder solid lighten($primaryFg, 50%);
+}
+
+input:hover,
+.ui-inputtext:hover {
+  cursor: text;
+}
+
+the-input-group {
+  // border: $inputDefaultBorder solid $primaryFg;
+
+  .ui-inputtext {
+    //border: 0;
+  }
+}
+
+.ui-inputgroup .ui-inputgroup-addon {
+  display: flex;
+  align-items: center;
+}
+
+//iconos redondeados
+i.ui-round-icon {
+
+  padding: 0.5em;
+  border-radius: 50%;
+  margin: 0.5em;
+
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 21px;
+  line-height: 100%;
+
+  &-primary {
+    color: $primaryFg;
+    background-color: $primaryBg;
+
+
+    &-inverse {
+      color: $primaryBg;
+      background-color: $primaryFg;
+
+    }
+  }
+
+  &-secondary {
+    color: $secondaryFg;
+    background-color: $secondaryBg;
+
+    &-inverse {
+
+      color: $secondaryBg;
+      background-color: $secondaryFg;
+    }
+  }
+
+  &-tertiary {
+    color: $tertiaryFg;
+    background-color: $tertiaryBg;
+
+    &-inverse {
+      color: $tertiaryBg;
+      background-color: $tertiaryFg;
+    }
+  }
+}
+
+//opciones de menu de idiomas
+// Iconos de  https: //www.flaticon.com/packs/countrys-flags
+// Codes https: //www.science.co.il/language/Locale-codes.php
+.ui-menu {
+  &.language-menu {
+    .ui-menuitem {
+      padding-left: 1.2em;
+      background-size: 1.2em !important;
+
+      &.flag-es {
+        background: url('../../../../assets/images/spain.svg') no-repeat center left;
+      }
+
+      &.flag-en {
+        background: url('../../../../assets/images/united-kingdom.svg') no-repeat center left;
+      }
+
+      &.flag-zh {
+        background: url('../../../../assets/images/china.svg') no-repeat center left;
+      }
+
+
+    }
+  }
+}
+
+.ui-button {
+  .flag-es {
+    content: '';
+    background: url('../../../../assets/images/spain.svg') no-repeat center left;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  .flag-en {
+    content: '';
+    background: url('../../../../assets/images/united-kingdom.svg') no-repeat center left;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  .flag-zh {
+    content: '';
+    background: url('../../../../assets/images/china.svg') no-repeat center left;
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+// CDK DRAG
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  cursor: grabbing;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+
+  .layer-item {
+    opacity: 0;
+  }
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.handle {
+  cursor: grab;
+}
+
+
+// radiobutton
+
+.ui-radiobutton {
+  .ui-radiobutton-box {
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+
+    &:not(.ui-state-disabled) {
+      &:not(.ui-state-active):hover {
+        border: 1px solid $tertiaryBg;
+
+      }
+    }
+
+    &.ui-state-default {
+      border: 1px solid #808080;
+      background-color: #dedede;
+      color: $secondaryFg;
+
+
+    }
+
+    &.ui-state-focus {
+      border-color: $tertiaryBg;
+      background-color: #ffffff;
+      color: $tertiaryBg;
+
+      box-shadow: 0 0 0 0.2em lighten($tertiaryBg, $colorModificationPercent);
+    }
+
+    &.ui-state-active {
+      border-color: $tertiaryBg;
+      background-color: $tertiaryBg;
+      color: #ffffff;
+    }
+
+    &.ui-state-active .ui-radiobutton-icon {
+      background-color: $tertiaryBg;
+      border-radius: 50%;
+      color: #ffffff;
+    }
+
+    &.ui-state-active:not(.ui-state-disabled):hover {
+      border-color: $tertiaryBg;
+      background-color: $tertiaryBg;
+      color: #ffffff;
+    }
+
+    &.ui-state-active.ui-state-focus {
+      border-color: $tertiaryBg;
+      background-color: $tertiaryBg;
+      color: #ffffff;
+    }
+  }
+}
+
+// togglebutton
+
+.ui-togglebutton.small.ui-button {
+  width: 28px;
+  height: 28px;
+  font-size: 0.8em;
+}
+
+//paginator
+.ui-paginator a {
+  color: $paginatorText;
+  background-color: $paginatorBackground;
+
+  &.ui-state-active {
+    color: $paginatorActiveText;
+    background-color: $paginatorActiveBackground;
+
+  }
+}

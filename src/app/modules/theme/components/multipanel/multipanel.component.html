@@ -1,0 +1,6 @@
+<p-toolbar class="multipanel-toolbar" [ngClass]="styleClass">
+  <the-button-toggle *ngFor="let panel of panelsInitialized;index as i" [offIcon]="panelsIcons[i]"
+    [styleClass]="togglesStyleClass" [onIcon]="panelsIcons[i]" class="multipanel-button" [(checked)]="panel.visible"
+    [tooltip]='panelsTooltips[i]' (click)='closeOtherPanels(panel)'>
+  </the-button-toggle>
+</p-toolbar>

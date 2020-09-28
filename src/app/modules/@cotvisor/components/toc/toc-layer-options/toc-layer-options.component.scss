@@ -1,0 +1,47 @@
+ @import 'variables';
+
+ .layer-options-button {
+   color: $secondaryFg;
+ }
+
+ .layer-options-button:hover {
+   color: $primaryFg;
+ }
+
+ .options-title {
+   //font-size: 18px;
+   background-color: $tertiaryBg;
+   color: $tertiaryFg;
+   text-overflow: ellipsis;
+   overflow: hidden;
+ }
+
+ .layer-option-item {
+   border-top: 1px solid $primaryBg;
+ }
+
+ .layer-transparency-item {
+   border-top: 1px solid $primaryBg;
+ }
+
+ .layer-option-item:hover {
+   background-color: $secondaryFg;
+   color: $primaryFg;
+ }
+
+ .layer-options-slider {
+   width: 50%;
+ }
+
+ .properties-table {
+   th {
+     text-align: left;
+     padding-right: 15px;
+   }
+
+   td {
+     word-break: break-word;
+   }
+
+   width: 100%;
+ }

@@ -1,0 +1,33 @@
+ <!--
+   Cargar el gss-toolbar fuera del ngif
+   Debido al posicionamiento provoca un error en el tamaño en el que
+   se renderiza el mapa que afecta a algunas herramientas
+  -->
+
+
+ <gss-toolbar *ngIf="map"></gss-toolbar>
+ <gss-searchbar *ngIf="map"></gss-searchbar>
+
+
+ <ng-container *ngIf="map">
+   <cot-map-container target="ol-main-map" [map]="map"> </cot-map-container>
+ </ng-container>
+ <gss-multipanel> </gss-multipanel>
+ <gss-map-panel></gss-map-panel>
+ <gss-user-locations-panel></gss-user-locations-panel>
+ <gss-toc-panel></gss-toc-panel>
+ <gss-login-panel></gss-login-panel>
+ <gss-ejemplos-panel></gss-ejemplos-panel>
+ <gss-catalog-panel></gss-catalog-panel>
+ <gss-baselayers-panel></gss-baselayers-panel>
+ <gss-print-panel></gss-print-panel>
+
+
+ <gss-logos></gss-logos>
+ <!-- FIXME No debería ser necesario cargar el the-confirm-dialog en cada página , debería bastar con cargarlo en el layout pero en layout no funciona  -->
+ <the-confirm-dialog></the-confirm-dialog>
+
+
+ <div class="loadError" *ngIf="mapLoadError">
+   <p-messages [(value)]="mapErrors"></p-messages>
+ </div>

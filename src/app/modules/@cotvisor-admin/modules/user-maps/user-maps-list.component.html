@@ -1,0 +1,5 @@
+<the-datatable [title]="'USER_MAPS.TITLE' | translate" [usePaginator]=' true' [editInline]='false' [values]='userMaps'
+  [readonly]='false' [allowAdd]='false' [loading]="userMapsService.loading$ | async" dataKey="id" [cols]='mapsCols'
+  (rowDetailEvent)="emitGoToMap($event)" (rowDeleteEvent)='deleteMap($event)'
+  (rowSelectEvent)='emitSelectedMap($event)'>
+</the-datatable>

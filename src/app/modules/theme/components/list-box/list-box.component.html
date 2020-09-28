@@ -1,0 +1,7 @@
+<p-listbox [options]="options" [optionLabel]="optionLabel" [(ngModel)]="value" (onClick)="touched()"
+  (onChange)="handleValueChange($event)" [disabled]="disabled" [multiple]="multiple" [checkbox]="checkbox"
+  [filter]="filter" [styleClass]="styleClass" [metaKeySelection]="metaKeySelection">
+  <p-header>
+    {{inputHeader}}
+  </p-header>
+</p-listbox>

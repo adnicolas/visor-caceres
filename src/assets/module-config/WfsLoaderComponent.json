@@ -1,0 +1,12 @@
+{
+  "suggestedWFSServers": [
+    {
+      "url": "http://www.ideextremadura.com/CICTEX/patrimonioCultural",
+      "title": "Patrimonio Cultural"
+    },
+    {
+      "url": "http://www.ideextremadura.com/CICTEX/unidadesAdministrativas",
+      "title": "Unidades Administrativas"
+    }
+  ]
+}

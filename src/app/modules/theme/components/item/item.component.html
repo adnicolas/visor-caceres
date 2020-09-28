@@ -1,0 +1,19 @@
+<div class="p-grid p-align-center  item-container item-container--hidden_buttons">
+  <div *ngIf="icon" class="p-col-fixed  item-container__icon" [ngClass]="{'item-container__icon-small': small}">
+    <i [class]="icon"> </i>
+  </div>
+  <div class="p-col">
+    <div class="p-grid p-nogutter">
+      <div class="p-col-12 item-container__title">
+        {{title}}
+      </div>
+      <div class="p-col-12 item-container__subtitle">
+        {{subTitle}}
+      </div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="p-col-fixed">
+    <ng-content select="[buttons]"></ng-content>
+  </div>
+</div>

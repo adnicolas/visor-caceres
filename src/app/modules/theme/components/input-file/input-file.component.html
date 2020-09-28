@@ -1,0 +1,18 @@
+<div class="ui-inputgroup">
+  <span class="ui-inputgroup-addon"><i class="pi pi-file"></i></span>
+  <input  type="text" pInputText placeholder="{{'FILE_UPLOADER.PLACEHOLDER'|translate}}" [ngModel]="name" class="file-name" >
+  <p-fileUpload #fileUpload mode="advanced" styleClass="simple-file" [customUpload]='true' [accept]="accept"
+    maxFileSize="1000000" chooseLabel="{{'FILE_UPLOADER.CHOOSE'|translate}}" [showUploadButton]='false'
+    [disabled]='disabled' [showCancelButton]='false' (onSelect)="setFile($event)">
+    <ng-template pTemplate="toolbar">
+    </ng-template>
+    <ng-template let-file pTemplate="file">
+    </ng-template>
+    <ng-template pTemplate="content">
+    </ng-template>
+  </p-fileUpload>
+  <the-button [label]='cancelText' [icon]='cancelIcon' (onClick)="clear()" [tooltip]="'GLOBAL.CLEAR'|translate"
+    styleClass="ui-button-primary-inverse clear-button">
+  </the-button>
+
+</div>

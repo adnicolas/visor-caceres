@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Response-Delay: 2000
+
+#import './data3.json';

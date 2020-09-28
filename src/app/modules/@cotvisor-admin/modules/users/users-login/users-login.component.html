@@ -1,0 +1,41 @@
+<div class="p-grid p-justify-center">
+  <div class='p-col-12'>
+    <form #loginForm="ngForm" autocomplete="off">
+      <the-card class="login-card" title="{{'USERS.LOGIN_TITLE' | translate}}"
+        subtitle="{{ 'USERS.LOGIN_INTRO' | translate }}">
+        <div card-header>
+          <img src="Card" src="assets/images/examples/usercard.png">
+          </div>
+          <div class="p-grid p-justify-center">
+            <the-input-group required="true" name="userEmail" id="loginField" [(ngModel)]="userEmail" type="email"
+              class='p-col-12' placeholder="{{'GLOBAL.USER' | translate}}" iconInput="fa fa-user">
+            </the-input-group>
+
+            <the-input-group required="true" name="userEmail" id="loginField" name="password" [(ngModel)]="password"
+              class='p-col-12' type="password" placeholder="{{'GLOBAL.PASSWORD' | translate}}" iconInput="fa fa-key">
+            </the-input-group>
+
+            <p-message *ngIf="loginForm.form.hasError()" severity="error" [text]="loginForm.form.getError()"
+              class='p-col-12'> </p-message>
+          </div>
+
+          <div card-footer>
+            <the-button [label]="'USERS.LOGIN' | translate" *ngIf="!userLogged" type="submit" (onClick)="signIn()"
+              [showSpinner]='signInProcessActive' styleClass="ui-button-primary"
+              [disabled]="!loginForm.form.valid || signInProcessActive">
+            </the-button>
+            <the-button [label]="'USERS.LOGOUT' | translate" *ngIf="userLogged" (onClick)="signOut()"
+              styleClass="ui-button-primary">
+            </the-button>
+
+            <the-button [label]="'USERS.FORGOT_PASS' | translate" *ngIf="!userLogged" (onClick)="goToRestorePassword()"
+              styleClass="ui-button-primary">
+            </the-button>
+            <the-button [label]="'USERS.REGISTER' | translate" (onClick)="goToRegister()">
+            </the-button>
+          </div>
+      </the-card>
+    </form>
+  </div>
+
+</div>

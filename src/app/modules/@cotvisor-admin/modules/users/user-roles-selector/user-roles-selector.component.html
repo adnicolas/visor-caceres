@@ -1,0 +1,12 @@
+<div class="p-grid">
+  <div class="p-col-4">
+    <span> Rol asignado al usuario</span>
+  </div>
+  <form [formGroup]="userRolesForm">
+    <the-multi-select class="p-col-8" formControlName="rolesForm" [options]="rolesOptions"
+      styleClass="ui-print-multiselect" defaultLabel='{{"USER.CHOOSE_ROLE" | translate }}'
+      [selectedItemsLabel]="'{0} roles seleccionados'">
+    </the-multi-select>
+  </form>
+
+</div>

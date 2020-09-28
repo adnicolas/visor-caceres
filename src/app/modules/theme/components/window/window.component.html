@@ -1,0 +1,21 @@
+<div #container class="window" [ngStyle]="inlineStyle" cdkDrag [cdkDragBoundary]="windowContainer.nodeName"
+  [ngClass]="{'hidden': hidden}">
+  <div class='window-bar' cdkDragHandle>
+    <div>
+      <i class="pi pi-bars" ></i>
+
+    </div>
+    <div class='name'>{{name}}</div>
+    <div class="buttons">
+      <i class="pi pi-home" *ngIf="canBeReset" (click)="resetPosition()" ></i>
+      <i class="pi close"  [ngClass]="{'pi-window-minimize': !minimized,'pi-window-maximize':minimized}" (click)="toggleWindow()"></i>
+      <i class="pi pi-times"  *ngIf="canBeClosed" (click)="hideWindow()" ></i>
+    </div>
+  </div>
+  <div class='window-content' [ngClass]="{'minimized':minimized}">
+    <p-scrollPanel>
+      <ng-content></ng-content>
+    </p-scrollPanel>
+
+  </div>
+</div>

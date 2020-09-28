@@ -1,0 +1,16 @@
+<div class='dashboard-container'>
+  <div class="p-grid">
+    <div class=" p-col-12 p-sm-3">
+      <div class='p-grid'>
+        <the-overview-box class="p-col-12" [title]='"Volver a usuarios"' [icon]='"mi reply"' [routerLink]="'/usuarios'">
+        </the-overview-box>
+      </div>
+
+    </div>
+    <div class="p-col-12 p-sm-9">
+      <gss-users-detail [userId]='userId' class='p-grid'></gss-users-detail>
+    </div>
+  </div>
+</div>
+<!-- FIXME No debería ser necesario cargar el the-confirm-dialog en cada página , debería bastar con cargarlo en el layout pero en layout no funciona  -->
+<the-confirm-dialog></the-confirm-dialog>

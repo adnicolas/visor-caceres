@@ -1,0 +1,53 @@
+<the-box-container header="{{'USERS.REGISTER_LABEL' | translate}}" [icon]='"mi face"' [styleClass]="'hightlight2'">
+  <form #registerForm="ngForm">
+
+    <the-card [styleClass]='"primary"'>
+      <div class='p-grid'>
+        <div class="p-col-12 p-grid p-align-center p-justify-center">
+          <span class="information">{{'USERS.REGISTER_INSTRUCTIONS' | translate}}</span>
+        </div>
+
+        <the-input-group required="true" name="user" class="p-col-12 p-md-6" [(ngModel)]="user.userName" type="text"
+          placeholder="{{'GLOBAL.USER' | translate}}" iconInput="fa fa-user" (onChange)="checkUserName($event)">
+          <p-message message *ngIf="!validUsername" severity="error"
+            text="{{'USERS.ERROR_EXISTING_USERNAME' | translate}}"></p-message>
+        </the-input-group>
+
+        <the-input-group required="true" class="p-col-12 p-md-6" [(ngModel)]="user.email" type="email" name="email"
+          #email="ngModel" placeholder="{{'GLOBAL.EMAIL' | translate}}" iconInput="mi mail-outline"
+          [pattern]="emailPattern" (onChange)='checkEmail($event)'>
+          <p-message message *ngIf="email.invalid && email.dirty && email.touched" severity="error"
+            text="{{'USERS.ERROR_EMAIL_NOT_VALID' | translate}}">
+          </p-message>
+          <p-message message *ngIf="!validEmail" severity="error" text="{{'USERS.ERROR_EXISTING_EMAIL' | translate}}">
+          </p-message>
+        </the-input-group>
+
+        <the-input-group required="true" class="p-col-12 p-md-6" [(ngModel)]="user.password" type="password"
+          name="password" placeholder="{{'GLOBAL.PASSWORD' | translate}}" iconInput="fa fa-key"
+          passwordIndicator="true">
+          <p-message message
+            *ngIf="user.password && user.password!=passwordVerification && passwordVerification && passwordVer.touched"
+            severity="error" [text]="'ERROR.PASSWORD_REPEAT'|translate">
+          </p-message>
+        </the-input-group>
+        <the-input-group required="true" class="p-col-12 p-md-6" type="password" name="passwordVerification"
+          [(ngModel)]="passwordVerification" #passwordVer="ngModel"
+          placeholder="{{'USERS.PASSWORD_CHANGE_REPEAT' | translate}}" iconInput="fa fa-key">
+        </the-input-group>
+        <!--<p-selectButton [styleClass]="'small'" [options]="roles" [(ngModel)]="roleType">
+        </p-selectButton>-->
+      </div>
+
+      <div card-footer>
+        <the-button type="submit" [label]="'BUTTON.SAVE' | translate" [showSpinner]='signUpProcessActive' [disabled]="registerForm.form.invalid ||
+          user.password!=passwordVerification || !validEmail || !validUsername || signUpProcessActive"
+          (onClick)="createUser()">
+        </the-button>
+        <the-button [label]="'BUTTON.CANCEL' | translate" (onClick)="cancel()">
+        </the-button>
+      </div>
+    </the-card>
+  </form>
+
+</the-box-container>

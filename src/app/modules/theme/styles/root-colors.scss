@@ -1,0 +1,10 @@
+//Declaracion de colores sass en variables css que seran posteriomente servidas por el servicio del tema
+:root {
+  --primaryFg: #{$primaryFg};
+  --primaryBg:#{$primaryBg};
+  --secondaryBg: #{$secondaryBg};
+  --secondaryFg:#{$secondaryFg};
+  --tertiaryBg: #{$tertiaryBg};
+  --tertiaryFg:#{$tertiaryFg};
+  --headerHeight:#{$headerHeight};
+}

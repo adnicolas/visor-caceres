@@ -1,0 +1,38 @@
+ @import 'variables';
+
+ .delete-location-icon {
+   font-size: 1.5rem;
+ }
+
+ .delete-location-icon-column {
+   text-align: right;
+ }
+
+ .delete-location-icon-column:hover {
+   color: white;
+   cursor: pointer;
+ }
+
+ .item-toggle {
+   margin-left: 10px;
+ }
+
+ .item-controls {
+   display: flex;
+ }
+
+ // animacion definida en styles.scss no queda bien porque pasa por medio del toggle
+ .item-container {
+   the-button {
+     opacity: 0;
+   }
+
+   &:hover {
+     the-button {
+       opacity: 1;
+       transition: $defaultTrasition;
+     }
+
+   }
+
+ }

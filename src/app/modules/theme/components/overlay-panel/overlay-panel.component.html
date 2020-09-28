@@ -1,0 +1,4 @@
+<p-overlayPanel [dismissable]="dismissable" [showCloseIcon]="showCloseIcon" #overlayPanel (onClick)="toggle($event)"
+  [appendTo]="'body'" [styleClass]="styleClass" (onHide)="onClose($event)" autoZIndex="true">
+  <ng-content></ng-content>
+</p-overlayPanel>

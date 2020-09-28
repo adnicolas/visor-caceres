@@ -1,0 +1,17 @@
+<!-- <the-input-group [iconInput]="'pi pi-search'" [placeholder]="'Buscar...'"></the-input-group> -->
+<label>
+  Buscar
+</label>
+<the-auto-complete [(ngModel)]="searchTerm" [suggestions]="suggestions " [dropdown]="false"
+  [minLength]="minSearchLength" (keyUp)="onKeyUp()" emptyMessage="{{'GLOBAL.NO_RESULTS' | translate}}"
+  placeholder="{{'CATALOG.SEARCH_PLACEHOLDER' | translate}}" [itemsTemplate]='searchSuggestionsTemplate'>
+</the-auto-complete>
+
+
+<ng-template #searchSuggestionsTemplate let-suggestion="rowItem">
+  <div class="ui-helper-clearfix search-result-item">
+    <div class="search-result-address" (click)="search(suggestion)">
+      {{suggestion}}
+    </div>
+  </div>
+</ng-template>

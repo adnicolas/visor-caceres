@@ -1,0 +1,10 @@
+<p-calendar [(ngModel)]="date" [locale]="locale" [dateFormat]="dateFormat" [showIcon]="showIcon"
+  (onSelect)="handleSelectChange($event)" (change)="handleChange($event)" placeholder="dd/mm/yyyy"
+  [inputStyleClass]="inputStyleClass">
+
+  <!-- ejemplo de primeNG de como dar estilos a un rango dinamico de fechas en el calendario -->
+  <!-- TODO: pass this template as input to style date range (>= dateFrom && <= dateTo) -->
+  <!-- <ng-template pTemplate=" date" let-date> -->
+  <!-- <span [ngClass]="(date.day < 21 && date.day > 10) ? 'highlighted-date' : ''">{{date.day}}</span> -->
+  <!-- </ng-template> -->
+</p-calendar>

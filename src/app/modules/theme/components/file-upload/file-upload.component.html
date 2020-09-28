@@ -1,0 +1,8 @@
+<p-fileUpload [name]="name" [customUpload]='customUpload' [accept]="accept" [maxFileSize]="maxFileSize"
+  [multiple]="multiple" (uploadHandler)="onUploadEvent($event)" (onSelect)="fileChanged($event)"
+  [showUploadButton]='showUploadButton' [chooseLabel]='chooseLabel' [uploadLabel]='uploadLabel'
+  [cancelLabel]='cancelLabel' [disabled]='disable'>
+  <ng-template pTemplate="content">
+    <ng-container></ng-container>
+  </ng-template>
+</p-fileUpload>

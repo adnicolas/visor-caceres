@@ -1,0 +1,24 @@
+<div class="generic-search-container">
+
+  <ng-template #toponomySearchTemplate let-place="rowItem">
+    <div class="ui-helper-clearfix search-result-item">
+      <div class="search-result-address" (click)="loadPlace(place.id,place.type,place.portal)">
+        {{place.address}}
+      </div>
+    </div>
+  </ng-template>
+
+  <the-auto-complete [(ngModel)]="selectedPlace" [suggestions]="places" [dropdown]="false"
+    [minLength]="minSearchStringLength" field="address" (keyUp)="onKeyUp($event)"
+    emptyMessage="{{'TOPONOMY_SEARCH.NO_RESULTS' | translate}}" [size]="20"
+    placeholder="{{'TOPONOMY_SEARCH.PLACEHOLDER' | translate}}" [itemsTemplate]='toponomySearchTemplate'>
+  </the-auto-complete>
+
+  <!-- button to clear search input -->
+  <the-button *ngIf="searchTerm.length > 0" icon="fas fa-times" styleClass="ui-button-primary-inverse"
+    (click)="resetComponent()"></the-button>
+  <!-- button which loads first suggestion -->
+  <the-button icon="fas fa-search" [showSpinner]="searching || loading" styleClass="ui-button-primary-inverse"
+    (click)="loadFirstSuggestion()"></the-button>
+
+</div>

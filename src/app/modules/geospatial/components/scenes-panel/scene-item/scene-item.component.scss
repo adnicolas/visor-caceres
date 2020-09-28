@@ -1,0 +1,61 @@
+// component css goes here
+@import 'variables';
+
+.scene-item-container:hover {
+  background-color: #374654;
+}
+
+.scene-item-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #61809e3b;
+}
+
+.scene-icon {
+  font-size: 1em !important;
+  margin-left: 5px;
+  color: $tertiaryBg;
+}
+
+.scene-thumbnail {
+  height: 10rem;
+  max-width: 100%;
+  // border: 3px solid $secondaryFg;
+  border-radius: 10px;
+}
+
+.selected {}
+
+.scene-metadata-column {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .timestamp {
+    font-size: 1.1rem;
+    margin: 15px 0;
+  }
+
+  .metadatas {
+    display: flex;
+    flex-direction: column;
+
+
+    .metadata {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      color: $primaryFg;
+      padding-top: 0.25em;
+
+      img {
+
+        float: left;
+      }
+    }
+  }
+
+}

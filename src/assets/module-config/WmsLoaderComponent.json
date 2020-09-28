@@ -1,0 +1,20 @@
+{
+  "suggestedWMSServers": [
+    {
+      "url": "http://ide.caceres.es/geoserver/Plantas_Bajas2/ows",
+      "title": "Patrimonio Arquitectónico Cáceres"
+    },
+    {
+      "url": "http://www.ign.es/wms-inspire/ign-base",
+      "title": "IGN Base"
+    },
+    {
+      "url": "http://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx",
+      "title": "Cartografía catastral"
+    },
+    {
+      "url": "http://ovc.catastro.meh.es/cartografia/INSPIRE/spadgcwms.aspx",
+      "title": "Cartografía catastral INSPIRE"
+    }
+  ]
+}

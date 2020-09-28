@@ -1,0 +1,34 @@
+<!-- <ion-item-group id="documentsTitle">
+
+  <ion-item-divider class="titlePane">
+
+    <div (click)="toggleDocuments()" class="ui-clickable">
+      <ion-icon item-start name="ios-arrow-forward" *ngIf="!docsFolderOpen"></ion-icon>
+      <ion-icon item-start name="ios-arrow-down" *ngIf="docsFolderOpen"></ion-icon>
+      <ion-icon name="attach"></ion-icon> {{literals.documents}}
+    </div>
+
+    <button *ngIf="userLoggedIn" id="btnPopoverDocs" item-end [tooltip]="literals.addDocToMap" ion-button icon-only
+      (click)="showModal()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-badge color="light" item-end>{{documents.length}}</ion-badge>
+
+  </ion-item-divider>
+
+  <ion-list [hidden]="!docsFolderOpen">
+    <ion-item *ngFor="let doc of documents; let i = index;">
+      <ion-thumbnail item-start>
+        <img src={{icons[i]}}>
+      </ion-thumbnail>
+      <h3 class="docTitle">{{doc.name}}</h3>
+      <p [title]="doc.description">{{doc.description}}</p>
+      <button ion-button clear item-end (click)="downloadDocument(doc)">
+        <ion-icon name="download" title="Descargar" class="btnDownloadDoc"></ion-icon>
+      </button>
+      <button ion-button clear item-end (click)="removeDocument(doc)">
+        <ion-icon name="trash" title="Borrar" class="btnDownloadDoc"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-item-group> -->

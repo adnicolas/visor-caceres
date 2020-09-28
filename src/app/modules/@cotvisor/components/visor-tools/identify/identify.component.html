@@ -1,0 +1,96 @@
+<!-- Botón de la herramienta -->
+<the-button *ngIf="!alwaysActive" icon="fas fa-info-circle" [tooltip]="tooltip" (onClick)="toggle()"
+  [styleClass]="(isActive) ? 'ui-state-active ui-button-primary':'ui-state-default ui-button-primary'">
+</the-button>
+
+
+<!-- Modal con los resultados -->
+<the-dialog appendTo="body" header="{{'IDENTIFY.TITLE' | translate}}" [visible]="showModal"
+  (visibleChange)="onModalVisibleChange($event)" styleClass="responsiveDialog" [modal]="false">
+
+  <!-- Dialog Content -->
+  <div dialog-fixed-content class="content">
+    <!-- Punto Seleccionado -->
+    <div *ngIf="coordinates.length" class="coordinates-container">
+      <span class="description">{{"IDENTIFY.SELECTED_POINT" | translate }}</span>
+      <div class="coords-proj-list">
+        <div class="coord-container" *ngFor="let coord of coordinates">
+          <span class="coord-title">
+          {{coord.title}}
+          </span>
+          <p>{{coord.x}}</p>
+          <p>{{coord.y}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="info-content">
+      <!-- SPINNER DE CARGA SI LA PETICION SE HA INICIADO Y ESTÁ PENDIENTE-->
+      <the-progress-spinner *ngIf="loading" class="p-grid p-nogutter p-justify-center" size="40px" strokeWidth="5"
+        animationDuration="3s" fill="none">
+      </the-progress-spinner>
+
+      <!-- Mensaje de no hay resultados -->
+      <span class="advise" *ngIf="!loading && !info.length">
+      {{"ERRORS.NO_RESULTS" | translate }}
+      </span>
+
+      <!-- Pestañas -->
+      <the-tab-menu [items]="tabs" [activeItem]="activeTab" styleClass='primary'>
+        <ng-container ngProjectAs="[tabs-content]" *ngFor="let result of info">
+          <ng-container *ngIf="activeTab?.id == result.id">
+            <!-- Resultados de tipo html -->
+            <div class="info-container" *ngIf="result.type == 'html'; else vectorType"
+              [innerHtml]="result.contents[0] | safeHtml">
+            </div>
+          </ng-container>
+
+
+          <ng-template #vectorType>
+
+            <div *ngFor="let content of result.contents">
+              <div *ngIf="content.length < 5; else verticalTable">
+                <table>
+                  <thead>
+                    <tr>
+                      <ng-container *ngFor="let item of content">
+                        <th scope="col">
+                          <span>{{item.key}}</span>
+                        </th>
+                      </ng-container>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <ng-container *ngFor="let item of content">
+                        <td scope="col">
+                          <span>{{item.value}}</span>
+                        </td>
+                      </ng-container>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ng-template #verticalTable>
+                <div>
+                  <table>
+                    <tr *ngFor="let item of content">
+                      <th scope="col">{{item.key}}</th>
+                      <td>{{item.value}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </ng-template>
+            </div>
+
+          </ng-template>
+
+        </ng-container>
+      </the-tab-menu>
+    </div>
+  </div>
+
+
+</the-dialog>

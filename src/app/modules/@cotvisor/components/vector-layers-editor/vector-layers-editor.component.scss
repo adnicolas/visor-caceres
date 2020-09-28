@@ -1,0 +1,37 @@
+  .text-on-bottom > .button-inner {
+    flex-direction: column;
+  }
+
+  div.colorPicker {
+    height: 23px;
+    width: 23px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+  }
+
+  .colorPickerContainer {
+    margin-left: 5px;
+  }
+
+  ion-list-header {
+    ion-label {
+      margin: 8px 8px 0 0 !important;
+    }
+  }
+
+  .button-md-light {
+    color: #000;
+    background-color: #ffffff;
+    box-shadow: none;
+  }
+
+  //so that the entire item isnt one big radio button click event
+  .radio > button {
+    width: 0;
+  }
+
+  ion-icon.icon.icon-md.ion-md-create.item-icon {
+    cursor: pointer;
+  }

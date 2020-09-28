@@ -1,0 +1,46 @@
+[{
+    "id": 1,
+    "name": "Santiago de Compostela",
+    "description": "The city has its origin in the shrine of Saint James the Great, now the Cathedral of Santiago de Compostela, as the destination of the Way of St. James, a leading Catholic pilgrimage route since the 9th century.[3] In 1985, the city's Old Town was designated a UNESCO World Heritage Site.",
+    "coordinates": [-8.54736328125,
+        42.876970480834636],
+    "SRS": "EPSG:4326",
+    "zoom": 14
+}, {
+    "id": 2,
+    "name": "Ourense",
+    "description": "The origin of the town can be traced to the Romans and the presence of hot springs called the Burgas. These can still be seen today. There was also the need to fortify the place to protect one of the easiest ways to cross the Miño River. After the Romans, Ourense was part of the Suebi (Suevi) kingdom during most of the 5th, 6th and 7th centuries and was destroyed by the Moors in 716. It was later rebuilt by Alfonso III of Asturias about 877. The Norse invasions as well as attacks from the Arab warlord Al-Mansur once more laid the city to waste. It was only under Sancho II and his sister Doña Elvira that the city was resettled during the 11th century",
+    "coordinates": [-7.867240905761719,
+        42.34433533786168],
+    "SRS": "EPSG:4326",
+    "zoom": 13
+}, {
+    "id": 3,
+    "name": "A Coruña",
+    "description": "The Romans came to the region in the 2nd century BC, and the colonisers made the most of the strategic position and soon the city became quite important in maritime trade. In 62 BC Julius Caesar came to the city (known at the time as Brigantium) in pursuit of the metal trade, establishing commerce with what are now France, England and Portugal. The town began growing, mainly during the 1st and 2nd centuries (when the Farum Brigantium Tower of Hercules was built), but declined after the 4th century and especially with the incursions of the Normans, which forced the population to flee towards the interior of the Estuary of O Burgo.",
+    "coordinates": [-8.396387100219727,
+        43.371427628470805],
+    "SRS": "EPSG:4326",
+    "zoom": 15
+}, {
+    "id": 4,
+    "name": "Lugo",
+    "description": "Lugo is the only city in the world to be surrounded by completely intact Roman walls, which reach a height of 10 to 15 metres (33 to 49 feet) along a 2,117-metre (6,946 ft) circuit ringed with 71 towers.",
+    "coordinates": [
+          -7.555847167968749,
+          43.01067254527255
+        ],
+    "SRS": "EPSG:4326",
+    "zoom": 15
+},
+  {
+    "id": 5,
+    "name": "Pontevedra",
+    "description": "In 1999, Pontevedra pedestrianized its 300,000 square meter medieval center by banning all but the essential automobile traffic.",
+    "coordinates": [
+          -8.644180297851562,
+          42.430552260619564
+        ],
+    "SRS": "EPSG:4326",
+    "zoom": 15
+}]

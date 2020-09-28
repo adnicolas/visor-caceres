@@ -1,0 +1,9 @@
+<div class="box-container" [ngClass]="styleClass">
+  <div class="box-container-header">
+    <div *ngIf="header" class="box-container-header-container">{{header}}</div>
+  </div>
+  <div class="box-container-content">
+    <div class="box-container-icon"><i [class]="icon"></i></div>
+    <ng-content></ng-content>
+  </div>
+</div>

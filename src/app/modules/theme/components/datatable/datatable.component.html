@@ -1,0 +1,116 @@
+<p-table #dataTable [columns]="cols" [value]="values" selectionMode="single" [(selection)]="selectedRow" [lazy]="lazy"
+  [responsive]="true" [resizableColumns]="true" [dataKey]="dataKey" editMode="row" (onRowSelect)="rowSelect($event)"
+  (selectionChange)="changeSelect($event)" (onLazyLoad)="loadDataLazy($event)" [loading]="loading"
+  [paginator]="usePaginator" [rows]="rowsNumber" [styleClass]="styleClass" [totalRecords]="totalRecords">
+  <ng-template pTemplate="caption">
+    {{ title }}
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn [ngClass]="col.field">
+        {{ col.header }}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+      <th *ngIf="!readonly" class="accions-col">
+        <the-button *ngIf="allowAdd" [small]="true" icon="fa fa-plus" styleClass="ui-button-default"
+          (onClick)="showDialogToAdd()">
+        </the-button>
+      </th>
+    </tr>
+    <tr class="filter-row" *ngIf="showFilters">
+      <th *ngFor="let col of columns">
+        <input *ngIf="!col.hideFilter" class="filter-input-{{ col.field }}"
+          placeholder="{{ 'DATATABLE.FILTER_BY' | translate }} {{ col.header }}" pInputText type="text"
+          (input)="dataTable.filter($event.target.value, col.field, col.filterMode)" />
+      </th>
+        <!-- Relleno sobre la columan de acciones -->
+      <th *ngIf="!readonly">
+        <the-button icon="mi clear" (onClick)="resetTable()" [tooltip]="'DATATABLE.RESET' | translate"> </the-button>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-editing="editing" let-ri="rowIndex">
+    <tr [pSelectableRow]="rowData" [pEditableRow]="rowData">
+      <td *ngFor="let col of columns">
+        <!-- celdas editables -->
+        <p-cellEditor *ngIf="col.field !== dataKey">
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData[col.field]" />
+          </ng-template>
+            <ng-template pTemplate="output">
+              <ng-container [ngSwitch]="col.format">
+                <img *ngSwitchCase="'img'" [src]="rowData[col.field]" style="max-width: 100%;" />
+                <span *ngSwitchCase="'date'">
+                {{ rowData[col.field] | date: dateFormat }}
+                </span>
+                <span *ngSwitchCase="'switch'">
+                <the-input-switch [disabled]="!editInline" [(ngModel)]="rowData[col.field]" [name]="col.field">
+                </the-input-switch>
+              </span>
+                <span *ngSwitchDefault>
+                {{ rowData[col.field] }}
+                </span>
+              </ng-container>
+            </ng-template>
+        </p-cellEditor>
+        <!-- El campo indicado como clave no es editable -->
+        <ng-container *ngIf="col.field === dataKey">
+          {{ rowData[col.field] }}
+        </ng-container>
+      </td>
+      <!-- Barra de botones -->
+      <td class="ui-text-center action-buttons" *ngIf="!readonly">
+        <button *ngIf="!editing && editInline" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+          styleClass="ui-button-default" (click)="rowEditInit(rowData)"></button>
+        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check"
+          class="ui-button-success datatable-edit-button" (click)="rowEditSave(rowData)"></button>
+        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+          class="ui-button-danger datatable-edit-button" (click)="rowEditCancel(rowData, ri)"></button>
+
+        <the-button [small]="true" *ngIf="!editing && allowDeleteOffline" icon="pi pi-trash"
+          styleClass="ui-button-default" (onClick)="rowEditDelete(rowData)">
+        </the-button>
+
+        <the-button [small]="true" *ngIf="!editing && allowDetail" icon="pi pi-angle-right"
+          styleClass="ui-button-default" (onClick)="gotoDetail(rowData)">
+        </the-button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary" let-rowData>
+    <div class="ui-text-left" *ngIf="!readonly && allowAdd">
+      <the-button icon="fa fa-plus" styleClass="ui-button-default" (onClick)="showDialogToAdd()"
+        label="{{ 'GLOBAL.NEW' | translate }}"></the-button>
+    </div>
+  </ng-template>
+</p-table>
+
+<p-dialog [header]="'GLOBAL.NEW' | translate" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+  [modal]="true" *ngIf="editInline">
+  <form #heroForm="ngForm">
+    <div class="ui-g ui-fluid" *ngIf="newRow">
+      {{ 'GLOBAL.REQUIRED_FIELDS' | translate }}
+      <div class="ui-g-12" *ngFor="let col of cols">
+        <ng-container *ngIf="col.field !== dataKey">
+          <div class="ui-g-4">
+            <label [for]="col.field">{{ col.header }} {{ col.required ? '*' : '' }}</label>
+          </div>
+          <div class="ui-g-8">
+            <input pInputText [id]="col.field" [(ngModel)]="newRow[col.field]" [required]="col.required"
+              [name]="col.field" />
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+        <the-button icon="pi pi-times" (onClick)="newCancel()" label="{{ 'BUTTON.CANCEL' | translate }}"></the-button>
+        <the-button [disabled]="!heroForm?.form.valid" icon="pi pi-check" (onClick)="rowSave()"
+          label="{{ 'BUTTON.SAVE' | translate }}">
+        </the-button>
+      </div>
+    </p-footer>
+  </form>
+</p-dialog>

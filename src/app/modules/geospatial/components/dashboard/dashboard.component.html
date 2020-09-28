@@ -1,0 +1,24 @@
+<div class='p-grid dashboard'>
+  <div class="p-col-12">
+    <div class="p-grid p-justify-center">
+      <the-overview-user-box class="p-col-4" [user]='currentUser'></the-overview-user-box>
+    </div>
+    <div class="p-grid p-justify-center">
+      <gss-layers-summary class="p-col-4" [routerLink]="'/capas'">
+      </gss-layers-summary>
+    </div>
+    <div class="p-grid p-justify-center">
+      <gss-maps-summary class="p-col-4" [routerLink]="'/mapas'"></gss-maps-summary>
+    </div>
+    <div class="p-grid p-justify-center">
+      <gss-views-summary class="p-col-4" [routerLink]="'/visores'"></gss-views-summary>
+    </div>
+  </div>
+</div>
+<!--<div class="p-col-12 p-md-8" *ngIf="currentUser">
+    <the-box-panel styleClass='hightlight1' [title]="'USERS.PROFILE' | translate" [icon]="'mi face'">
+      <cot-users-detail [user]='currentUser'></cot-users-detail>
+    </the-box-panel>
+
+
+  </div>-->

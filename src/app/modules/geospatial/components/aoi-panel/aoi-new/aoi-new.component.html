@@ -1,0 +1,10 @@
+<the-window displayPosition='bottom-left' xOffset='9' yOffset='36' [hidden]="!active" name="{{'AOI.NEW' | translate}}">
+  <div class="new-aoi-overlay" [ngClass]="{'active': active,'displaced':displaced}">
+    <p class="title"> {{'AOI.SAVE' | translate}} </p>
+    <div class="ui-inputgroup">
+      <the-input-group placeholder='Nombre' [iconButton]="'far fa-save'" label='guardar' [showSpinner]='showSpinner'
+        [(ngModel)]='aoiName' [required]='true' (clickButton)='saveAOI()'></the-input-group>
+    </div>
+
+  </div>
+</the-window>

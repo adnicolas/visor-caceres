@@ -1,0 +1,9 @@
+        <p-card [header]="title" [subheader]="subtitle" styleClass="ui-card-shadow" [ngClass]="styleClass">
+          <p-header>
+            <ng-content select="[card-header]"></ng-content>
+          </p-header>
+          <ng-content></ng-content>
+          <p-footer>
+            <ng-content select="[card-footer]"></ng-content>
+          </p-footer>
+        </p-card>

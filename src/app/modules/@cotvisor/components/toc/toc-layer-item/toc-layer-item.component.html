@@ -1,0 +1,52 @@
+<!--component html goes here -->
+<div class="item-container">
+  <!-- No uso p-grid porque los márgenes que aplica descuadran el centrado, y si se usa p-nogutter elimina el padding -->
+  <div class="flex">
+    <div class="p-col-fixed">
+      <cot-toc-layer-options [layer]="layer"></cot-toc-layer-options>
+    </div>
+
+    <div class="p-col layer-title-column"
+      [ngClass]="{'ui-clickable': ($any(layer).activeStyle && $any(layer).activeStyle.legendURL.length)}"
+      (click)="showLayerInfoBox()">
+      <i [class]="(showInfo) ? 'pi pi-angle-down':'pi pi-angle-right'" *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length"></i>
+      <div class="layer-title">{{layer.title}}</div>
+    </div>
+
+    <div *ngIf="layer.loading">
+      <the-progress-spinner size="30px" strokeWidth="5" animationDuration="3s">
+      </the-progress-spinner>
+    </div>
+
+    <div class="layer-toggle-container">
+      <the-input-switch [ngModel]="layer.visible$ | async" styleClass="layer-toggle"
+        (onChange)="layer.setVisible($event)">
+      </the-input-switch>
+    </div>
+
+    <ng-content select="[cdkDragHandle]"></ng-content>
+  </div>
+
+  <!-- LEYENDA -->
+  <div *ngIf="showInfo" class="legend-container">
+    <!-- <div class="p-col-2"></div> -->
+    <div class="p-col-12" *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length">
+      <div class="layer-properties-box">
+        <div class="no-padding">
+          <img [src]="$any(layer).activeStyle.legendURL[0].onlineResource | unescapeHtml" class="legend-image">
+        </div>
+          <the-button label="{{'TOC.LAYER.ITEM.OPEN_LEGEND' | translate }}" (click)="toggleLegendWindow(layer)">
+          </the-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <the-window *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length" displayPosition='bottom-left'
+    [name]='$any(layer).name' yOffset='10' xOffset='50' [canBeClosed]='true' [hidden]="!openLegendWindow"
+    (closed)="onLegendWindowClose()">
+    <div class="legend-window-container" *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length">
+      <img [src]="$any(layer).activeStyle.legendURL[0].onlineResource | unescapeHtml" class="legend-window-image">
+  </div>
+  </the-window>

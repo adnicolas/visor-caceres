@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Response-Delay: 1000
+access-control-allow-origin: *
+access-control-allow-credentials: true
+
+
+#import './data.json';
+

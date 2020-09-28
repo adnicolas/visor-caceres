@@ -1,0 +1,135 @@
+ @import 'variables';
+
+ :host {
+   display: block;
+   padding: 0 $defaultPadding;
+ }
+
+ cot-user-location-item {
+   width: 100%;
+ }
+
+ .user-location-item {
+   .user-location-icon i {
+     font-size: 1.5em;
+   }
+
+   .user-location-data {
+     &__name {
+       color: $secondaryFg;
+     }
+
+     &__date {
+       color: darken($primaryFg, $colorModificationPercent);
+       font-size: $fontReducedSize;
+
+     }
+   }
+ }
+
+ .user-locations-spinner-container {
+   text-align: center;
+ }
+
+ #user-location-popup {
+   box-shadow: none;
+   background-color: $primaryBg;
+   opacity: 0.9;
+   color: $primaryFg;
+   padding: 10px;
+ }
+
+ .popup-content {
+   margin-left: 10px;
+   margin-bottom: 5px;
+ }
+
+ .popup-footer {
+   text-align: center;
+ }
+
+ .popup-row {
+   color: $secondaryFg;
+
+   span {
+     color: $primaryFg;
+   }
+ }
+
+ .user-location-popup-title {
+   margin-right: 5px;
+   margin-top: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-weight: bold;
+ }
+
+ .user-location-popup-description {
+   padding-top: 10px;
+   margin-top: 10px;
+   border-top: 1px solid $tertiaryFg;
+ }
+
+ .popup-label {
+   color: $secondaryColorStrong;
+   margin-right: 5px;
+ }
+
+ .popup-icon-button {
+   font-size: 1.4em;
+ }
+
+ .popup-icon-button:hover {
+   color: $tertiaryBg;
+   cursor: pointer;
+ }
+
+ //popups
+ .ol-popup {
+   position: absolute;
+   -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+   filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+   border-radius: $borderRadius;
+   border: 1px solid #cccccc;
+   bottom: 12px;
+   left: -50px;
+   min-width: 350px;
+ }
+
+ .ol-popup::after,
+ .ol-popup::before {
+   top: 100%;
+   border: solid transparent;
+   content: ' ';
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+ }
+
+ .ol-popup::after {
+   border-top-color: $primaryBg;
+   border-width: 10px;
+   left: 48px;
+   margin-left: -10px;
+ }
+
+ .ol-popup::before {
+   border-top-color: $primaryBg;
+   border-width: 11px;
+   left: 48px;
+   margin-left: -11px;
+ }
+
+ .ol-popup-closer {
+   text-decoration: none;
+   position: absolute;
+   top: 2px;
+   right: 6px;
+   z-index: 2;
+ }
+
+ .ol-popup-closer::after {
+   content: '✖';
+ }

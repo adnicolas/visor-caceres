@@ -1,0 +1,60 @@
+<div class="deep-{{layersFolder.deepLevel}}">
+
+  <!-- <ion-item-divider [ngClass]="{'selectedFolder':layersFolder.selected}" class="ui-clickable" color="light" (click)="toggleAndSelect()"> -->
+  <!-- TODO montar con primeNG Tree https://www.primefaces.org/primeng/#/tree -->
+  <!-- FIXME arrastrar capas -->
+  <div class="folder-header">
+    <div (click)="toggle()" class="ui-clickable">
+      <div class="folder-index"></div>
+      <ng-container *ngIf="!layersFolder.editable">
+        <ng-container *ngIf="!layersFolder.open; else folderOpen">
+          <!-- <i class="pi pi-arrow-circle-right"></i> -->
+          <i class="pi pi-folder"></i> {{layersFolder.name}} ({{layersFolder.childNodes.length}})
+        </ng-container>
+        <ng-template #folderOpen>
+
+          <i class="pi pi-folder-open"></i> {{layersFolder.name}} ({{layersFolder.childNodes.length}})
+        </ng-template>
+      </ng-container>
+      <ng-container *ngIf="layersFolder.editable">
+        <i  class="pi pi-pencil" ></i>
+        <input [style.color]="'black'" type="text" [(ngModel)]="layersFolder.name" (blur)="stopEdit($event)">
+      </ng-container>
+    </div>
+
+    <!-- Botón para añadir capa-->
+    <!-- <button class="no-shadow" item-end ion-button icon-only (click)="openAddLayersModal()" [tooltip]="literals.addLayers"
+      placement="bottom" [color]="(layersFolder.deepLevel == 0 ? 'primary' : 'light')">
+      <ion-icon name="add"></ion-icon>
+    </button> -->
+    <!-- Botón para abrir las opciones de las carpetas-->
+    <!-- <button class="no-shadow" item-end [tooltip]="literals.options" [color]="(layersFolder.deepLevel == 0 ? 'primary' : 'light')"
+      ion-button icon-only (click)="showOptionsPopover($event)">
+      <ion-icon name="ios-more"></ion-icon>
+    </button> -->
+
+
+  </div>
+
+  <!-- Carpeta contenedora de las subcarpetas/ capas -->
+  <div [hidden]="!layersFolder.open"
+    [ngClass]="{'emptyFolder': (layersFolder.childNodes.length == 0), 'scrollContainer': (layersFolder.deepLevel == 0)}"
+    [attr.data-folder]="layersFolder.nodeId" #content cdkDragLockAxis="y" cdkDropList
+    (cdkDropListDropped)="onDrop($event)">
+    <!-- Para saber qué tipo de nodo se está utilizando, busco el nombre del constructor. Como el verdadero constructor de una capa no es VsLayer, sino
+    que puede ser de muchos tipos, utilizo un template para insertar la capa en el caso de que no sea una carpeta -->
+    <ng-container *ngFor="let node of layersFolder.childNodes">
+      <cot-layers-folders-tree-node *ngIf="$any(node).constructor.name === 'LayersFolderClass'; else layer"
+        [layersFolder]="node" [attr.data-nodeid]="$any(node).nodeId"></cot-layers-folders-tree-node>
+      <ng-template #layer>
+        <div cdkDrag cdkDragLockAxis="y">
+          <cot-toc-layer-item [layer]="node" [attr.data-nodeid]="node.name">
+            <i class="fas fa-sort handle" cdkDragHandle></i>
+          </cot-toc-layer-item>
+        </div>
+      </ng-template>
+
+    </ng-container>
+  </div>
+
+</div>

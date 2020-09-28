@@ -1,0 +1,30 @@
+ <p-toolbar>
+
+
+   <div class="item-group-center">
+     <img src='assets/images/tierra3-inverso.svg' class='logo' [ngClass]="{'loading': loading}">
+     <h2 class="brand">
+     {{title}} <small>{{version}} - {{enviroment}}</small></h2>
+   </div>
+
+   <div class="item-group-right">
+
+     <the-button label="{{currentLanguage}}" [icon]="currentFlag" (onClick)="languageMenuOverlay.toggle($event)"
+       [styleClass]="'ui-button-primary'">
+     </the-button>
+     <the-menu #languageMenuOverlay [popup]="true" [model]="languageMenu" styleClass='language-menu'></the-menu>
+
+     <the-button *ngIf="currentUser" label="{{currentUser.userName}}" icon="mi face"
+       (onClick)="userMenuOverlay.toggle($event)" [styleClass]="'ui-button-primary'">
+       <!--[tooltip]="currentUser.email" tooltipPosition="left" -->
+     </the-button>
+     <the-menu #userMenuOverlay [popup]="true" [model]="userMenu"></the-menu>
+
+     <the-button *ngIf="currentUser" icon="pi pi-bars" (onClick)="menuOverlay.toggle($event)"
+       [styleClass]="'ui-button-primary'">
+     </the-button>
+     <the-menu #menuOverlay [popup]="true" [model]="menu"></the-menu>
+
+   </div>
+
+ </p-toolbar>

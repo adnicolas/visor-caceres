@@ -1,0 +1,12 @@
+@import 'variables';
+
+div.logos {
+  background-color: $primaryBg + $defaultColorTransparency;
+  padding: 0.25em;
+  display: flex;
+
+  img.logo {
+    margin-right: 5px;
+    max-height: 30px;
+  }
+}

@@ -1,0 +1,31 @@
+@import 'variables';
+
+:host {
+  display: inline-block;
+}
+
+div.chip-container {
+  margin: $defaultPadding/2;
+  background-color: $primaryFg;
+  color: $primaryBg;
+  padding: $defaultPadding/2 $defaultPadding;
+  border-radius: 15px;
+  font-size: $fontReducedSize;
+
+  &.hightlight1 {
+    color: white;
+    background-color: $hightlight1;
+  }
+
+  &.hightlight2 {
+    color: white;
+    background-color: $hightlight2;
+  }
+
+  &.hightlight3 {
+    color: white;
+    background-color: $hightlight3;
+  }
+
+
+}

@@ -1,0 +1,11 @@
+<!-- @Joe uso del pipe async con observables. Gestiona la suscripcion automaticamente -->
+<div *ngIf="loading$|async" class="scene-spinner-container">
+  <the-progress-spinner size="50%"></the-progress-spinner>
+</div>
+<!-- @Joe uso del pipe async con observables. Gestiona la suscripcion automaticamente -->
+<div *ngIf="!(loading$|async)">
+  <h4>{{(scenes$|async).length}} {{"SCENES.SCENES_FOUND" | translate }}</h4>
+  <div *ngFor="let scene of scenes$|async">
+    <gss-scene-item [scene]="scene"></gss-scene-item>
+  </div>
+</div>

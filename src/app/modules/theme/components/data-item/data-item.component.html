@@ -1,0 +1,15 @@
+<div class="p-grid p-align-center data-item-container">
+
+  <div *ngIf="icon" class="p-col-fixed  data-item-container__icon">
+    <i [class]="icon"> </i>
+  </div>
+
+  <div class="p-col data-item-container__data">
+    <div>
+      <span class="p-col-fixed title">{{dataTitle}} </span>
+      <span class="p-col-fixed colon"> : </span>
+      <span [pTooltip]="data" tooltipPosition="top" class="p-col data" [ngClass]="{'nobreak': !wordBreak}">{{data}}</span>
+
+    </div>
+  </div>
+</div>

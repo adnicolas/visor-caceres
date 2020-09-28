@@ -1,0 +1,19 @@
+{
+  "projections": [
+    {
+      "srs": "EPSG:25829",
+      "format": "geographic",
+      "title": "ETRS89 h29"
+        },
+    {
+      "srs": "EPSG:25830",
+      "format": "geographic",
+      "title": "ETRS89 h30"
+        },
+    {
+      "srs": "EPSG:4326",
+      "format": "degrees",
+      "title": "WGS84"
+        }
+    ]
+}

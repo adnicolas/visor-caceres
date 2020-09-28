@@ -1,0 +1,14 @@
+<ng-container *ngIf="vsMapUserMap?.userMapSource; else elseTemplate">
+  <cot-map-manager-tools></cot-map-manager-tools>
+  <cot-map-manager-user-map-info> </cot-map-manager-user-map-info>
+  <div #content [ngClass]="{'infoOpen': showMapInfo}">
+    <cot-layers-folders-tree [scrollContainer]="content"> </cot-layers-folders-tree>
+  </div>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <p-message severity='info' text='No se ha cargado mapa de usuario'>
+    Sólo se mostrarán las carpetas y sus capas en los mapas de usuario cargados desde la
+    BBDD
+  </p-message>
+</ng-template>

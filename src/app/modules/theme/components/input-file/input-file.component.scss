@@ -1,0 +1,27 @@
+@import 'variables';
+
+input.file-name {
+  width: 100%;
+}
+
+::ng-deep {
+
+  .ui-fileupload-content {
+    display: none;
+  }
+
+  .ui-button-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ui-fileupload-buttonbar {
+    padding: 0;
+  }
+
+  .clear-button {
+    height: auto;
+  }
+
+}

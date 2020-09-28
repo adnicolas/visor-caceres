@@ -1,0 +1,5 @@
+<the-button [disabled]="!vsLayer" tooltip="{{ 'LAYER_EDITOR.EXPORT_LAYER' | translate }}" icon="pi pi-download"
+  [small]='true' (onClick)="saveAsMenuOverlay.toggle($event)">
+</the-button>
+
+<the-menu #saveAsMenuOverlay [popup]="true" [model]="saveAsMenu" [appendTo]="'body'"></the-menu>

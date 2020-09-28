@@ -1,0 +1,4 @@
+<the-datatable title="" [usePaginator]=' true' [editInline]='false' [values]='userMaps' [readonly]='false'
+  [allowAdd]='false' [allowDeleteOffline]='false' [loading]="userMapsService.loading$ | async" dataKey="id"
+  [cols]='mapsCols' (rowDetailEvent)="gotoUserMap($event)">
+</the-datatable>

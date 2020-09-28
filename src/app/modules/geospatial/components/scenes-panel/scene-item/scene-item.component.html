@@ -1,0 +1,38 @@
+<!--component html goes here -->
+<div class="p-grid scene-item-container ui-clickable" [ngClass]="{'selected': active}" (mouseenter)="showTileGeometry()"
+  (mouseleave)="hideTileGeometry()" (click)="toggleScene()">
+
+  <!-- primera columna -->
+  <div class="p-col-6">
+    <!-- imagen prevista -->
+    <img src="{{scene.thumbnail}}" class="scene-thumbnail">
+  </div>
+
+
+    <!-- segunda columna -->
+    <div class="p-col-6 scene-metadata-column">
+
+      <i class="fas fa-check" *ngIf="active"></i>
+
+      <!-- fecha de la imagen. Como es un timestamp de unix, hay que multiplicar x 1000 para transformarlo al date de javascript -->
+      <span class="timestamp">{{scene.timestamp * 1000 | date: 'dd/MM/yyyy' }} </span>
+
+      <!-- metadatos con iconos -->
+      <div class="metadatas">
+        <div class="metadata">
+          {{scene.satelliteName}}
+          <img class="svg-icon-25" src="assets/icons/satellite.svg" alt="satellite" >
+        </div>
+          <div class="metadata">
+            {{scene.cloudCover}}%
+            <img class="svg-icon-25" src="assets/icons/cloud.svg" alt="nube" >
+        </div>
+            <div class="metadata">
+              {{scene.sunElevation | number : '1.1-1'}}°
+              <img class="svg-icon-25" src="assets/icons/sun.svg" alt="sun" >
+        </div>
+
+            </div>
+
+          </div>
+        </div>

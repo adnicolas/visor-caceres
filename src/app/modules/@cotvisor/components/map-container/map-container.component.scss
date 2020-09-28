@@ -1,0 +1,43 @@
+    @import 'variables';
+
+    :host {
+      display: block;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Para la interacción de zoom ventana */
+    .dragzoom {
+      border: dotted 3px #2196f3;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .ol-map-div,
+    div#map-container {
+      height: 100%;
+      z-index: $z-index-map;
+
+    }
+
+    div.card-control {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    div.map-unselected {
+      background-color: $secondaryBg + $defaultColorTransparency;
+      border-radius: 30px;
+      padding: 1px;
+    }
+
+    div.map-selected {
+      color: $tertiaryFg;
+      background-color: rgba($tertiaryBg, 0.85);
+    }
+
+    .activeMapContainer {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }

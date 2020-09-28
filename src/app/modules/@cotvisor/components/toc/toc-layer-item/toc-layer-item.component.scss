@@ -1,0 +1,47 @@
+ @import 'variables';
+
+ .item-container {
+   color: $secondaryFg;
+ }
+
+ .flex {
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+ }
+
+ .layer-toggle-container {
+   padding: 5px;
+ }
+
+
+ .layer-title-column {
+   display: flex;
+   align-items: center;
+   padding-left: 0;
+ }
+
+ .legend-title {
+   margin-bottom: 10px;
+ }
+
+ .legend-container {
+   width: 100%;
+   text-align: center;
+
+   img {
+     max-width: 100%;
+   }
+ }
+
+ .legend-window-container {
+   width: 100%;
+   /* display: flex; */
+   align-items: center;
+   text-align: center;
+   background-color: $widget-content-bg;
+ }
+
+ .legend-window-image {
+   // width: 100%;
+ }

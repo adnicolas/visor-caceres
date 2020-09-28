@@ -1,0 +1,9 @@
+@import 'variables';
+
+
+.searchbar-container {
+  padding: 5px;
+  z-index: $z-index-map-tools;
+  position: absolute;
+  max-width: 500px;
+}

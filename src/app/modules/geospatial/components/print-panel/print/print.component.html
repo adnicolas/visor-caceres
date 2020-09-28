@@ -1,0 +1,207 @@
+<div class="p-grid">
+  <div class="p-col-12 options-side-column noprint">
+    <div class="noprint print-panel-header">
+      <h3 class="print-title">{{"PRINT.OPTIONS_TITLE" | translate }}</h3>
+    </div>
+    <form #printForm="ngForm" class="noprint">
+
+      <div class="p-grid p-nogutter">
+
+        <!-- first column -->
+        <div class="p-col-12 p-md-6 p-lg-3 print-options-column">
+          <div class="p-grid">
+            <div class="p-col-6 print-option-container">
+              <i class ="fas fa-tag print-option-icon"></i>
+              <div>{{"PRINT.FORMAT" | translate }}</div>
+            </div>
+            <div class="p-col-6 print-option-container">
+              <the-dropdown [options]="formatTypes" [(ngModel)]="format" optionLabel="name" name="format"
+                (onChange)="onChangeFormat()" styleClass="ui-print-dropdown"></the-dropdown>
+            </div>
+
+            <div class="p-col-6 print-option-container">
+              <i class ="fas fa-file print-option-icon"></i>
+              <div>{{"PRINT.ORIENTATION" | translate }}</div>
+            </div>
+            <div class="p-col-6 print-option-container">
+              <the-dropdown [options]="orientations" [(ngModel)]="orientation" optionLabel="name" name="orientation"
+                styleClass="ui-print-dropdown" (onChange)="onChangeFormat()">
+              </the-dropdown>
+            </div>
+          </div>
+        </div>
+
+        <!-- second column -->
+        <div class="p-col-12 p-md-6 p-lg-3 print-options-column">
+          <div class="p-grid">
+            <div class="p-col-8 print-option-container">
+              <i class="fas fa-pen-square print-option-icon"></i>
+              <div>{{"PRINT.MAP_TITLE" | translate }}</div>
+            </div>
+            <div class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.title" name="activateMapTitle"
+                (onChange)="changeActivation($event)"></the-input-switch>
+            </div>
+            <div class="p-col-12" [hidden]="!activationArray.title">
+              <the-input-text [(ngModel)]="mapTitle" type="text" name="mapTitle" size="24">
+              </the-input-text>
+            </div>
+
+            <div class="p-col-8 print-option-container">
+              <i class="fas fa-pen-square print-option-icon"></i>
+              <div>{{"PRINT.DESCRIPTION" | translate }}</div>
+            </div>
+            <div class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.description" name="activateMapDescription"
+                (onChange)="changeActivation($event)"></the-input-switch>
+            </div>
+            <div class="p-col-12" [hidden]="!activationArray.description">
+              <the-input-text-area [(ngModel)]="mapDescription" type="text" name="mapDescription"
+                autoResize="autoResize" cols="25"></the-input-text-area>
+            </div>
+          </div>
+        </div>
+
+        <!-- third column -->
+        <div class="p-col-12 p-md-6 p-lg-3 print-options-column">
+          <div class="p-grid">
+            <div class="p-col-8 print-option-container">
+              <i class="fas fa-compass print-option-icon"></i>
+              <div>{{"PRINT.CORNER_COORDINATES" | translate }}</div>
+            </div>
+            <div class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.coordinates" name="activateMapCoordinates" item-start>
+              </the-input-switch>
+            </div>
+
+            <div class="p-col-8 print-option-container">
+              <i class="fas fa-compass print-option-icon"></i>
+              <div>{{"PRINT.CENTER_COORDINATES" | translate }}</div>
+            </div>
+            <div class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.centerCoord" name="activateMapCenterCoord"
+                (onChange)="markerVector.setVisible(activationArray.centerCoord)"></the-input-switch>
+            </div>
+          </div>
+        </div>
+
+        <!-- fourth column -->
+        <div class="p-col-12 p-md-6 p-lg-3 print-options-column">
+          <div class="p-grid">
+            <div class="p-col-8 print-option-container">
+              <i class="fas fa-globe print-option-icon"></i>
+              <div>{{"PRINT.REFERENCE_SYSTEM" | translate }}</div>
+            </div>
+            <div class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.srs" name="activateMapSRS"></the-input-switch>
+            </div>
+
+            <div *ngIf="legends.length > 0; else noLegends" class="p-col-8 print-option-container">
+              <i class="fas fa-layer-group print-option-icon"></i>
+              <div>{{"PRINT.LEGENDS" | translate }}</div>
+            </div>
+            <div *ngIf="legends.length > 0;" class="p-col-4 print-option-container">
+              <the-input-switch [(ngModel)]="activationArray.legends" name="activateMapLeyends"></the-input-switch>
+            </div>
+            <div *ngIf="legends.length > 0;" class="p-col-12">
+              <the-multi-select [(ngModel)]="selectedLegends" name="mapLegends" [options]="legends"
+                [disabled]="!activationArray.legends" optionLabel="layerName" styleClass="ui-print-multiselect"
+                defaultLabel='{{"PRINT.CHOOSE_LEGENDS" | translate }}'>
+              </the-multi-select>
+            </div>
+          </div>
+
+          <ng-template #noLegends>
+            <div class="p-col-12 no-legends">
+              {{"PRINT.NO_LEGENDS" | translate }}
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- <div class="advise">
+        description
+      </div>
+      <div class="advise">
+        advise
+      </div> -->
+      </div>
+    </form>
+  </div>
+
+
+  <div #mapPrinterContainer id="mapPrinterContainer" class="p-col-12">
+    <!-- COORDENADAS ESQUINAS -->
+    <ng-container *ngIf="activationArray.coordinates && extent">
+      <span id="top_left_coordinate">{{extent[3]}}</span>
+      <span id="left_top_coordinate" class="rotate_90">{{extent[0]}}</span>
+
+      <span id="top_right_coordinate">{{extent[3]}}</span>
+      <span id="right_top_coordinate" class="rotate_90">{{extent[2]}}</span>
+
+      <span id="bottom_left_coordinate">{{extent[1]}}</span>
+      <span id="left_bottom_coordinate" class="rotate_90">{{extent[0]}}</span>
+
+      <span id="bottom_right_coordinate">{{extent[1]}}</span>
+      <span id="right_bottom_coordinate" class="rotate_90">{{extent[2]}}</span>
+    </ng-container>
+
+    <!-- MAPA Y DRAGGABLES -->
+    <div class="innerPrinterContainer" #innerPrinterContainer>
+      <div cdkDrag (mousedown)="changeZindex($event)" class="draggable card-draggable legend"
+        cdkDragBoundary=".innerPrinterContainer" *ngFor="let legend of selectedLegends"
+        [hidden]="!activationArray.legends">
+        <div>
+          {{legend.layerName}}
+        </div>
+        <div>
+          <img [src]="legend.url" />
+      </div>
+        </div>
+
+        <div cdkDrag (mousedown)="changeZindex($event)" class="draggable card-draggable" id="mapTitle"
+          [hidden]="!mapTitle || !activationArray.title" cdkDragBoundary=".innerPrinterContainer">
+          {{mapTitle}}
+        </div>
+
+        <div cdkDrag ngResizable id="mapDescription" class="draggable card-draggable"
+          [hidden]="!mapDescription || !activationArray.description" cdkDragBoundary=".innerPrinterContainer"
+          (mousedown)="changeZindex($event)">{{mapDescription}}</div>
+
+        <div cdkDrag [hidden]="!activationArray.centerCoord" class="draggable card-draggable" id="mapCenterCoord"
+          cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
+          <div class="print-card-header">
+            <span>center</span>
+            <!-- <img [src]="centerIcon" /> -->
+            <i class="fas fa-crosshairs"></i>
+          </div>
+          <div class="print-card-content">
+            X: {{centerCoord[0]}}
+            <br>
+        Y: {{centerCoord[1]}}
+          </div>
+        </div>
+
+        <div cdkDrag [hidden]="!activationArray.srs" class="draggable card-draggable" id="mapSRS"
+          cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
+          <div class="print-card-header">
+            {{"PRINT.REFERENCE_SYSTEM" | translate }}
+          </div>
+          <div class="print-card-content">
+            {{srs}}
+          </div>
+        </div>
+
+        <img id="logo" (mousedown)="changeZindex($event)" cdkDrag cdkDragBoundary=".innerPrinterContainer"
+      class="draggable card-draggable" src="assets/images/tierra3.svg">
+
+
+        <!-- <cot-map-container target="map-printer" [map]="map"> </cot-map-container> -->
+        <!-- NODO MAPA -->
+        <cot-map-container *ngIf="map; else noMap" [target]="'map-printer'" [map]="map"></cot-map-container>
+
+        <ng-template #noMap>
+          <h1>No existe un mapa cargado</h1>
+        </ng-template>
+      </div>
+    </div>
+  </div>

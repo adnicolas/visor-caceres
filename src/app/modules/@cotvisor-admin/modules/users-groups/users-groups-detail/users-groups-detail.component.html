@@ -1,0 +1,45 @@
+<div class="p-grid" *ngIf="group">
+  <div class="p-col-12 p-sm-3">
+    <div class='p-grid'>
+      <the-overview-box class="p-col-12" [title]="'USERS_GROUPS.RETURN' | translate" [icon]="'mi reply'"
+        [routerLink]="'/grupos'">
+      </the-overview-box>
+    </div>
+    <br />
+    </div>
+    <the-box-panel styleClass='hightlight2' [title]="'GLOBAL.GROUP' | translate" icon='pi pi-user'
+      class="p-col-12 p-sm-9">
+      <div class="p-grid">
+        <div class="p-col-12">
+          <form [formGroup]="groupForm">
+            <the-card [styleClass]='"primary"'>
+              <div class='p-grid'>
+                <p class="p-col-12" *ngIf="addMode">{{'USERS.NEW_USER_INTRO' | translate}} </p>
+                <the-input-group required="true" name="name" class="p-col-6" formControlName="name" type="text"
+                  placeholder="{{'GLOBAL.GROUP' | translate}}" iconInput="fa fa-user">
+                </the-input-group>
+                <the-input-group required="true" class="p-col-6" formControlName="description" type="text"
+                  name="description" placeholder="{{'GLOBAL.DESCRIPTION' | translate}}" iconInput="fa fa-user">
+                </the-input-group>
+                <div class="p-col-12">
+                  <the-box-title styleClass='hightlight2' [icon]="'pi pi-users'">{{'USERS.LIST' | translate}}
+                  </the-box-title>
+                  <the-list-box [options]="usersOptions" formControlName="users" metaKeySelection="false"
+                    multiple="true" checkbox="true" filter="true" [styleClass]="'ui-share-listbox'">
+                  </the-list-box>
+                </div>
+              </div>
+              <div card-footer>
+                <the-button [label]="'BUTTON.SAVE' | translate" (onClick)="save()"
+                  [disabled]="!(groupForm.dirty && groupForm.valid)">
+                </the-button>
+                <the-button *ngIf="!addMode" [label]="'BUTTON.DELETE' | translate" (onClick)="deleteGroup()">
+                </the-button>
+              </div>
+              <!--<pre><code>{{groupForm?.value|json}}</code></pre>-->
+            </the-card>
+          </form>
+        </div>
+      </div>
+    </the-box-panel>
+  </div>

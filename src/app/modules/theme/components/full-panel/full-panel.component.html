@@ -1,0 +1,10 @@
+<p-sidebar *ngIf="sidebarItem" [(visible)]="sidebarItem.visible" [fullScreen]="true" [baseZIndex]="0"
+  showCloseIcon="false">
+
+  <p-scrollPanel [style]="{width: '100%', height: 'calc(100vh - 75px)'}">
+    <ng-content select="[panel-content]"></ng-content>
+
+  </p-scrollPanel>
+  <ng-content class="noprint" select="[panel-footer]"></ng-content>
+
+</p-sidebar>

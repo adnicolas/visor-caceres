@@ -1,0 +1,58 @@
+@import 'variables';
+
+.data-item-container {
+  border: none;
+  align-items: center;
+  padding: 0.2em 0;
+  margin: 0;
+
+  &.p-grid {
+    margin-top: 0;
+  }
+
+
+
+  &__icon {
+    color: $tertiaryFg;
+    background-color: $tertiaryBg;
+    // padding: 0.25em;
+    // border-radius: 50%;
+    // height: 24px;
+    width: 32px;
+    // font-size: 20px;
+    // text-align: center;
+
+  }
+
+
+  &__data {
+    overflow: hidden;
+    padding: 0;
+
+    & > div {
+      display: flex;
+
+      .title {
+        color: $primaryFg;
+        font-weight: bold;
+      }
+
+      .colon {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .data {
+        color: $secondaryFg;
+        word-break: break-word;
+
+        &.nobreak {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+
+  }
+}

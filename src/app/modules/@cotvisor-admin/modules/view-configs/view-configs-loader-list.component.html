@@ -1,0 +1,4 @@
+<the-datatable title="" [usePaginator]="true" [editInline]="false" [values]="viewConfigs" [readonly]="false"
+  [allowAdd]="false" [allowDeleteOffline]="false" [loading]="viewConfigsService.loading$ | async" dataKey="id"
+  [cols]="mapsCols" (rowDetailEvent)="gotoViewConfig($event)">
+</the-datatable>

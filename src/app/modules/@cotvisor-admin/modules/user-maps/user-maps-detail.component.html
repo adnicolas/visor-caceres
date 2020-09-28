@@ -1,0 +1,245 @@
+<!-- <ion-card class="full admin-card" no-padding no-margin>
+
+
+
+  <ion-card-content>
+    <form #userMapForm="ngForm">
+      <ion-grid no-padding>
+
+
+
+
+          <ion-col col-12 col-sm-4 align-self-center>
+
+            <ion-item>
+              <ion-toggle #publicToggle [(ngModel)]="userMap.public" name="public" [checked]="userMap.public"
+                item-start></ion-toggle>
+              <ion-label>{{getLiteral("public")}}</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12 col-sm-4>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("password")}}</ion-label>
+              <ion-input placeholder="{{literals.password_placeholder}}" type="password" [(ngModel)]="userMap.password"
+                #password="ngModel" name="password"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12 col-sm-4 *ngIf="password.dirty">
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("password_2")}}</ion-label>
+              <ion-input placeholder="{{literals.password_2_placeholder}}" type="password" name="password_2">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col col-12>
+            <ion-list-header color="primary">
+              {{getLiteral("geodata")}}
+            </ion-list-header>
+          </ion-col>
+          <ion-col col-3>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("bboxMaxX")}}</ion-label>
+              <ion-input required placeholder="{{literals.bboxMaxX_placeholder}}" type="text"
+                [(ngModel)]="userMap.bboxMaxX" name="bboxMaxX"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-3>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("bboxMaxY")}}</ion-label>
+              <ion-input required placeholder="{{literals.bboxMaxY_placeholder}}" type="text"
+                [(ngModel)]="userMap.bboxMaxY" name="bboxMaxY"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-3>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("bboxMinX")}}</ion-label>
+              <ion-input required placeholder="{{literals.bboxMinX_placeholder}}" type="text"
+                [(ngModel)]="userMap.bboxMinX" name="bboxMinX"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-3>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("bboxMinY")}}</ion-label>
+              <ion-input required placeholder="{{literals.bboxMinY_placeholder}}" type="text"
+                [(ngModel)]="userMap.bboxMinY" name="bboxMinY"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12>
+            <ion-item>
+              <ion-label stacked color="primary">{{getLiteral("srs")}}</ion-label>
+              <ion-input required placeholder="{{literals.srs_placeholder}}" type="text"
+                [(ngModel)]="userMap.projection" name="srs"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
+    </form>
+  </ion-card-content>
+
+
+  <ion-row>
+    <ion-item>
+      <ion-buttons end>
+        <button ion-button outline (click)="deleteUserMap()">
+          <ion-icon name="trash"></ion-icon>
+          {{getLiteral('button_delete')}}
+        </button>
+        <button ion-button [disabled]="!(userMapForm.form.dirty && userMapForm.form.valid)" (click)="saveUserMap();userMapForm.form.markAsPristine()">
+          <ion-icon name="download"></ion-icon>
+          {{getLiteral('button_save')}}
+        </button>
+      </ion-buttons>
+    </ion-item>
+
+  </ion-row>
+  <ion-row>
+    <ion-col text-right>
+      <ion-chip color="light">
+
+        <ion-icon name="add-circle" color="dark"></ion-icon>
+      </ion-chip>
+      <ion-chip color="light">
+        <ion-icon name="create" color="dark"></ion-icon>
+        <ion-label>{{getLiteral('modified')}}: {{userMap.stampModification|date :"short"}}</ion-label>
+
+      </ion-chip>
+
+    </ion-col>
+  </ion-row>
+</ion-card> -->
+
+
+<div class="p-grid" *ngIf="userMap">
+  <div class="p-col-12 p-md-9">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <img [src]='userMap.img' id="preview-img">
+      </div>
+      <div class="p-col-12">
+        <!-- Pestañas -->
+        <the-tab-menu [items]="tabs" [activeItem]="activeTab" styleClass='secondary'>
+          <div tabs-content>
+            <div *ngIf="activeTab.id == 'datos'">
+
+              <form #userMapForm="ngForm">
+                <div class='p-grid'>
+                  <div class='p-col-12'>
+                    <the-box-title icon='pi pi-list'>{{ 'GLOBAL.PROPERTIES' | translate }}</the-box-title>
+                  </div>
+
+                  <div class='p-col-12'>
+                    <the-input-group required="true" name="name" class="p-col-6" [(ngModel)]="userMap.name" type="text"
+                      [placeholder]="'GLOBAL.NAME' | translate" iconInput="fa fa-user">
+                    </the-input-group>
+                    <the-input-switch [label]="'GLOBAL.PUBLIC'|translate" [(ngModel)]="userMap.public" name="public">
+                    </the-input-switch>
+                    <p-message *ngIf="!userMap.name" severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>
+                  </div>
+
+                  <div class='p-col-12'>
+                    <the-input-group required="true" name="description" class="p-col-6"
+                      [(ngModel)]="userMap.description" type="text" [placeholder]="'GLOBAL.DESCRIPTION' | translate"
+                      iconInput="fa fa-user">
+                    </the-input-group>
+                    <p-message *ngIf="!userMap.description" severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>
+
+                  </div>
+
+                  <div class='p-col-12'>
+
+                    <!-- Propiedades -->
+                    <div class="p-grid">
+
+                      <div class='p-col-12'>
+                        <the-box-title icon='pi pi-window-maximize'>{{ 'GLOBAL.EXTENT' | translate }}
+                        </the-box-title>
+                      </div>
+                      <!--FIXME @ADR: OJO 4326-->
+                      <div class='p-col-12 p-sm-6'>
+                        <the-data-item [dataTitle]='"LAYER_DETAIL.MAXX" | translate' [data]='userMap.bboxMaxX'>
+                        </the-data-item>
+                      </div>
+                      <div class='p-col-12 p-sm-6'>
+                        <the-data-item [dataTitle]='"LAYER_DETAIL.MAXY" | translate' [data]='userMap.bboxMaxY'>
+                        </the-data-item>
+                      </div>
+                      <div class='p-col-12 p-sm-6'>
+                        <the-data-item [dataTitle]='"LAYER_DETAIL.MINX" | translate' [data]='userMap.bboxMinX'>
+                        </the-data-item>
+                      </div>
+                      <div class='p-col-12 p-sm-6'>
+                        <the-data-item [dataTitle]='"LAYER_DETAIL.MINY" | translate' [data]='userMap.bboxMinY'>
+                        </the-data-item>
+                      </div>
+                      <div class='p-col-12 p-sm-6'>
+                        <the-data-item [dataTitle]='"LAYER_DETAIL.PROJECTION" | translate' [data]='userMap.projection'>
+                        </the-data-item>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </form>
+
+              <the-toolbar-container>
+                <the-button icon='pi pi-save' [label]="'BUTTON.SAVE'|translate"
+                  [disabled]="!(userMapForm.form.dirty && userMapForm.form.valid)" (onClick)="saveUserMap()">
+                </the-button>
+
+              </the-toolbar-container>
+
+
+            </div>
+            <div *ngIf="activeTab.id == 'compartir'">
+              <cot-share-options [resourceType]='resourceTypes.MAP' [resourceId]='userMap.id'>
+                <!-- *loggedUserCan="{ action: resourceActions.ADMIN,
+      resourceId: userMap.id, resourceType: resourceTypes.MAP, resourceOwner: userMap.userOwner }" -->
+              </cot-share-options>
+            </div>
+          </div>
+        </the-tab-menu>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="p-col-12 p-md-3">
+    <the-overview-box class="p-col-12" [title]="'USER_MAPS.RETURN'| translate" [icon]="'mi reply'"
+      [routerLink]="'/mapas'">
+    </the-overview-box>
+    <!-- FECHAS -->
+    <the-item icon="pi pi-calendar" [title]='"USER_MAPS.CREATION" | translate'
+      [subTitle]='userMap.stampCreation|date :"short"'>
+    </the-item>
+
+    <the-item icon="pi pi-calendar" [title]='"USER_MAPS.MODIFICATION" | translate'
+      [subTitle]='userMap.stampModification |date :"short"'>
+    </the-item>
+    <br/>
+    <the-toolbar-container>
+      <the-button icon='pi pi-trash' [label]="'BUTTON.DELETE_'|translate" (onClick)="deleteUserMap()">
+        <!--*loggedUserCan=" {
+        action: resourceActions.ADMIN, resourceId: userMap.id, resourceType: resourceTypes.MAP, resourceOwner:
+        userMap.userOwner }"-->
+      </the-button>
+      <the-button icon='pi pi-globe' [label]="'USER_MAPS.LOAD'|translate" (onClick)="gotoUserMap()">
+      </the-button>
+      <!--*loggedUserCan=" {
+        action: resourceActions.READ, resourceId: userMap.id, resourceType: resourceTypes.MAP, resourceOwner:
+        userMap.userOwner }"-->
+    </the-toolbar-container>
+  </div>
+
+</div>

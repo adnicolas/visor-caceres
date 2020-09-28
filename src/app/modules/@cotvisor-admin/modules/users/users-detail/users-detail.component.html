@@ -1,0 +1,149 @@
+  <form #userForm="ngForm">
+    <the-card *ngIf="user" [styleClass]='"primary"'>
+
+
+      <div card-header>
+        <img *ngIf="user.socialUser?.photoUrl" [src]="user.socialUser.photoUrl">
+      </div>
+
+      <div class='p-grid'>
+
+        <p class="p-col-12" *ngIf="addMode">{{'USERS.NEW_USER_INTRO' | translate}} </p>
+        <the-input-group required="true" name="user" class="p-col-6" [(ngModel)]="user.userName" type="text"
+          placeholder="{{'GLOBAL.USER' | translate}}" iconInput="fa fa-user" (onChange)="checkUserName($event)">
+        </the-input-group>
+        <p-message *ngIf="!validUsername" severity="error" text="error_username_exist"></p-message>
+
+        <the-input-group required="true" class="p-col-6" [(ngModel)]="user.email" type="email" name="email"
+          #email="ngModel" placeholder="{{'GLOBAL.EMAIL' | translate}}" iconInput="mi mail-outline"
+          [pattern]="emailPattern" (onChange)='checkEmail($event)'>
+        </the-input-group>
+        <p-message *ngIf="email.invalid && email.dirty" severity="error" text="Field is required"></p-message>
+        <p-message *ngIf="!validEmail" severity="error" text="Field is required"></p-message>
+        <div class="p-col-12">
+          <the-input-switch [(ngModel)]="user.disabled" (ngModelChange)='updateStateLabel()' name="disable"
+            [toolTip]="'USER.DISABLE_TOOLTIP' | translate" [label]='userStateLabel'>
+          </the-input-switch>
+        </div>
+
+
+        <ng-container *ngIf="isPasswordChangeActive">
+
+          <div class="p-col-12">
+            {{'USERS.PASSWORD' | translate}}
+
+          </div>
+          <the-input-group required="{{addMode}}" class="p-col-6" [(ngModel)]="user.password" type="password"
+            name="password" placeholder="{{'GLOBAL.PASSWORD' | translate}}" iconInput="fa fa-key"
+            (onChange)='checkEmail($event)'>
+          </the-input-group>
+
+          <the-input-group required="{{addMode}}" class="p-col-6" [(ngModel)]="passwordVerification" type="password"
+            name="password_repeat" placeholder="{{'USERS.PASSWORD_CHANGE_REPEAT' | translate}}" iconInput="fa fa-key"
+            (onChange)='checkEmail($event)'>
+          </the-input-group>
+          <p-message class="p-col-12" *ngIf="user.password && user.password!=passwordVerification" severity="error"
+            [text]="'ERROR.PASSWORD_REPEAT'|translate">
+          </p-message>
+
+
+          <!-- <the-button *ngIf="addMode" (onClick)="togglePasswordChange()" [label]="'BUTTON.CANCEL' | translate">
+          </the-button> -->
+        </ng-container>
+        <div class="p-col-12">
+          <the-box-title styleClass='hightlight2' [icon]="'pi pi-users'">{{'GLOBAL.ROLES' | translate}}
+          </the-box-title>
+        </div>
+        <!--<cot-user-roles-selector [(userRoles)]='user.roles' (rolesChange)='markFormAsDirty()' class="p-col-12">
+        </cot-user-roles-selector>-->
+        <cot-user-roles-selector [(userRoles)]='user.roles' class="p-col-12" (rolesChange)='onRolesChanged($event)'>
+        </cot-user-roles-selector>
+        <div class="p-col-12">
+          <the-box-title styleClass='hightlight2' [icon]="'pi pi-users'">{{'GLOBAL.GROUPS' | translate}}</the-box-title>
+        </div>
+        <!--<cot-user-groups-selector [(userGroups)]='user.groups' (userGroupsChange)='markFormAsDirty()' class="p-col-12">
+        </cot-user-groups-selector>-->
+        <cot-user-groups-selector [(userGroups)]='user.groups' class="p-col-12"
+          (userGroupsChange)='onGroupsChanged($event)'>
+        </cot-user-groups-selector>
+
+
+      </div>
+
+      <div card-footer>
+        <the-button *ngIf="!addMode && isPasswordChangeActive" (onClick)="togglePasswordChange()"
+          [label]="'USERS.PASSWORD_CHANGE_ACTIVATE_CANCEL' | translate">
+        </the-button>
+        <the-button *ngIf="!addMode && !isPasswordChangeActive" (onClick)="togglePasswordChange()"
+          [label]="'USERS.PASSWORD_CHANGE_ACTIVATE' | translate">
+        </the-button>
+        <the-button [label]="'BUTTON.SAVE' | translate" (onClick)="save()"
+          [disabled]="!(userForm.form.dirty && userForm.form.valid)">
+        </the-button>
+        <the-button *ngIf="!addMode" [label]="'BUTTON.DELETE' | translate" (onClick)="deleteUser()">
+        </the-button>
+      </div>
+
+
+      <!-- <ion-row *ngIf="userManager">
+        <ion-col col-12 col-sm>
+
+          <ion-list padding-top>
+            <ion-row>
+
+              <ion-col col-md-4 no-margin no-padding>
+                <ion-list-header color=tertiary>
+                  {{getLiteral('role')}}
+                </ion-list-header>
+                <ion-item>
+                  <ion-label> {{getLiteral('role')}}</ion-label>
+                  <ion-select [(ngModel)]="user.role" interface="popover" [compareWith]="compareRoleFn" name="role">
+                    <ion-option *ngFor="let availableRole of availableRoles" [value]="availableRole">
+                      {{availableRole.name}}</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col col-md-8 no-margin no-padding>
+                <ion-list-header color=tertiary>
+                  {{getLiteral('permissions_role')}}
+                </ion-list-header>
+
+                <ion-item *ngFor="let permission of user.role.permissions">
+                  <ion-label>{{permission.description}}</ion-label>
+                  <ion-checkbox disabled="true" color="dark" checked="true"></ion-checkbox>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+
+        </ion-col>
+      </ion-row> -->
+      <!--
+      <ion-row>
+        <ion-item>
+          <ion-buttons end>
+            <button ion-button outline (click)="deleteUser()" *ngIf="!addMode && !isSameUser">
+                <ion-icon name="trash"></ion-icon>
+                {{getLiteral('button_delete')}}
+              </button>
+            <button ion-button outline (click)="unregisterUser()" *ngIf="isSameUser">
+                <ion-icon name="trash"></ion-icon>
+                {{getLiteral('button_unregister')}}
+              </button>
+            <button ion-button [disabled]="!( (userForm.form.dirty && userForm.form.valid ) &&
+              ((user.password==passwordVerification && isPasswordChangeActive || !isPasswordChangeActive  )) &&
+              validUsername && validEmail)"
+                (click)="save()">
+                <ion-icon name="download"></ion-icon>
+                {{getLiteral('button_save')}}
+              </button>
+            <button ion-button outline (click)="cancel()" *ngIf="addMode">
+                <ion-icon name="close"></ion-icon>
+                {{getLiteral('button_cancel')}}
+              </button>
+          </ion-buttons>
+        </ion-item> -->
+
+
+    </the-card>
+  </form>

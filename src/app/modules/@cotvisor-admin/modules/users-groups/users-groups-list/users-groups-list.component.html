@@ -1,0 +1,4 @@
+<the-datatable [title]="" [usePaginator]='true' [editInline]='false' [values]='groups' [readonly]='false'
+  [allowAdd]='false' [loading]="userGroupsService.loading$ | async" dataKey="id" [cols]='groupsCols'
+  (rowDetailEvent)="emitGoToGroup($event)" (rowDeleteEvent)='deleteGroup($event)' styleClass="user-list"
+  (rowSelectEvent)='emitSelectedGroup($event)'> </the-datatable>

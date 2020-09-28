@@ -1,0 +1,17 @@
+@import 'variables';
+
+:host ::ng-deep .ui-multiselect-label > span {
+  background-color: $tertiaryBg;
+  color: $tertiaryFg;
+  padding: 2px 4px;
+  margin: 0 0.25em 0.25em 0;
+  display: inline-block;
+  vertical-align: middle;
+  height: 1.5em;
+
+  &.ui-multiselected-empty-token {
+    background-color: transparent;
+    color: $tertiaryBg;
+
+  }
+}

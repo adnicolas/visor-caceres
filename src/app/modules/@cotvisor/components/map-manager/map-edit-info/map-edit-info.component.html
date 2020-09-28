@@ -1,0 +1,70 @@
+  <!-- TODO eliminar ngModel, usar formulario reactivo -->
+  <form [formGroup]="mapForm">
+    <div class='map-img'>
+      <img [src]="mapAvatar">
+    </div>
+    <!-- informacion del mapa -->
+
+    <the-input-text [(ngModel)]="mapInfo.name" formControlName="name" required [placeholder]="'GLOBAL.NAME'|translate">
+    </the-input-text>
+
+    <the-input-text [(ngModel)]="mapInfo.description" formControlName="description"
+      [placeholder]="'GLOBAL.DESCRIPTION'|translate" required></the-input-text>
+
+    <the-input-switch [(ngModel)]="mapInfo.public" formControlName="public" [label]="'GLOBAL.PUBLIC'|translate">
+    </the-input-switch>
+
+    <ng-template #passwordChangeButtonTemplate>
+      <the-button (onClick)="passwordToggleChange()"
+        [label]="mapInfo.hasPassword ? 'Cambiar contraseña' :'Establecr contraseña'"> </the-button>
+      <the-button *ngIf="mapInfo.hasPassword" (onClick)="removePassword()"
+        [label]="'USER_MAPS.UNSET_PASSWORD'|translate">
+      </the-button>
+    </ng-template>
+
+    <ng-container *ngIf="showPasswordForm">
+      <div class="p-grid p-align-center ">
+        <div class="p-col-8">
+          <the-input-text placeholder="'GLOBAL.PASSWORD' | translate" type="password" [(ngModel)]="mapInfo.password"
+            formControlName="password">
+          </the-input-text>
+          <p-message [text]="'Contraseña no válida'" severity="error"
+            *ngIf="mapForm.controls['password'].touched && !mapForm.controls.password.valid">
+            passwordRequirements
+          </p-message>
+
+          <the-input-text placeholder="'GLOBAL.PASSWORD_REPEAT' | translate" type="password"
+            formControlName="confirmPassword">
+          </the-input-text>
+          <p-message [text]="'Las contraseñas no coinciden'" severity="error"
+            *ngIf="mapForm.controls['confirmPassword'].dirty && mapForm.hasError('mismatchedPasswords')">
+          </p-message>
+          <div class='form-text error'
+            *ngIf="mapForm.controls['confirmPassword'].touched && mapForm.hasError('mismatchedPasswords') && mapForm.controls['password'].valid">
+            <label no-margin stacked color="danger">
+        <i name="alert"></i> mismatchedPasswords
+      </label>
+          </div>
+        </div>
+        <div class="p-col-4 ui-text-center">
+          <the-button (onClick)="passwordToggleChange()" label='Cancelar contraseña'> </the-button>
+        </div>
+      </div>
+    </ng-container>
+
+
+    <!-- <div class="ui-buttons-bar"> -->
+    <the-toolbar-container>
+      <the-button class="ui-button-primary" [disabled]="!(mapForm.dirty && mapForm.valid)"
+        (onClick)="saveUserMapModelAttributes()" icon="pi pi-save" label="Guardar Mapa"> </the-button>
+      <the-button icon="pi  pi-times" label="Cancelar" (onClick)="closeModal()"> </the-button>
+
+      <the-button *ngIf=" mapInfo.hasPassword" icon="pi pi-unlock" label='Eliminar contraseña'
+        (onClick)="removePassword()">
+      </the-button>
+      <the-button *ngIf="!showPasswordForm" icon="pi pi-key" (onClick)="passwordToggleChange()"
+        [label]="mapInfo.hasPassword ? 'Cambiar contraseña':'Establecer contraseña'">
+      </the-button>
+    </the-toolbar-container>
+    <!-- </div> -->
+  </form>

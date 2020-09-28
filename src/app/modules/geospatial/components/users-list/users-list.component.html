@@ -1,0 +1,7 @@
+ <the-box-panel styleClass='hightlight2' [title]="'USERS.LIST' | translate" icon='pi pi-users' class="p-col-12">
+   <cot-users-list (goToUser)='gotoUser($event)'></cot-users-list>
+   <the-toolbar-container itemsAlign='right'>
+     <the-button icon="pi pi-user-plus" [label]="'USERS.REGISTER' | translate" (onClick)="gotoNewUser()">
+     </the-button>
+   </the-toolbar-container>
+ </the-box-panel>

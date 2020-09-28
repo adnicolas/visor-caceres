@@ -1,0 +1,51 @@
+@import 'variables';
+
+app-map-manager-docs {
+  .titlePane {
+    background-color: map-get($colors, 'primary');
+    color: map-get($colors, 'light');
+    padding-left: 1rem !important;
+
+    ion-label {
+      margin: 0 !important;
+    }
+  }
+
+  .btnDownloadDoc {
+    font-size: map-get($icon-sizes, 'big');
+  }
+
+  // thumbnails de los formatos mas pequeños
+  .item ion-thumbnail {
+    min-width: map-get($icon-sizes, 'main');
+    min-height: map-get($icon-sizes, 'main');
+    margin: 0 16px 0 0 !important;
+  }
+
+  .item ion-thumbnail img {
+    width: map-get($icon-sizes, 'main');
+    height: map-get($icon-sizes, 'main');
+  }
+
+  ion-item .label-md {
+    margin: 0 16px 0 0 !important;
+  }
+
+  .docTitle {
+    font-weight: bold;
+  }
+
+  // scrollable list
+  ion-list.list.list-md {
+    padding: 3px;
+    max-height: 30rem;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  #btnPopoverDocs {
+    background-color: map-get($colors, 'primary');
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}

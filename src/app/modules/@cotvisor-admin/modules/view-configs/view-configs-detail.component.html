@@ -1,0 +1,141 @@
+<div class="p-grid" *ngIf="viewConfig">
+  <div class="p-col-12 p-md-9">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <!-- Pestañas -->
+        <the-tab-menu [items]="tabs" [activeItem]="activeTab" styleClass="secondary">
+          <div tabs-content>
+            <div *ngIf="activeTab.id == 'datos'">
+              <!-- Reactive approach -->
+              <form [formGroup]="viewConfigDetailForm">
+                <div class="p-grid">
+                  <div class="p-col-12">
+                    <the-input-group required="true" class="p-col-6" type="text"
+                      [placeholder]="'GLOBAL.NAME' | translate" iconInput="fa fa-user" formControlName="name">
+                    </the-input-group>
+                    <p-message
+                      *ngIf="(viewConfigDetailForm.controls.name.dirty && !viewConfigDetailForm.controls.name.valid)"
+                      severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>
+                  </div>
+
+                  <div class="p-col-12">
+                    <the-input-group required="true" class="p-col-6" type="text"
+                      [placeholder]="'GLOBAL.TITLE' | translate" iconInput="fa fa-user" formControlName="title">
+                    </the-input-group>
+                    <p-message
+                      *ngIf="(viewConfigDetailForm.controls.title.dirty && !viewConfigDetailForm.controls.title.valid)"
+                      severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>
+                  </div>
+
+                  <div class="p-col-12">
+                    <the-input-group required="false" class="p-col-6" type="text"
+                      [placeholder]="'GLOBAL.DESCRIPTION' | translate" iconInput="fa fa-user"
+                      formControlName="description">
+                    </the-input-group>
+                    <!--<p-message
+                      *ngIf="(viewConfigDetailForm.controls.description.dirty && !viewConfigDetailForm.controls.description.valid)"
+                      severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>-->
+                  </div>
+
+                  <div class="p-col-12">
+                    <the-input-group required="true" class="p-col-6" type="text"
+                      [placeholder]="'GLOBAL.URL' | translate" iconInput="fa fa-user" formControlName="urlLogo">
+                    </the-input-group>
+                    <!-- Cambiamos la gestión de la validación -->
+                    <p-message
+                      *ngIf="(viewConfigDetailForm.controls.urlLogo.dirty && !viewConfigDetailForm.controls.urlLogo.valid)"
+                      severity="error" [text]="'GLOBAL.REQUIRED' | translate">
+                    </p-message>
+                  </div>
+
+                  <div class="p-col-12">
+                    <the-box-title icon="pi pi-globe">{{ 'GLOBAL.MAP' | translate }}</the-box-title>
+                    <div class="p-col-12">
+                      <p-table [columns]="mapsCols" selectionMode="single"
+                        [value]="viewConfigDetailForm.controls.availableMaps.value" formArrayName="availableMaps"
+                        dataKey="id" [(selection)]="this.selectedMap" [rowTrackBy]="trackByFn"
+                        (selectionChange)="onSelectChange($event)">
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th *ngFor="let col of mapsCols">
+                              {{col.header}}
+                            </th>
+                          </tr>
+                        </ng-template>
+                        <ng-template let-i="rowIndex" pTemplate="body" let-rowData>
+                          <tr [pSelectableRow]="rowData" [formGroupName]='i'>
+                            <input type="hidden" formControlName="id" />
+                            <td *ngFor="let col of mapsCols" style="text-align: center;">
+                              <span *ngIf="col.field === 'img'; else ngElse_noImgUrl">
+                                                                <img src="{{rowData[col.field]}}" appendTo="body"
+                                                                    style="max-height: 50px; max-width: 50px;">
+                                                            </span>
+                              <ng-template #ngElse_noImgUrl>
+                                {{rowData[col.field]}}
+                              </ng-template>
+                            </td>
+                          </tr>
+                        </ng-template>
+                      </p-table>
+                    </div>
+                  </div>
+
+                  <div class=" p-col-12">
+                    <the-box-title icon="pi pi-comments">{{ 'GLOBAL.LANGUAGE' | translate }}
+                    </the-box-title>
+                    <div *ngFor="let idiom of availableLanguages" class="p-col-fixed item-controls">
+                      <p-radioButton name="language" value={{idiom.value}} label={{idiom.label}}
+                        formControlName="language">
+                      </p-radioButton>
+                    </div>
+                  </div>
+
+                  <div class="p-col-12">
+                    <the-box-title icon="pi pi-th-large">{{ 'GLOBAL.TOOLS' | translate }}
+                    </the-box-title>
+                    <div class="p-col-12">
+                      <p-selectButton [options]="toolsGroupsService.toolGroups$ | async" optionLabel="name"
+                        formControlName="toolsGroup" (onChange)="onToolGroupChange($event)">
+                      </p-selectButton>
+                      <div *ngIf="tools.length > 0">
+                        <the-item *ngFor="let tool of tools" [icon]="'mi build'" [small]="true">
+                          {{ tool.name }}
+                        </the-item>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <the-toolbar-container>
+                <the-button icon="pi pi-trash" [label]="'BUTTON.DELETE_' | translate" (onClick)="deleteViewConfig()"
+                  [disabled]="!editMode">
+                </the-button>
+                <the-button icon="pi pi-save" [label]="'BUTTON.SAVE' | translate"
+                  [disabled]="!(viewConfigDetailForm.dirty && viewConfigDetailForm.valid)" (onClick)="saveViewConfig()">
+                </the-button>
+              </the-toolbar-container>
+            </div>
+          </div>
+        </the-tab-menu>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-3">
+    <the-overview-box class="p-col-12" [title]="'VIEW_CONFIGS.RETURN' | translate" [icon]="'mi reply'"
+      [routerLink]="'/visores'">
+    </the-overview-box>
+    <!-- FECHAS -->
+    <!--<the-item icon="pi pi-calendar" [title]="'VIEW_CONFIGS.CREATION' | translate"
+      [subTitle]="viewConfig.stampCreation | date: 'short'">
+    </the-item>-->
+
+    <!--<the-item icon="pi pi-calendar" [title]="'VIEW_CONFIGS.MODIFICATION' | translate"
+      [subTitle]="viewConfig.stampModification | date: 'short'">
+    </the-item>-->
+    <br />
+    </div>
+  </div>

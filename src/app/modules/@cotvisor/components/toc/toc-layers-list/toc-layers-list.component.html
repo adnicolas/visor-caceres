@@ -1,0 +1,10 @@
+<div *ngIf="layers.length==0" class="item-no-layer">
+  No hay capas cargadas
+</div>
+<div cdkDropList class="list-container" (cdkDropListDropped)="dropLayer($event)">
+  <div class="layer-item" cdkDragLockAxis="y" *ngFor="let layer of layers" cdkDrag>
+    <cot-toc-layer-item [layer]="layer">
+      <i class="fas fa-sort handle" cdkDragHandle></i>
+    </cot-toc-layer-item>
+  </div>
+</div>

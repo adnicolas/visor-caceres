@@ -1,0 +1,3 @@
+[submodule "src/app/modules/users"]
+	path = src/app/modules/users
+	url = ssh://git.grupotecopy.es:22/data/git/tierra3/visor-users-altia.git

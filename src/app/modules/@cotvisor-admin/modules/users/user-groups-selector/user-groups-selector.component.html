@@ -1,0 +1,11 @@
+         <div class="p-grid">
+           <div class="p-col-4">
+             <span> Grupos a los que pertenece el usuario</span>
+           </div>
+           <div [formGroup]="userGroupsForm">
+             <the-multi-select class="p-col-8" [options]="userGroupsOptions" formControlName="selectedGroupsForm"
+               styleClass="ui-print-multiselect" defaultLabel='{{"USER.CHOOSE_GROUPS" | translate }}'
+               [selectedItemsLabel]="'{0} grupos seleccionados'">
+             </the-multi-select>
+           </div>
+         </div>

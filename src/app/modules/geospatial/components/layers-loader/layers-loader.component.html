@@ -1,0 +1,7 @@
+<the-tab-menu [items]="tabs" [activeItem]="activeTab" styleClass='secondary'>
+  <div tabs-content>
+    <cot-wms-loader *ngIf="activeTab.id === 'wms'"></cot-wms-loader>
+    <cot-wfs-loader *ngIf="activeTab.id === 'wfs'"></cot-wfs-loader>
+    <cot-local-layer-loader *ngIf="activeTab.id === 'locales'"></cot-local-layer-loader>
+  </div>
+</the-tab-menu>

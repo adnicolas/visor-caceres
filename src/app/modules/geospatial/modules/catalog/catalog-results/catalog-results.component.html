@@ -1,0 +1,17 @@
+<the-box-panel styleClass='hightlight2' [title]='"Resultado de la búsqueda"' icon='fas fa-atlas'>
+  <ng-container *ngIf="searchResults ; else noresults">
+    <div class='p-grid'>
+
+      <gss-catalog-results-item #pnl *ngFor="let metadata of searchResults.metadata" [metadata]='metadata'
+        class="p-col-12  p-md-4">
+      </gss-catalog-results-item>
+      <!-- TODO Bloquar solo el conendor pasado  como target-->
+      <the-block-loading [loading]='catalogService.loading$ |async' [target]='pnl'></the-block-loading>
+      <gss-catalog-paginator class="p-col-12" [catalogFilter]='catalogService.filter'></gss-catalog-paginator>
+
+    </div>
+  </ng-container>
+  <ng-template #noresults>
+    Sin resultados
+  </ng-template>
+</the-box-panel>

@@ -1,0 +1,13 @@
+    <div class="tab-container" *ngIf="items.length">
+      <p-scrollPanel class="tab-header-scroll">
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+        </p-tabMenu>
+      </p-scrollPanel>
+
+      <p-scrollPanel class="tab-content-scroll">
+        <div class='tabs-content {{styleClass}}'>
+          <ng-content select="[tabs-content]"></ng-content>
+        </div>
+      </p-scrollPanel>
+
+    </div>

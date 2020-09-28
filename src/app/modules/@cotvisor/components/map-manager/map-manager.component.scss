@@ -1,0 +1,12 @@
+// component css goes here
+app-map-manager {
+    ion-buttons {
+        display: inline-flex !important;
+    }
+    ion-content {
+        height: calc(100% - 39px);
+    }
+    ion-content.infoOpen {
+        height: calc(100% - 145px);
+    }
+}

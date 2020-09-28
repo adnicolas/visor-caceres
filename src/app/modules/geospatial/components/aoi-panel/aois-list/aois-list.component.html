@@ -1,0 +1,9 @@
+<!-- template para el data-view para mostrar cada items en el Dataview recibirá cada fila como un rowItem -->
+<ng-template #aoiTemplate let-aoi="rowItem">
+  <gss-aoi-item [aoi]=aoi></gss-aoi-item>
+</ng-template>
+
+<!-- DataView, le pasamos el template para los items -->
+<the-data-view [values]="aoiList |async" [sortField]="sortField" [sortOrder]="sortOrder" [sortOptions]="sortOptions"
+  [itemsTemplate]='aoiTemplate' [filterField]="'name'">
+</the-data-view>

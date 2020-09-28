@@ -1,0 +1,10 @@
+<the-full-panel [panelName]='panelName' #printPanel id="printPanel">
+  <div panel-content>
+    <gss-print [active]="printPanel.sidebarItem.visible"></gss-print>
+  </div>
+  <div panel-footer class="print-buttons noprint">
+    <the-button label="Imprimir" styleClass="ui-button-primary" (onClick)="print()" icon="fas fa-print"></the-button>
+    <the-button label="Cancelar" styleClass="ui-button-secondary" (onClick)="printPanel.closePanel()"></the-button>
+  </div>
+
+</the-full-panel>

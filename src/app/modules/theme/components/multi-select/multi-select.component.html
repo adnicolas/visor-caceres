@@ -1,0 +1,13 @@
+<!-- <ng-template let-selectedOption pTemplate="selectedItems">
+  <span *ngFor="let option of selectedOption">{{option[optionLabel]}}</span>
+</ng-template> -->
+
+<p-multiSelect [(ngModel)]="value" name="name" [options]="options" [optionLabel]="optionLabel" [disabled]="disabled"
+  [styleClass]="styleClass" [defaultLabel]='defaultLabel' (onChange)="handleValueChange($event)"
+  [selectedItemsLabel]='selectedItemsLabel'>
+  <ng-template let-selectedOption pTemplate="selectedItems">
+    <span *ngIf="!value || value.length === 0" class="ui-multiselected-empty-token">{{defaultLabel}}</span>
+    <span *ngFor="let option of selectedOption">{{getOptionLabel(option)}}</span>
+  </ng-template>
+
+</p-multiSelect>

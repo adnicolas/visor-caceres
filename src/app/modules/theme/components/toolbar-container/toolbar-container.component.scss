@@ -1,0 +1,26 @@
+::ng-deep {
+  div.ui-toolbar {
+    display: flex;
+    flex-direction: row;
+
+    &-right {
+      padding-left: 0.5em;
+      justify-content: flex-end;
+    }
+
+    &-left {
+      padding-right: 0.5em;
+      justify-items: left;
+    }
+
+    &-left {
+      padding-right: 0.25em;
+      padding-left: 0.25em;
+      justify-items: center;
+    }
+
+    .ui-toolbar-vertical {
+      flex-direction: column;
+    }
+  }
+}

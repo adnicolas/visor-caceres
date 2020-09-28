@@ -1,0 +1,8 @@
+<the-box-panel styleClass='hightlight3' [title]="'LAYERS.BOX_TITLE' | translate" icon='mi layers' class="p-col-12">
+
+  <cot-layers-list (selectedLayer)=setSelectedLayer($event) (goToLayer)='goToLayer($event)'></cot-layers-list>
+  <the-toolbar-container itemsAlign='right'>
+    <the-button [disabled]="!selectedLayer" icon="mi publish" label="Publicar seleccionada"
+      (onClick)="publishSelectedLayer()"></the-button>
+  </the-toolbar-container>
+</the-box-panel>

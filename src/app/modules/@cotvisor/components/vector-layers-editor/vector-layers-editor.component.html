@@ -1,0 +1,238 @@
+<!-- capas -->
+
+<!-- Botones de capas-->
+<the-toolbar-container>
+  <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.CREATE_LAYER' | translate }}" (onClick)="activateCreate()"
+    [icon]="'pi pi-plus'">
+  </the-button>
+  <the-button [small]='true' tooltip="{{ 'LAYERS.DELETE' | translate }}" [disabled]="!selectedVsLayer"
+    (onClick)="_showConfirmDeleteLayer()" [icon]="'pi pi-minus'">
+  </the-button>
+
+  <cot-vector-layers-editor-save-as [layerProjection]='selectedVsLayer?.projection' [vsLayer]='selectedVsLayer'>
+  </cot-vector-layers-editor-save-as>
+
+  <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.SAVE_TOGEO' | translate }}"
+    [disabled]="selectedVsLayer?.sourceType!=='WFS'" (onClick)="confirmSaveLayer()" [icon]="'pi pi-save'"></the-button>
+
+  <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.RESET_BUTTON' | translate }}"
+    [disabled]="selectedVsLayer?.sourceType!=='WFS' || !dirty" (onClick)="confirmResetLayer()" [icon]="'fas
+    fa-undo-alt'">
+  </the-button>
+
+  <!-- TODO @joe Mejorar con componente del tema -->
+  <p-toggleButton [styleClass]="'small'" (onChange)="handleDraw()" [offIcon]="'fas fa-pen'" onLabel='' offLabel=''
+    [onIcon]="'fas fa-pen'" [(ngModel)]="drawingStatus" pTooltip="{{ 'LAYER_EDITOR.DRAW_GEOMETRY' | translate }}"
+    [disabled]="!selectedVsLayer">
+  </p-toggleButton>
+  <p-toggleButton [styleClass]="'small'" (onChange)="handleModify()" [onIcon]="'fas fa-edit'" [offIcon]="'fas fa-edit'"
+    onLabel='' offLabel='' [(ngModel)]="modifyingStatus" pTooltip="{{ 'LAYER_EDITOR.MODIFY_GEOMETRY' | translate }}"
+    [disabled]="!selectedVsLayer">
+  </p-toggleButton>
+
+  <the-button *ngIf="selectedFeature" [small]='true' icon="pi pi-trash"
+    tooltip="{{ 'LAYER_EDITOR.DELETE_GEOMETRY' | translate }}" (onClick)="removeSelectedFeatures()">
+  </the-button>
+  <the-button *ngIf="selectedFeature " [small]='true' icon="pi pi-table"
+    tooltip="{{ 'LAYER_EDITOR.ATTRIB_TABLE' | translate }}" (onClick)="editSelectedFeaturesAttributes()">
+  </the-button>
+  <the-input-switch label="{{ 'LAYER_EDITOR.SNAPING' | translate }}" [small]='true' [(ngModel)]="snapping"
+    (ngModelChange)="setSnapping()">
+  </the-input-switch>
+</the-toolbar-container>
+
+<!-- Barra de geometrías -->
+<the-toolbar-container *ngIf="drawingStatus">
+  <p-selectButton [styleClass]="'small'" [options]="geometryTypesOptions" [(ngModel)]="geometryType"
+    [disabled]="!drawingStatus" (onOptionClick)='changeDrawInteraction(geometryType,$event)'>
+  </p-selectButton>
+  <the-input-text *ngIf="this.geometryType === 'Text'" type="text" [size]='15' [(ngModel)]="featureText"
+    #inputGeometryText [floatLabel]='false' (ngModelChange)="setStyle()">
+  </the-input-text>
+</the-toolbar-container>
+
+
+<!-- Creación de capa -->
+<div *ngIf="creating">
+  <the-input-text #layerNameInput placeholder="{{ 'LAYER_EDITOR.NEWLAYER_NAME' | translate }}" [(ngModel)]="layerName"
+    #layerNameInput (keyup.enter)="newLayer()">
+  </the-input-text>
+  <the-button [small]="true" [icon]="'pi pi-check'" [disabled]="!layerName" tooltip="{{ 'BUTTON.SAVE' | translate }}"
+    (onClick)="newLayer()">
+  </the-button>
+  <the-button [small]="true" [icon]="'pi pi-times'" tooltip="{{ 'LAYER_EDITOR.END_EDITION' | translate }}"
+    (onClick)="creating=false">
+  </the-button>
+</div>
+
+<!-- Indicador de 'no hay capas' -->
+<the-item [small]='true' *ngIf="!editableLayers.length" [icon]="'pi pi-exclamation-triangle'"
+  [title]=" 'LAYER_EDITOR.NO_EDIT_LAYERS' | translate " [subTitle]="'LAYER_EDITOR.NO_LAYERS_HINT' | translate ">
+</the-item>
+
+
+<!-- Lista de capas -->
+<div *ngIf="editableLayers.length">
+  <the-item *ngIf="!selectedVsLayer" title="{{editableLayers.length}} {{ 'LAYER_EDITOR.EDITABLE_LAYERS' | translate }}"
+    [subTitle]=" 'LAYER_EDITOR.EDITABLE_LAYERS_HINT' | translate ">
+  </the-item>
+  <the-item *ngIf="selectedVsLayer" title="{{ 'LAYER_EDITOR.EDITABLE_LAYERS' | translate }}"
+    subTitle="Editando la capa {{selectedVsLayer.name}}">
+  </the-item>
+
+  <div *ngFor="let layerItem of editableLayers" class="p-grid p-align-center item-container">
+    <div class="p-col-fixed  item-container__icon">
+      <i class="fas fa-map-marker-alt"></i>
+    </div>
+    <div class="p-col ">
+      <div class="p-grid p-nogutter">
+        <div class="p-col-12 item-container__title" *ngIf="!layerItem.nameEditing">
+          {{layerItem.vsLayer.title}}
+          <the-button [small]="true" [icon]="'pi pi-pencil'" tooltip="{{ 'LAYER_EDITOR.LAYER_RENAME' | translate }}"
+            (onClick)="editLayerTitle($event, layerItem)"> </the-button>
+
+        </div>
+
+        <the-input-group [small]='true' [(ngModel)]="layerItem.vsLayer.title"
+          (clickButton)="stopEditLayerTitle( layerItem)" *ngIf="layerItem.nameEditing" iconButton='pi pi-save'>
+        </the-input-group>
+
+        <div class="p-col-12 item-container__subtitle">
+          {{layerItem.vsLayer.sourceType}}
+        </div>
+      </div>
+    </div>
+    <div class="p-col-fixed item-controls">
+      <p-radioButton name="layers" [value]="layerItem.vsLayer" [(ngModel)]="selectedVsLayer"
+        [disabled]="!layerItem.vsLayer.visible$ |async" (onClick)="changeSelectedLayer(layerItem.vsLayer)">
+      </p-radioButton>
+    </div>
+  </div>
+</div>
+
+
+<!-- Elementos dibujados -->
+<!-- <app-collapse-card title="{{literals.elementList}}" [color]="'light_gray'" [textColor]="'dark'"
+  *ngIf="selectedVsLayer && selectedVsLayerFeatures.length">
+  <ion-list-header text-wrap>
+    <app-features-info [features]="selectedVsLayerFeatures"></app-features-info>
+  </ion-list-header>
+</app-collapse-card> -->
+
+
+<!-- Herramientas de estilos -->
+<!-- <app-collapse-card title="Estilos" [color]="'light_gray'" [textColor]="'dark'"
+  *ngIf="(drawingstatus || selectedFeature) && selectedVsLayer">
+  <ng-container *ngIf="(geometryType !== 'Text')">
+    <ion-list-header text-wrap *ngIf="layers.length">
+      {{literals.lineStyle}}
+    </ion-list-header>
+    <ion-grid no-padding>
+      <ion-row align-items-center>
+        <ion-col no-padding class="colorPickerContainer">
+          <ion-label>{{literals.color}}</ion-label>
+          <div class="colorPicker" [style.background]="strokeColor" [cpPosition]="'top'" [cpPositionOffset]="'50%'"
+            [cpAlphaChannel]="'always'" [(colorPicker)]="strokeColor" [cpPositionRelativeToArrow]="true"
+            (colorPickerChange)="setStyle($event)"></div>
+        </ion-col>
+        <ion-col no-padding>
+          <ion-item>
+            <ion-label floating>{{literals.thickness}}</ion-label>
+            <ion-input min="0" type="number" [(ngModel)]="lineThickness" (ionChange)="setStyle($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col no-padding *ngIf="(geometryType !== 'Point')">
+          <ion-item>
+            <ion-label floating></ion-label>
+            <ion-select [(ngModel)]="lineType" [compareWith]="lineTypeComparator" (ionChange)="setStyle($event)">
+              <ion-option *ngFor="let line of lineTypes" [value]="line">{{line.representation}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+  <ng-container *ngIf="(geometryType !== 'LineString')">
+    <ion-list-header text-wrap *ngIf="layers.length">
+      {{literals.fillStyle}}
+    </ion-list-header>
+    <ion-grid no-padding>
+      <ion-row align-items-center>
+        <ion-item *ngIf="(geometryType === 'Text') && !modifying">
+          <ion-label color="primary"> {{literals.text}}</ion-label>
+          <ion-input type="text" required [(ngModel)]="featureText" #inputGeometryText (ionChange)="setStyle()">
+          </ion-input>
+
+        </ion-item>
+        <ion-col no-padding class="colorPickerContainer">
+          <ion-label>{{literals.color}}</ion-label>
+          <div class="colorPicker" [style.background]="fillColor" [cpPosition]="'top'" [cpAlphaChannel]="'always'"
+            [cpPositionOffset]="'50%'" [(colorPicker)]="fillColor" [cpPositionRelativeToArrow]="true"
+            (colorPickerChange)="setStyle($event)"></div>
+        </ion-col>
+        <ion-col no-padding *ngIf="(geometryType === 'Point')">
+          <ion-item>
+            <ion-label floating>{{literals.radio}} (px)</ion-label>
+            <ion-input min="0" type="number" [(ngModel)]="pointRadius" (ionChange)="setStyle($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col no-padding *ngIf="(geometryType === 'Buffer')">
+          <ion-item>
+            <ion-label floating> {{literals.radio}} (m)</ion-label>
+            <ion-input min="0" type="number" [(ngModel)]="bufferRadius" (ionChange)="setStyle($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col no-padding *ngIf="(geometryType === 'Text')">
+          <ion-item>
+            <ion-label floating>{{literals.sizepx}}</ion-label>
+            <ion-input min="0" type="number" [(ngModel)]="fontSize" (ionChange)="setStyle($event)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+</app-collapse-card> -->
+
+
+<!-- *****************************    Ventana de edición de features ******************************************** -->
+
+<the-dialog appendTo="body" header="{{'LAYER_EDITOR.ATTR_EDIT' | translate}}" [visible]="showFeatureEdit"
+  [closable]='false' styleClass="responsiveDialog" [modal]="true">
+
+  <div dialog-fixed-content>
+    <div no-lines *ngIf="!editFormfeatureAttributes.length">Sin atributos</div>
+    <div>
+      <form #f="ngForm">
+        <div class='p-grid' *ngFor="let attr of editFormfeatureAttributes">
+          <!-- <div class="property-name p-col"> {{ attr.key }}{{ attr.required ? '*' : '' }} </div> -->
+          <div class="p-col">
+            <the-input-text placeholder="{{ attr.key }}{{ attr.required ? '*' : '' }}"
+              *ngIf="attr.type === 'text' || attr.type === 'number'" [type]="attr.type" [required]="attr.required"
+              [(ngModel)]="attr.value" [name]="attr.key">
+            </the-input-text>
+            <the-input-switch *ngIf="attr.type == 'boolean'" [(ngModel)]="attr.value"
+              label="{{ attr.key }}{{ attr.required ? '*' : '' }}" [name]="attr.key"></the-input-switch>
+
+          </div>
+          <ng-container *ngIf="attr.type == 'dateTime' || attr.type == 'date' || attr.type == 'time'">
+            <div class="property-name p-col"> {{ attr.key }}{{ attr.required ? '*' : '' }} </div>
+            <the-calendar
+              [dateFormat]="attr.type == 'dateTime' ? 'DD/MM/YYYY HH:mm:ss' : attr.type == 'date' ? 'DD/MM/YYYY' : 'HH:mm:ss'"
+              [(ngModel)]="attr.value" [name]="attr.key" doneText="Aceptar" cancelText="Cancelar"
+              (ngModelChange)="onAttrChange(attr)"></the-calendar>
+          </ng-container>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="someFieldRequired"> {{"GLOBAL.REQUIRED_FIELDS"|translate}}</div>
+  </div>
+
+  <the-toolbar-container dialog-footer>
+    <the-button (onClick)="closeDialog()" [label]='"BUTTON.CANCEL"|translate'> </the-button>
+    <the-button [disabled]="!(f.dirty && f.valid)" (onClick)="saveFeatures()" [label]='"BUTTON.SAVE"|translate'>
+
+    </the-button>
+  </the-toolbar-container>
+</the-dialog>

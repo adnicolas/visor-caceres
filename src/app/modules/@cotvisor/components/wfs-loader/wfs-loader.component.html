@@ -1,0 +1,81 @@
+<div class="p-grid p-nogutter">
+  <p>{{'WFS_LOADER.LOAD_FROM_URL' | translate}}</p>
+
+  <the-input-group required="true" class="p-col-12" [(ngModel)]="url" placeholder="{{'WFS_LOADER.URL_WFS' | translate}}"
+    iconButton="fas fa-search" [pattern]="pattern" (clickButton)="getDataFromReaderServices()"></the-input-group>
+
+  <p>{{'WFS_LOADER.SELECT_SUGGESTED' | translate}}</p>
+
+  <the-tab-menu class="p-col-12" [items]="tabs" [activeItem]="activeTab" styleClass='secondary'>
+    <div tabs-content>
+      <div *ngIf="activeTab.id == 'layers'">
+        <!-- SPINNER DE CARGA SI LA PETICION SE HA INICIADO Y ESTÁ PENDIENTE-->
+        <the-progress-spinner *ngIf="status == ResponseStatus.PENDING" class="p-grid p-justify-center" size="40px"
+          strokeWidth="5" animationDuration="3s" fill="none">
+        </the-progress-spinner>
+
+        <!-- DESCRIPCION DEL SERVIDOR -->
+        <div *ngIf="status == ResponseStatus.OK">
+          <!-- NOMBRE Y URL -->
+          <div class="title-container">
+            <i class="fas fa-layer-group ui-round-icon ui-round-icon-tertiary-inverse"></i>
+            <div>
+              <h2>{{serverTitle}}</h2>
+              <p>{{activeUrl}}</p>
+            </div>
+          </div>
+
+
+          <!-- DESCRIPCION -->
+          <p class="server-description"> {{serverDescription| truncate:200 }}</p>
+
+          <!-- LISTA DE CAPAS -->
+          <div class="p-grid p-dir-col">
+            <cot-wfs-layer-loader class="p-col" *ngFor="let layer of serverLayers" [layerToLoad]=layer>
+            </cot-wfs-layer-loader>
+          </div>
+        </div>
+
+
+        <!-- SERVIDOR SIN CAPAS DISPONIBLES -->
+        <ng-container *ngIf="status == ResponseStatus.OK && serverLayers.length == 0">
+          <div class="title-container">
+            <i class="fas fa-exclamation-triangle ui-round-icon ui-round-icon-tertiary-inverse"></i>
+            <div>
+              <h2>{{"WFS_LOADER.NO_DATA" | translate}}</h2>
+              <p>{{"WFS_LOADER.NO_LAYERS" | translate}}</p>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- ERROR EN LA OPERACION -->
+        <ng-container *ngIf="status == ResponseStatus.KO">
+          <div class="title-container">
+            <i class="fas fa-exclamation-triangle ui-round-icon ui-round-icon-tertiary-inverse"></i>
+            <div>
+              <h2>{{"ERRORS.ERROR" | translate}}</h2>
+              <p>{{"WFS_LOADER.CONSULT_ERROR" | translate}}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- SERVIDORES SUGERIDOS -->
+      <div *ngIf="activeTab.id == 'servers'">
+        <div class="title-container">
+          <i class="fas fa-server ui-round-icon ui-round-icon-tertiary-inverse"></i>
+          <div>
+            <h2>{{serverTitle}}</h2>
+            <p>{{"WFS_LOADER.SERVER_HINT" | translate}}</p>
+          </div>
+        </div>
+        <the-progress-spinner *ngIf="!serverListLoaded" class="p-justify-center" size="40px" strokeWidth="5"
+          animationDuration="3s" fill="none">
+        </the-progress-spinner>
+
+        <p class="ui-clickable server-option" *ngFor="let server of serverList" (click)="serverSelected(server.url)">
+          {{server.title}}</p>
+      </div>
+    </div>
+  </the-tab-menu>
+</div>

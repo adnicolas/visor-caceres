@@ -1,0 +1,8 @@
+  <div class="container p-grid p-nogutter p-justify-between" [ngClass]="{'loaded': layerToLoad.loaded}"
+    (click)="loadLayer()">
+    <span class="p-col">
+    {{layerToLoad.vsLayer.title}}
+    </span>
+    <i *ngIf="layerToLoad.loaded" class="fas fa-check"></i>
+    <i *ngIf="!layerToLoad.loaded" class="fas fa-plus p-col-fixed"></i>
+  </div>

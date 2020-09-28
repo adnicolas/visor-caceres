@@ -1,0 +1,24 @@
+<the-box-panel styleClass='hightlight3' [title]='"Propiedades del mapa"' icon='mi map' [collapsed]='true'>
+  <the-card [title]="userMapModel.name" [subtitle]="userMapModel.description">
+    <div card-header>
+      <img  [src]="mapAvatar">
+    </div>
+
+      <the-item *ngIf="userMapModel.public" icon="pi pi-unlock" title='Mapa Público' [small]='true'> </the-item>
+      <the-item *ngIf="!userMapModel.public" icon="pi pi-lock" title='Mapa Privado' [small]='true'> </the-item>
+      <the-item *ngIf="userMapModel.hasPassword" icon="pi pi-key" title='Protegido por contraseña' [small]='true'>
+      </the-item>
+      <the-item *ngIf="!userMapModel.hasPassword" icon="pi pi-eye" title='Sin contraseña' [small]='true'> </the-item>
+      <the-item *ngIf="!userMapModel.hasPassword" icon="pi pi-calendar" title='Fecha creación'
+        [subTitle]='userMapModel.stampCreation | date:"short"' [small]='true'> </the-item>
+      <the-item *ngIf="!userMapModel.hasPassword" icon="pi pi-calendar" title='Fecha modificación'
+        [subTitle]='userMapModel.stampModification | date:"short"' [small]='true'> </the-item>
+
+      <div card-footer>
+        <the-button [icon]="'pi pi-cog'" [label]="'Editar propiedades'" id="properties_button"
+          (onClick)="openEditMapInfoModal()">
+          <div name="settings"></div>
+        </the-button>
+      </div>
+  </the-card>
+</the-box-panel>

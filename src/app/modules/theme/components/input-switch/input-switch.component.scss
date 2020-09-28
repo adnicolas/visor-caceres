@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.input-switch {
+  display: flex;
+  padding: 0.5em 0;
+  align-items: center;
+
+  p-inputswitch {
+    display: flex;
+  }
+
+  label {
+    margin-left: 0.25em;
+  }
+
+}
+
+.input-switch.small {
+  padding: 0.25em 0;
+  height: 100%;
+
+  p-inputswitch {
+    .ui-inputswitch {
+      width: 25px;
+      height: 14px;
+
+
+      .ui-inputswitch-slider::before {
+        height: 12px;
+        width: 12px;
+        left: 1px;
+        top: 1px;
+      }
+
+      &.ui-inputswitch-checked .ui-inputswitch-slider::before {
+        left: -8px;
+      }
+    }
+  }
+
+  label {
+    font-size: 0.8em;
+  }
+}

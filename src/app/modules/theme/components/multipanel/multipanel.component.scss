@@ -1,0 +1,51 @@
+@import 'variables';
+
+p-toolbar {
+  &.multipanel-toolbar {
+    position: absolute;
+    right: 0;
+    top: $headerHeight;
+    height: calc(100% - #{$headerHeight});
+    background-color: $primaryBg;
+    z-index: $z-index-overlay-l1;
+    flex-direction: column;
+
+    .ui-toolbar {
+      padding: 0;
+      flex-direction: column;
+
+      button.multipanel-button,
+      div.ui-togglebutton {
+        display: flex;
+
+      }
+
+    }
+  }
+
+  &.inverse {
+    background-color: $primaryFg;
+  }
+}
+
+.multipanel-panel.ui-sidebar {
+
+  &.ui-sidebar-right {
+    right: 40px;
+    top: $headerHeight;
+    height: calc(100% - #{$headerHeight});
+    width: calc(100% - 2.5rem);
+    max-width: 350px;
+    border-right: 1px solid lighten($primaryBg, $colorModificationPercent);
+    margin: 0;
+    padding: 0 $sidebarDefaultPadding;
+  }
+
+  &.ui-widget.ui-widget-content {
+    background-color: $widget-content-bg + $sidepanelBackgroundColor;
+  }
+
+  .ui-widget-content:not(.ui-dropdown-list) {
+    background-color: transparent;
+  }
+}

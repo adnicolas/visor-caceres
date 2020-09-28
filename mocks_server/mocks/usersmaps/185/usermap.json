@@ -1,0 +1,94 @@
+{
+  "id": 185,
+  "userOwner": {
+    "id": 1
+  },
+  "name": "Mapa de Incidencia 18/12/2018 17:40:19",
+  "description": "Datos catastro de Caceres",
+  "public": true,
+  "projection": "EPSG:25829",
+  "bboxMaxX": 727183.1731660622,
+  "bboxMaxY": 4374559.95938626,
+  "bboxMinX": 723742.5854583839,
+  "bboxMinY": 4370126.802686631,
+  "img": null,
+  "stampModification": null,
+  "stampCreation": 1545151219574,
+  "baseLayerId": 1,
+  "folders": [
+    {
+      "id": 244,
+      "name": "Capas",
+      "order": 1,
+      "layers": [
+        {
+          "visible": true,
+          "selectedStyle": null,
+          "order": 6,
+          "id": 278,
+          "name": "OrtoToponimia",
+          "service": {
+            "id": 52,
+            "url": "http://ide.caceres.es/geoserver/Plantas_Bajas2/ows",
+            "type": "WMS",
+            "name": "WMS",
+            "title": "",
+            "description": "",
+            "validated": false,
+            "revised": false,
+            "userIdRevision": null,
+            "stampRevision": null
+          },
+          "category": null,
+          "title": "OrtoToponimia",
+          "description": "",
+          "attribution": "",
+          "attributionLink": "",
+          "languages": null,
+          "queryable": false,
+          "minScale": null,
+          "maxScale": null,
+          "projection": "EPSG:25829",
+          "bboxMaxX": 755000.7356409545,
+          "bboxMaxY": 4394181.814432651,
+          "bboxMinX": 683580.5125552902,
+          "bboxMinY": 4333383.572100672,
+          "userContent": null,
+          "img": "http://ide.caceres.es/geoserver/Plantas_Bajas2/ows?service=WMS&request=GetMap&layers=OrtoToponimia&bbox=683580.5125552902,4333383.572100672,755000.7356409545,4394181.814432651&width=40&height=40&crs=EPSG:4326&srs=EPSG:4326&format=image/png&version=1.1.1",
+          "favorite": false,
+          "validated": false,
+          "revised": false,
+          "userIdRevision": null,
+          "stampRevision": null,
+          "stampCreation": 1545149875438,
+          "formats": "image/png,application/atom xml,application/atom+xml,application/json;type=utfgrid,application/openlayers,application/pdf,application/rss xml,application/rss+xml,application/vnd.google-earth.kml,application/vnd.google-earth.kml xml,application/vnd.google-earth.kml+xml,application/vnd.google-earth.kml+xml;mode=networklink,application/vnd.google-earth.kmz,application/vnd.google-earth.kmz xml,application/vnd.google-earth.kmz+xml,application/vnd.google-earth.kmz;mode=networklink,atom,image/geotiff,image/geotiff8,image/gif,image/gif;subtype=animated,image/jpeg,image/png8,image/png; mode=8bit,image/svg,image/svg xml,image/svg+xml,image/tiff,image/tiff8,image/vnd.jpeg-png,kml,kmz,openlayers,rss,text/html; subtype=openlayers,utfgrid",
+          "styles": [],
+          "metadatas": [],
+          "tags": [],
+          "userOwner": {
+            "id": 1
+          },
+          "WMTS_matrixSet": null,
+          "WMTS_requestEncoding": null,
+          "WMTS_tileGrid": null,
+          "WMTS_dimensions": null,
+          "opacity": 100,
+          "selectedFormat": null,
+          "selectedLanguage": null
+                }
+            ],
+      "parentNodeId": null,
+      "nodeId": "1"
+        },
+    {
+      "id": 245,
+      "name": "Cartografía General",
+      "order": 7,
+      "layers": [],
+      "parentNodeId": "1",
+      "nodeId": "3"
+        }
+    ],
+  "documents": [],
+  "hasPassword": false
+}

@@ -1,0 +1,105 @@
+@import 'variables';
+
+:host {
+  display: inline;
+  // margin: $defaultPadding;
+}
+
+.overview-box {
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+.overview-box .overview-box-header {
+  min-height: 24px;
+  background-color: $secondaryFg;
+
+}
+
+.overview-box .overview-box-content {
+  padding: 8px 14px 14px;
+  background-color: darken($secondaryFg, $colorModificationPercent);
+}
+
+
+.overview-box.hightlight1 .overview-box-content .overview-box-icon {
+  background-color: darken($secondaryFg, $colorModificationPercent);
+}
+
+
+.overview-box .overview-box-content .overview-box-icon {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+  margin-top: -28px;
+}
+
+.overview-box .overview-box-content .overview-box-icon i {
+  line-height: inherit;
+  font-size: 28px;
+}
+
+.overview-box .overview-box-content .overview-box-title {
+  font-size: 16px;
+}
+
+.overview-box .overview-box-content .overview-box-count {
+  font-size: 24px;
+}
+
+.overview-box.hightlight1 .overview-box-header {
+  background-color: $BoxPrimaryHeader;
+}
+
+.overview-box.hightlight1 .overview-box-content {
+  background-color: $BoxPrimaryContent;
+}
+
+.overview-box.hightlight1 .overview-box-content .overview-box-icon {
+  background-color: $BoxPrimaryIcon;
+}
+
+.overview-box.hightlight2 .overview-box-header {
+  background-color: $BoxSecondaryHeader;
+}
+
+.overview-box.hightlight2 .overview-box-content {
+  background-color: $BoxSecondaryContent;
+}
+
+.overview-box.hightlight2 .overview-box-content .overview-box-icon {
+  background-color: $BoxSecondaryIcon;
+}
+
+.overview-box.hightlight3 .overview-box-header {
+  background-color: $BoxTertiaryHeader;
+}
+
+.overview-box.hightlight3 .overview-box-content {
+  background-color: $BoxTertiaryContent;
+}
+
+.overview-box.hightlight3 .overview-box-content .overview-box-icon {
+  background-color: $BoxTertiaryIcon;
+}
+
+.overview-box.hightlight4 .overview-box-header {
+  background-color: $BoxQuaternaryHeader;
+}
+
+.overview-box.hightlight4 .overview-box-content {
+  background-color: $BoxQuaternaryContent;
+}
+
+.overview-box.hightlight4 .overview-box-content .overview-box-icon {
+  background-color: $BoxQuaternaryIcon;
+}
+
+.overview-box-header__container {
+  line-height: $fontBiggerSize;
+  font-size: $fontBiggerSize;
+  padding-bottom: 0.5em;
+}

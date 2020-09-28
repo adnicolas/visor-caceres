@@ -1,0 +1,9 @@
+<div class="p-grid baselayers-container">
+  <div class="p-col-6" *ngFor="let baseLayer of baseLayers">
+    <div class="baselayer-card ui-clickable" (click)=" setActiveBaseLayer(baseLayer)"
+      [ngClass]="{'active': baseLayer.visible}">
+      <img class='ui-image-responsive' *ngIf="baseLayer.img" [src]="baseLayer.img">
+      <span class="caption">{{baseLayer.title}}</span>
+    </div>
+  </div>
+</div>

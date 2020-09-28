@@ -1,0 +1,19 @@
+ <p-dataView #dv [value]="values" emptyMessage="{{'GLOBAL.NO_RESULTS'|translate}}" [sortField]="sortField"
+   [sortOrder]="sortOrder" [filterBy]="filterField">
+   <p-header>
+     <div class="p-grid ">
+       <div class="p-col-6">
+         <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Orden" styleClass='dataview-orderby'
+           (onChange)="onSortChange($event)">
+         </p-dropdown>
+       </div>
+       <div class="p-col-6">
+         <!-- TODO boton 'limpiar filtro' (x) del input no refresca los resultados -->
+         <input type="search" pInputText placeholder="Filtrar" (keyup)="dv.filter($event.target.value)" class='dataview-filter'></div>
+       </div>
+   </p-header>
+   <ng-template #rowsTemplate let-item pTemplate="listItem">
+     <ng-template *ngTemplateOutlet="itemsTemplate;context:{rowItem:item}"> </ng-template>
+   </ng-template>
+
+ </p-dataView>

@@ -1,0 +1,10 @@
+<div class="p-grid p-nogutter" id="layout">
+  <div class="p-col-12" id="header">
+    <the-header></the-header>
+  </div>
+  <div class="p-col-12" id="content" [ngClass]="contentStyleClass">
+    <ng-content select="router-outlet"></ng-content>
+  </div>
+</div>
+<!-- Necesario para la visualización de toast desde el servicio -->
+<p-toast [style]="{marginTop: '40px'}" [position]='toastPosition'></p-toast>

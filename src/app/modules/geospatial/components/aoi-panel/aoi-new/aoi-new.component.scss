@@ -1,0 +1,27 @@
+@import 'variables';
+
+.new-aoi-overlay {
+  background-color: $primaryBg + $defaultColorTransparency;
+  // position: absolute;
+  // bottom: -155px;
+  // padding: 5px;
+  // width: 255px;
+  padding: 5px;
+  transition: $defaultTrasition;
+
+  &.active {
+    bottom: 30px;
+    animation: $attention-animation;
+    left: 5px;
+
+    // &.displaced {
+    //   right: 393px;
+    // }
+  }
+
+  .title {
+    color: $primaryFg;
+    margin: 0;
+    padding: 0.25em 0;
+  }
+}

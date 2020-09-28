@@ -1,0 +1,73 @@
+@import 'variables';
+
+the-box-title {
+
+  display: block;
+  background-color: $BoxPrimaryHeader;
+
+
+  .box-title {
+    color: white;
+
+    border-width: 0;
+    /* padding-left: 45px; */
+    position: relative;
+    top: 0;
+    padding-top: 10px;
+
+    .box-title__container {
+      background: $BoxPrimaryContent;
+      font-weight: bold;
+      padding-bottom: 0.2em;
+
+      & > i {
+        color: white;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        line-height: 35px;
+        margin: 0;
+        margin-top: -8px;
+        position: relative;
+        margin-left: 5px;
+        padding-left: 5px;
+        font-size: 24px;
+        font-weight: normal;
+      }
+    }
+
+    &.hightlight1 {
+
+      color: white;
+      background-color: $BoxPrimaryHeader;
+
+
+      .box-title__container {
+        background: $BoxPrimaryContent;
+
+        & > i {
+          background-color: $BoxPrimaryContent;
+        }
+
+      }
+    }
+
+    &.hightlight2 {
+
+      color: white;
+      background-color: $BoxSecondaryHeader;
+
+
+      .box-title__container {
+        background: $BoxSecondaryContent;
+
+        & > i {
+          background-color: $BoxSecondaryContent;
+        }
+      }
+
+    }
+
+  }
+
+}

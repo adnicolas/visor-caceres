@@ -1,0 +1,17 @@
+  <div>
+
+    <div>
+      <h3>Subir archivos locales</h3>
+    </div>
+
+    <!-- subir archivos -->
+    <the-file-upload customUpload='true' (uploadEvent)="loadLayer()" (fileChangedEvent)="changeFile($event.files[0])"
+      [accept]="accept" chooseLabel="{{'FILE_UPLOADER.CHOOSE' | translate}}"
+      uploadLabel="{{'FILE_UPLOADER.UPLOAD' | translate}}" cancelLabel="{{'FILE_UPLOADER.CANCEL' | translate}}">
+    </the-file-upload>
+
+    <div class="accepted-formats-container">
+      {{"LOCAL_LAYER_LOADER.ACCEPTED_FORMATS" | translate}}
+    </div>
+
+  </div>

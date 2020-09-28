@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('visor-caceres app is running!');
+    expect(page.getTitleText()).toEqual('Welcome to tierra3-prime!');
   });
 
   afterEach(async () => {

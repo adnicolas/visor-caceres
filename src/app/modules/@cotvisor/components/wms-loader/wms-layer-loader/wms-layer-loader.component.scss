@@ -1,0 +1,10 @@
+@import 'variables';
+
+div.container {
+  cursor: pointer;
+
+  &.loaded {
+    opacity: 0.4;
+    cursor: auto;
+  }
+}

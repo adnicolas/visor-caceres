@@ -1,0 +1,24 @@
+<div class='dashboard-container'>
+  <div class="p-grid">
+    <div class=" p-col-12 p-sm-3">
+      <div class='p-grid'>
+        <the-overview-box class="p-col-12" [title]='"Volver al dashboard"' [icon]='"mi reply"'
+          [routerLink]="'/dashboard'"></the-overview-box>
+        <gss-maps-summary class="p-col-12" [routerLink]="'/mapas'"></gss-maps-summary>
+      </div>
+    </div>
+    <div class="p-col-12 p-sm-9">
+      <div class='p-grid'>
+        <the-box-panel styleClass='hightlight2' [title]="'USER_MAPS.TITLE' | translate" icon='mi map' class="p-col-12">
+          <gss-user-maps-list></gss-user-maps-list>
+        </the-box-panel>
+        <the-box-panel styleClass='hightlight2' [title]="'USER_MAPS.FAVORITES' | translate" icon='mi favorite'
+          class="p-col-12">
+          <gss-user-maps-fav-list></gss-user-maps-fav-list>
+        </the-box-panel>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIXME No debería ser necesario cargar el the-confirm-dialog en cada página , debería bastar con cargarlo en el layout pero en layout no funciona  -->
+<the-confirm-dialog></the-confirm-dialog>

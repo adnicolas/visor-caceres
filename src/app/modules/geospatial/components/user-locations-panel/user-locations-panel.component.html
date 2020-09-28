@@ -1,0 +1,17 @@
+<the-side-panel [panelName]='panelName' position='right'>
+
+
+  <div panel-header class="p-grid p-align-center p-nogutter">
+    <div class="p-col text-align-center ">
+      <h3>{{"USER_LOCATIONS.TITLE" | translate }}</h3>
+    </div>
+  </div>
+
+  <cot-user-locations panel-content [showAll]="showAll"></cot-user-locations>
+
+  <div panel-footer class="user-locations-panel-footer">
+    <the-button class="ui-button-primary-inverse" [label]="(showAll) ? 'Desactivar todas':'Activar todas'"
+      (onClick)="toggleShowAll()"></the-button>
+  </div>
+
+</the-side-panel>

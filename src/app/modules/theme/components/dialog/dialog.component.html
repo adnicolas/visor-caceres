@@ -1,0 +1,14 @@
+<p-dialog [(visible)]="visible" (visibleChange)="handleVisibleChange($event)" [closable]="closable" [header]="header"
+  [styleClass]="styleClass" [showHeader]="showHeader" resizable="true" [appendTo]="appendTo" [dismissableMask]="!modal"
+  [modal]="modal" maximizable="true" [draggable]="!modal" breakpoint="768">
+  <p-header>
+    <ng-content select="[dialog-header]"></ng-content>
+  </p-header>
+  <ng-content select="[dialog-fixed-content]"></ng-content>
+  <p-scrollPanel>
+    <ng-content></ng-content>
+  </p-scrollPanel>
+  <p-footer>
+    <ng-content select="[dialog-footer]"></ng-content>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,5 @@
+<div class="input-switch" [ngClass]="{'small': small}">
+  <p-inputSwitch [(ngModel)]="value" (onChange)="handleChange($event)" [disabled]='disabled' [pTooltip]="toolTip">
+  </p-inputSwitch>
+  <label *ngIf="label">{{label}}</label>
+</div>

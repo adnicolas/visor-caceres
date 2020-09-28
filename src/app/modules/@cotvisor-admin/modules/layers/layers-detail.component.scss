@@ -1,0 +1,41 @@
+@import 'variables';
+
+app-layers-detail {
+  ion-list ion-item ion-thumbnail {
+    margin-right: 15px;
+    min-height: 40px !important;
+    min-width: 60px !important;
+  }
+
+  ion-list ion-item ion-toggle {
+    padding-left: 0 !important;
+  }
+
+  .flagImg {
+    width: 60px !important;
+    height: 40px !important;
+  }
+
+  ion-card ion-row ion-col.tags {
+    border: 1px solid map-get($colors, 'tertiary');
+    margin: 2rem 0;
+
+    ion-chip {
+      height: 25px;
+      font-size: 10px;
+      line-height: 25px;
+
+      ion-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+        line-height: 25px;
+      }
+
+      .button {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

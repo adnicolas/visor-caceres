@@ -1,0 +1,10 @@
+<div class="overview-box" [class]="styleClass" [ngClass]=" {'ui-clickable':routerLink }" [routerLink]='routerLink'>
+  <div class="overview-box-header">
+    <div *ngIf="header" class="overview-box-header__container"> {{header}}</div>
+  </div>
+  <div class="overview-box-content">
+    <div class="overview-box-icon"><i [class]="icon"></i></div>
+    <div class="overview-box-title">{{title}}</div>
+    <div class="overview-box-count">{{value}}</div>
+  </div>
+</div>

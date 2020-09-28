@@ -1,0 +1,26 @@
+<div class="p-grid p-align-center user-location-item item-container item-container">
+  <div class="p-col-fixed user-location-icon item-container__icon">
+    <i class="fas fa-map-marker-alt"></i>
+  </div>
+  <div class="p-col user-location-data">
+    <div class="p-grid p-nogutter">
+      <div class="p-col-12 item-container__title">
+        {{userLocation.name}}
+      </div>
+      <div class="p-col-12 item-container__subtitle">
+        {{coordinates[0] | number : '1.2-2'}}, {{coordinates[1] | number : '1.2-2'}}
+      </div>
+    </div>
+  </div>
+  <div class="p-col-fixed item-controls">
+    <the-button icon="fas fa-arrow-alt-circle-right" [small]='true' (onClick)=userLocationClicked(userLocation)
+      tooltip="{{'USER_LOCATIONS.GO_TO' | translate}}">
+    </the-button>
+    <the-button icon="pi pi-trash" [small]='true' styleClass='ui-button-danger' (onClick)="deleteLocation(userLocation)"
+      tooltip="{{'GLOBAL.DELETE_' | translate}}">
+    </the-button>
+    <the-input-switch class="item-toggle" [(ngModel)]="userLocation.show"
+      (onChange)="toggleUserLocationFeature(userLocation)">
+    </the-input-switch>
+  </div>
+</div>

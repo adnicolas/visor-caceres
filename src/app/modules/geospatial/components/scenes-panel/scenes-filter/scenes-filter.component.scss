@@ -1,0 +1,27 @@
+@import 'variables';
+
+.filter-item {
+  padding: 5px;
+}
+
+.filter-label {
+  margin-right: 10px;
+
+  span {
+    // color: $secondaryFg;
+    font-weight: bold;
+    color: $primaryFg;
+  }
+}
+
+.padding5 {
+  padding: 5px;
+}
+
+.reset-button-column {
+  text-align: right;
+}
+
+.reset-icon:hover {
+  color: $primaryFg;
+}

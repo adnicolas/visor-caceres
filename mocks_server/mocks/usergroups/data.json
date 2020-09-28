@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "userOwnerId": 1,
+    "description": "Grupo 1 de pruebas",
+    "name": "Geógrafos"
+     }, {
+    "id": 2,
+    "userOwnerId": 1,
+    "description": "Grupo 2 de pruebas",
+    "name": "Administradores"
+     }, {
+    "id": 3,
+    "userOwnerId": 1,
+    "description": "Grupo 3 de pruebas",
+    "name": "Administradores de usuarios"
+     },
+  {
+    "id": 4,
+    "userOwnerId": 1,
+    "description": "Grupo 4 de pruebas",
+    "name": "Administradores de mapas"
+     },
+  {
+    "id": 5,
+    "userOwnerId": 1,
+    "description": "Grupo 5 de pruebas",
+    "name": "Administradores de capas"
+     },
+  {
+    "id": 6,
+    "userOwnerId": 1,
+    "description": "Grupo 6 de pruebas",
+    "name": "avanzados"
+     },
+  {
+    "id": 6,
+    "userOwnerId": 87,
+    "description": "Grupo usuario 87",
+    "name": "Grupo propiedad del usuario 87"
+     }
+]

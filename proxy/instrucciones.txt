@@ -1,0 +1,11 @@
+Instalar el modulo cors-anywhere
+
+Arrancar el proxy
+-----------------
+node proxy.js // Si no se arranca desde la  ubicación de proxy.js, añadir la
+ruta completa
+
+Configuración proxy.js
+----------------------
+originWhitelist - Si se establece, a los servidores no incluídos se les
+bloqueará el acceso al proxy.

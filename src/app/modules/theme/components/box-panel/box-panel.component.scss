@@ -1,0 +1,109 @@
+@import 'variables';
+
+the-box-panel {
+
+  display: block;
+  padding: 0 3px;
+
+  .ui-panel {
+    //box-shadow: 3px 3px 5px 0 rgba(45, 45, 45, 0.24);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
+    padding: 0;
+
+    .ui-panel-titlebar {
+      border-width: 0;
+      padding: 0 0.75em 0.2em;
+      color: $tertiaryFg;
+      background-color: $tertiaryBg;
+
+      .ui-panel-title {
+        padding-left: 45px;
+        position: relative;
+        top: 5px;
+
+      }
+
+      .ui-panel-titlebar-toggler {
+        background-color: transparent;
+        color: $tertiaryFg;
+        margin-top: -19px;
+      }
+
+    }
+
+    .ui-panel-content-wrapper {
+      background: $tertiaryFg;
+
+      .ui-panel-content {
+
+
+        .ui-card {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+
+  }
+
+  .ui-panel {
+    &.hightlight1 {
+      .ui-panel-titlebar {
+        color: white;
+        background-color: $BoxPrimaryHeader;
+        border-top: 18px solid $BoxPrimaryContent;
+      }
+    }
+
+    &.hightlight2 {
+      .ui-panel-titlebar {
+        color: white;
+        background-color: $BoxSecondaryHeader;
+        border-top: 18px solid $BoxSecondaryContent;
+
+      }
+    }
+
+    &.hightlight3 {
+      .ui-panel-titlebar {
+        color: white;
+        background-color: $BoxTertiaryContent;
+
+        border-top: 18px solid $BoxTertiaryHeader;
+      }
+
+
+    }
+  }
+
+  .panel-icon {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    margin: 0;
+    margin-top: -35px;
+    color: white;
+    position: relative;
+    margin-left: 0;
+    padding: 6px;
+
+    i {
+      font-size: 28px;
+    }
+
+    &.hightlight1 {
+      background-color: $BoxPrimaryIcon;
+    }
+
+    &.hightlight2 {
+      background-color: $BoxSecondaryIcon;
+    }
+
+    &.hightlight3 {
+      background-color: $BoxTertiaryIcon;
+    }
+
+
+  }
+}

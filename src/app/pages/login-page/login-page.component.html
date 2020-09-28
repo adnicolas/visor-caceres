@@ -1,0 +1,5 @@
+  <div class="p-grid p-align-center p-justify-center login-page">
+    <cot-users-login *ngIf="!redirecting"></cot-users-login>
+    <p-message *ngIf="redirecting" severity="info" text="{{'LOGIN_PAGE.REDIRECT' | translate}} {{returnPage}}...">
+    </p-message>
+  </div>

@@ -1,0 +1,286 @@
+@import 'variables';
+
+.print-panel-header {
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid;
+}
+
+.print-options-column {
+  padding-bottom: 0;
+}
+
+.print-title {
+  margin: 0;
+}
+
+.print-option-container {
+  display: flex;
+  align-items: center;
+  // margin-top: 15px;
+}
+
+.options-side-column {
+  // padding: 10px;
+  border-bottom: 1px solid;
+}
+
+.print-option-icon {
+  margin-right: 10px;
+}
+
+.align-end {
+  justify-content: flex-end;
+}
+
+.print-card-header {
+  font-weight: bold;
+  border-bottom: 1px solid;
+}
+
+.print-card-content {
+  font-size: 12px;
+}
+
+
+.scroll-content {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+div::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.advise {}
+
+.no-legends {
+  font-style: italic;
+}
+
+#mapPrinterContainer {
+  border: 1px solid grey;
+  position: relative;
+  background: white;
+  margin: 15px auto;
+  color: black;
+  font-weight: bold;
+}
+
+.innerPrinterContainer {
+  outline: 2px solid black;
+  height: 100% !important;
+  width: 100%;
+}
+
+#top_left_coordinate {
+  text-align: left;
+  width: 70px;
+  position: absolute;
+  top: 23px;
+  left: 36px;
+  z-index: 10;
+  font-size: 10px;
+  border-left: 1px solid black;
+  padding-left: 2px;
+}
+
+#left_top_coordinate {
+  text-align: right;
+  width: 70px;
+  position: absolute;
+  top: 65px;
+  left: -5.5px;
+  z-index: 10;
+  font-size: 10px;
+  border-right: 1px solid black;
+  padding-right: 2px;
+}
+
+#top_right_coordinate {
+  text-align: right;
+  width: 70px;
+  position: absolute;
+  top: 23px;
+  right: 36px;
+  z-index: 10;
+  font-size: 10px;
+  border-right: 1px solid black;
+  padding-right: 2px;
+}
+
+#right_top_coordinate {
+  text-align: right;
+  width: 70px;
+  position: absolute;
+  top: 65px;
+  right: -5.5px;
+  z-index: 10;
+  font-size: 10px;
+  border-right: 1px solid black;
+  padding-right: 2px;
+}
+
+#bottom_left_coordinate {
+  width: 70px;
+  position: absolute;
+  bottom: 23px;
+  left: 37px;
+  z-index: 10;
+  font-size: 10px;
+  border-left: 1px solid black;
+  padding-left: 2px;
+}
+
+#left_bottom_coordinate {
+  width: 70px;
+  position: absolute;
+  bottom: 65px;
+  left: -6px;
+  z-index: 10;
+  font-size: 10px;
+  border-left: 1px solid black;
+  padding-left: 2px;
+}
+
+#bottom_right_coordinate {
+  width: 70px;
+  position: absolute;
+  bottom: 23px;
+  right: 37px;
+  z-index: 10;
+  font-size: 10px;
+  border-right: 1px solid black;
+  padding-right: 2px;
+  text-align: right;
+}
+
+#right_bottom_coordinate {
+  text-align: left;
+  width: 70px;
+  position: absolute;
+  bottom: 65px;
+  right: -6px;
+  z-index: 10;
+  font-size: 10px;
+  border-left: 1px solid black;
+  padding-left: 2px;
+}
+
+#mapTitle {
+  font-size: 30px;
+  font-weight: bold;
+  top: 50px;
+  right: 50px;
+}
+
+#mapDescription {
+  top: 100px;
+  right: 50px;
+}
+
+#logo {
+  height: 67px;
+  bottom: 50px;
+  right: 50px;
+}
+
+#mapSRS {
+  bottom: 50px;
+  left: 50px;
+}
+
+#mapCenterCoord {
+  bottom: 50px;
+  left: 270px;
+}
+
+.legend {
+  top: 100px;
+  right: 50px;
+}
+
+.rotate_90 {
+  transform: rotate(-90deg);
+}
+
+.draggable {
+  cursor: move;
+  border: 1px solid black;
+  z-index: 1;
+  position: absolute;
+}
+
+.card-draggable {
+  width: auto;
+  margin: 0;
+  padding: 5px;
+  background: white;
+  max-width: 250px;
+
+  img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+.ol-scale-line {
+  width: 140px;
+  background: white;
+  border: 1px solid black;
+
+  .ol-scale-line-inner {
+    margin: 2px auto;
+  }
+}
+
+
+
+
+@media print {
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .scroll-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #mapPrinterContainer {
+    border: none;
+    position: relative;
+    margin: 0;
+  }
+
+  .noprint {
+    display: none;
+  }
+}
+
+@page {
+  .a4 {
+    size: A4;
+    margin: 0;
+  }
+
+  .a4_landscape {
+    size: A4 landscape;
+    margin: 0;
+  }
+}

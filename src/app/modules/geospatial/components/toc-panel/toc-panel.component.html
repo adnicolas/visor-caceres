@@ -1,0 +1,29 @@
+<the-side-panel [panelName]='panelName' position='right'>
+
+  <div panel-header class="p-grid p-align-center p-nogutter">
+    <the-button [icon]="'fas fa-plus-square'" tooltip="{{'LAYER_PANEL.ADD_LAYER' | translate}}" label=""
+      styleClass='ui-button-primary-inverse' (onClick)="openAddLayerDialog($event)">
+    </the-button>
+    <div class="p-col text-align-center ">
+      <h2 class="scenes-title">{{"TOC.TITLE" | translate}}</h2>
+    </div>
+  </div>
+
+  <div panel-content class="toc-side-panel-content">
+    <the-box-panel styleClass='hightlight2' [title]='"Capas cargadas"' icon='mi layers'>
+      <cot-toc-layer-list> </cot-toc-layer-list>
+    </the-box-panel>
+    <the-box-panel styleClass='hightlight2' [title]='"Edicion de capas vectoriales"' icon='pi pi-pencil'>
+      <cot-vector-layers-editor></cot-vector-layers-editor>
+    </the-box-panel>
+  </div>
+
+  <div panel-footer class="p-grid p-align-center p-nogutter">
+    <div class="p-col text-align-center">
+      <the-button [icon]="'far fa-plus-square'" label="{{'LAYER_PANEL.ADD_LAYER' | translate}}"
+        (onClick)="openAddLayerDialog($event)" class="ui-button-primary-inverse">
+      </the-button>
+    </div>
+
+  </div>
+</the-side-panel>

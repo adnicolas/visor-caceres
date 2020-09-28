@@ -1,0 +1,110 @@
+@import 'variables';
+
+.header {
+  float: left;
+}
+
+div.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  div.info-content {
+    flex: 1 1 auto;
+    height: 0;
+  }
+}
+
+span.advise {
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+}
+
+.coordinates-container {
+  height: auto;
+  padding: 4px;
+  text-align: center;
+  display: block;
+
+  span.description {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  div.coords-proj-list {
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+
+
+    div.coord-container {
+      line-height: 1.5;
+      padding: 0;
+      width: 100%;
+      margin: 0 5px;
+      background-color: $primaryFg;
+
+
+      span.coord-title {
+        background-color: $secondaryFg;
+        color: $primaryFg;
+        margin: 0;
+        display: block;
+        padding: 0 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 12px;
+        margin: 0;
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+div.info-container {
+  padding: 20px;
+  background-color: #ffffff;
+  display: inline-block;
+  min-width: 100%;
+}
+
+table {
+  border: solid 1px $primaryFg;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  border: solid 1px $primaryFg;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  border: solid 1px $primaryFg;
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  background-color: $secondaryFg;
+  color: $primaryFg;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

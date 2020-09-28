@@ -1,0 +1,14 @@
+// Variables SASS
+@import 'variables.scss';
+// clases utilidades css
+@import 'utilities.scss';
+// Animaciones
+@import 'animations.scss';
+// Variables color root a partir de SASS
+@import 'root-colors.scss';
+// Tema PRIMENG
+@import 'node_modules/primeng/resources/themes/_theme.scss';
+// Estilos para tema PRIMENG desde variables SASS
+@import 'styles.scss';
+
+@import 'material-icons.scss'

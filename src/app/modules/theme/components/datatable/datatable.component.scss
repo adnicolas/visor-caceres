@@ -1,0 +1,34 @@
+@import 'variables';
+
+p-celleditor input {
+  max-width: 100%;
+}
+
+tr.filter-row input {
+  width: 100%;
+  font-size: $fontReducedSize;
+}
+
+th.accions-col {
+  width: 7em;
+}
+
+td.action-buttons {
+  the-button {
+    padding: 0 2px;
+  }
+
+  & > button {
+    height: 28px;
+    width: 28px;
+
+    &.datatable-edit-button {
+      margin: 0 2px;
+    }
+  }
+}
+
+.ui-dialog-buttonpane {
+  display: flex;
+  justify-content: flex-end;
+}

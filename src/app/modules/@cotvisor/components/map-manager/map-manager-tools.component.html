@@ -1,0 +1,35 @@
+  <the-toolbar-container>
+
+    <the-button [small]='true' [icon]="'mi input'" [disabled]="disabledNew" [tooltip]="'Cargar mapa...'"
+      (onClick)="loadUserMap()">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi add-box'" [disabled]="disabledNew" [tooltip]="'Crear nuevo mapa'"
+      (onClick)="newUserMap()">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi save'" [tooltip]="'Guardar mapa'" [disabled]="disabledSave"
+      placement="bottom" (onClick)="saveUserMap()">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi create'" [tooltip]="'Guardar mapa como...'" [disabled]="disabledSaveAs"
+      placement="bottom" (onClick)="saveUserMapAs()">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi delete'" [tooltip]="'Eliminar mapa'" [disabled]="disabledDelete"
+      (onClick)="deleteUserMap()">
+    </the-button>
+
+
+    <the-button [small]='true' [disabled]="disableFavouritebutton" [icon]="isFavouriteMap?'fas fa-heart':'far fa-heart'"
+      (onClick)="toggleFavourite()" [tooltip]="isFavouriteMap?'_Quitar de favoritos':'_Marcar como favorito'">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi share'" *ngIf="!disabledShare" (onClick)="openSharePopover($event)"
+      [tooltip]="'Compartir mapa'" placement="bottom">
+    </the-button>
+
+    <the-button [small]='true' [icon]="'mi image'" (onClick)="openSaveMapImageAlert()"
+      [tooltip]="'Exportar como imagen'">
+    </the-button>
+  </the-toolbar-container>

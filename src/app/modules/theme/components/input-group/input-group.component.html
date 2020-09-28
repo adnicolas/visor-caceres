@@ -1,0 +1,23 @@
+  <div class="global-container">
+    <div class="ui-inputgroup container" [ngClass]="{'small': small}">
+      <span *ngIf="iconInput" class="ui-inputgroup-addon"><i [ngClass]="iconInput"></i></span>
+      <!-- Un input para el caso de que se quiera indicador de password y otro distinto para el caso normal -->
+      <input *ngIf="!passwordIndicator" [type]="type" [required]="required" [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="handleValueChange($event)"
+    [pattern]="pattern" type="text" class="flex" pInputText [placeholder]="placeholder" #input="ngModel"
+    (blur)="onBlur()" [name]="name">
+
+      <input *ngIf="passwordIndicator" [type]="type" [required]="required" [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="handleValueChange($event)"
+    [pattern]="pattern" type="text" class="flex" pInputText [placeholder]="placeholder" #input="ngModel"
+    (blur)="onBlur()" [name]="name"  pPassword
+    [promptLabel]="'PASSWORD_CHECKER_LABEL'|translate" [weakLabel]="'PASSWORD_WEAK'|translate"
+    [mediumLabel]="'PASSWORD_MEDIUM'|translate"
+    [strongLabel]="'PASSWORD_STRONG'|translate">
+
+      <the-button *ngIf="iconButton" [showSpinner]='showSpinner' [pTooltip]="tooltip"
+        [tooltipPosition]="tooltipPosition" [small]='small' [icon]="iconButton"
+        [disabled]="input?.invalid || showSpinner" [label]="labelButton" (onClick)="clickEvent($event)">
+      </the-button>
+    </div>
+
+    <ng-content select="[message]"></ng-content>
+  </div>

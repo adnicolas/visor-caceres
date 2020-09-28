@@ -1,0 +1,183 @@
+/**
+
+Archivo que declara variables para el tema
+https: //browninglogic.com/2018/11/30/92/
+
+*/
+$fontFamily: 'Montserrat',
+sans-serif;
+
+$headersFontFamily:'Roboto',
+sans-serif;
+
+$fontSize: 1em; //Tamaño normal de fuente
+$fontBiggerSize: 2em;
+$fontReducedSize: 0.8em; //fuente reducida
+$borderRadius: 0;
+$disabledOpacity: 0.35;
+$headerHeight: 48px; //alto de la cabecera
+$colorModificationPercent: 10%; //Porcentaje para aclarar u oscurecer colores con lighten o darken
+$defaultPadding: 0.5em;
+$smallButton:28px;
+
+//Declaracion de colores básicos
+$primaryFg:#5f5f5f;
+$primaryBg:#f9f9f9;
+$secondaryFg:#777777;
+$secondaryBg:#ffffff;
+$tertiaryFg:#ffffff;
+$tertiaryBg:#468ac2;
+
+$colors: (tertiary: '#f4f4f4', primary: '#4c9ae7');
+
+//hightlignts
+$hightlight1: #e91e63;
+$hightlight2: #00bcd4;
+$hightlight3: #ffc107;
+$hightlight4: #46e64e;
+
+
+$defaultColorTransparency: a1;
+$sidepanelBackgroundColor:d4;
+$defaultTrasitionTimming:0.5s;
+$defaultTrasition:all $defaultTrasitionTimming ease-in-out;
+
+// defaultTrasitionTimming como delay para evitar solapar la transicion con la animacion
+$attention-animation: shake-horizontal 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) $defaultTrasitionTimming both;
+$apperar-from-right: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+
+//Capas Z disponibles
+$z-index-map:0;
+$z-index-map-tools:50;
+$z-index-overlay-l1:100;
+$z-index-overlay-l2:150;
+
+//Tooltips
+$tooltips-text-color:$primaryFg;
+$tooltips-background-color:$primaryBg;
+
+//Header
+$headerBorderWidth: 0;
+$headerBorderColor: $primaryBg;
+$headerBgColor: $primaryBg;
+$headerTextColor: $primaryFg;
+$headerFontWeight: normal;
+$headerIconTextColor: $primaryFg;
+
+//Widgets
+$widget-content-bg:$secondaryBg;
+$widget-header-bg:$primaryFg;
+$widget-header-text:$primaryBg;
+
+//SidePanel background (incluye transparencia)
+$sidebarDefaultPadding:0;
+
+
+//Content
+$contentBorderWidth: 1px;
+$contentBorderColor: $secondaryBg;
+$contentBgColor: $secondaryBg;
+$contentTextColor:$secondaryFg;
+
+// Estado de botones
+
+$stateDefaultBorderWidth: 0;
+
+// Secondary Color:
+$secondaryColorMiddle: $secondaryBg;
+$secondaryColorLight: lighten($secondaryColorMiddle, $colorModificationPercent);
+$secondaryColorStrong: darken($secondaryColorMiddle, $colorModificationPercent);
+$secondaryColorText: $secondaryFg;
+
+
+//Default State
+$stateDefaultBorderColor: $primaryBg;
+$stateDefaultBgColor: $primaryBg;
+$stateDefaultTextColor: $primaryFg;
+
+//Active State
+$stateActiveBorderColor: $primaryFg;
+$stateActiveBgColor: $primaryFg;
+$stateActiveTextColor: $primaryBg;
+
+//Highlight State
+$stateHighlightBorderColor: $tertiaryBg;
+$stateHighlightBgColor: $tertiaryBg;
+$stateHighlightTextColor: $tertiaryFg;
+
+//Focus State
+$stateFocusBorderColor: $secondaryBg;
+$stateFocusBgColor: $secondaryBg;
+$stateFocusTextColor: #ffffff;
+
+//Error State
+$stateErrorBorderColor: #ffb73d;
+$stateErrorBgColor: #ffc73d;
+$stateErrorTextColor: #111111;
+
+//Hover State
+$stateHoverBorderColor: $primaryFg;
+$stateHoverBgColor: $primaryBg;
+$stateHoverTextColor: $primaryFg;
+
+
+
+//Forms
+$inputBgColor: #ffffff;
+$inputTextColor: #222222;
+$invalidInputBorderColor: #ffb73d;
+$inputGroupTextColor: #ffffff;
+$inputDefaultBorder:1px;
+
+//Toaster
+$toasterTextColor: black;
+
+
+
+// Severity Colors
+
+$successColorText: white;
+$successColorMiddle: #34a835;
+$successColorLight: lighten($successColorMiddle, $colorModificationPercent);
+$successColorStrong: darken($successColorMiddle, $colorModificationPercent);
+
+$infoColorText: white;
+$infoColorMiddle: #007ad9;
+$infoColorLight: lighten($infoColorMiddle, $colorModificationPercent);
+$infoColorStrong:darken($infoColorMiddle, $colorModificationPercent);
+
+$warnColorText: black;
+$warnColorMiddle: #ffba01;
+$warnColorLight: lighten($warnColorMiddle, $colorModificationPercent);
+$warnColorStrong:darken($warnColorMiddle, $colorModificationPercent);
+
+
+$dangerColorText: white;
+$dangerColorMiddle: #e91224;
+$dangerColorLight: lighten($dangerColorMiddle, $colorModificationPercent);
+$dangerColorStrong: darken($dangerColorMiddle, $colorModificationPercent);
+
+//Boxes - headers
+
+$BoxPrimaryHeader: lighten($hightlight1, $colorModificationPercent*1.5);
+$BoxPrimaryContent: $hightlight1;
+$BoxPrimaryIcon: $hightlight1;
+
+$BoxSecondaryHeader: lighten($hightlight2, $colorModificationPercent*1.5);
+$BoxSecondaryContent: $hightlight2;
+$BoxSecondaryIcon: $hightlight2;
+
+$BoxTertiaryHeader:lighten($hightlight3, $colorModificationPercent*1.5);
+$BoxTertiaryContent: $hightlight3;
+$BoxTertiaryIcon: $hightlight3;
+
+$BoxQuaternaryHeader:lighten($hightlight4, $colorModificationPercent*1.5);
+$BoxQuaternaryContent: $hightlight4;
+$BoxQuaternaryIcon: $hightlight4;
+
+//paginator
+$paginatorBackground:$primaryBg;
+$paginatorText:$primaryFg;
+$paginatorActiveBackground:$primaryFg;
+$paginatorActiveText:$primaryBg;

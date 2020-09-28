@@ -1,0 +1,20 @@
+<the-side-panel [panelName]='panelName' position='right'>
+
+  <div panel-header class="p-grid p-align-center p-nogutter">
+    <div class="p-col-fixed">
+      <gss-scenes-filter></gss-scenes-filter>
+    </div>
+    <div class="p-col text-align-center ">
+      <h2 class="scenes-title">{{"SCENES.TITLE" | translate }}</h2>
+    </div>
+  </div>
+
+  <gss-scenes-list panel-content></gss-scenes-list>
+
+  <div panel-footer class="p-grid p-align-center p-nogutter">
+    <div class="p-col text-align-center ">
+      <the-paginator [rows]="10" [totalRecords]="100"></the-paginator>
+    </div>
+  </div>
+
+</the-side-panel>

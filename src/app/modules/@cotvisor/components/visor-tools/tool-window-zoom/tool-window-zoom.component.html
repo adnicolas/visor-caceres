@@ -1,0 +1,9 @@
+<!--component html goes here -->
+<the-button icon="fas fa-search-plus" [tooltip]="tooltip" (onClick)="toggle()"
+  [styleClass]="(isActive) ? 'ui-state-active ui-button-primary':'ui-state-default ui-button-primary'">
+</the-button>
+
+<!-- Overlay de ayuda -->
+<div #mouseOverlay [hidden]="!isActive" class="ol-tooltip ol-tooltip-measure">
+  <span>{{'TOOLS.ZOOM_WINDOW_HELP' | translate}}</span>
+</div>

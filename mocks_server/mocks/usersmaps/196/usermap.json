@@ -1,0 +1,75 @@
+ {
+   "id": 196,
+   "userOwner": {
+     "id": 86
+   },
+   "name": "Prueba dibujo",
+   "description": "asdasd",
+   "public": true,
+   "projection": "EPSG:25830",
+   "bboxMaxX": 880882.8466170286,
+   "bboxMaxY": 4847084.659792048,
+   "bboxMinX": -58545.5285346785,
+   "bboxMinY": 3712196.5446867994,
+   "img": null,
+   "stampModification": 1546610175925,
+   "stampCreation": 1546605440444,
+   "baseLayerId": 2,
+   "folders": [
+     {
+       "id": 266,
+       "name": "Capas",
+       "order": 1,
+       "layers": [
+         {
+           "visible": true,
+           "selectedStyle": null,
+           "order": 1,
+           "id": 321,
+           "name": "sfdsf",
+           "service": null,
+           "category": null,
+           "title": "sfdsf",
+           "description": "",
+           "attribution": null,
+           "attributionLink": null,
+           "languages": "",
+           "queryable": true,
+           "minScale": null,
+           "maxScale": null,
+           "projection": "EPSG:4326",
+           "bboxMaxX": -2.8289794922,
+           "bboxMaxY": 41.6107177734,
+           "bboxMinX": -5.6744384766,
+           "bboxMinY": 38.3148193359,
+           "userContent": "<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.opengis.net/kml/2.2 https://developers.google.com/kml/schema/kml22gx.xsd\"><Document><Placemark><ExtendedData><Data name=\"order\"><value>1</value></Data><Data name=\"type\"><value>Polygon</value></Data></ExtendedData><description>Superficie: 23922.52 km²</description><Style><IconStyle><scale>0.5</scale><Icon><href>https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href><gx:w>64</gx:w><gx:h>64</gx:h></Icon><hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/></IconStyle><LabelStyle><color>ffffffff</color><scale>0.8</scale></LabelStyle><LineStyle><color>ff000000</color><width>3</width></LineStyle><PolyStyle><color>5c60b700</color></PolyStyle></Style><Polygon><outerBoundaryIs><LinearRing><coordinates>-5.674438476562501,40.325317382812486,0 -3.565063476562499,41.61071777343749,0 -2.9168701171875013,41.20422363281249,0 -2.8289794921875,39.99572753906249,0 -5.674438476562501,40.325317382812486,0</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark><Placemark><ExtendedData><Data name=\"type\"><value>Polygon</value></Data></ExtendedData><Style><IconStyle><scale>0.5</scale><Icon><href>https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href><gx:w>64</gx:w><gx:h>64</gx:h></Icon><hotSpot x=\"20\" y=\"2\" xunits=\"pixels\" yunits=\"pixels\"/></IconStyle><LabelStyle><color>ffffffff</color><scale>0.8</scale></LabelStyle><LineStyle><color>ff000000</color><width>3</width></LineStyle><PolyStyle><color>5c60b700</color></PolyStyle></Style><Polygon><outerBoundaryIs><LinearRing><coordinates>-5.355834960937493,38.6663818359375,0 -4.454956054687503,39.5892333984375,0 -2.916870117187497,39.336547851562486,0 -2.8839111328124982,38.31481933593751,0 -5.355834960937493,38.6663818359375,0</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark></Document></kml>",
+           "img": null,
+           "favorite": false,
+           "validated": false,
+           "revised": false,
+           "userIdRevision": null,
+           "stampRevision": null,
+           "stampCreation": 1546610119774,
+           "formats": null,
+           "styles": [],
+           "metadatas": [],
+           "tags": [],
+           "userOwner": {
+             "id": 86
+           },
+           "WMTS_matrixSet": null,
+           "WMTS_requestEncoding": null,
+           "WMTS_tileGrid": null,
+           "WMTS_dimensions": null,
+           "opacity": 100,
+           "selectedFormat": null,
+           "selectedLanguage": null
+                    }
+                ],
+       "parentNodeId": null,
+       "nodeId": "1"
+            }
+        ],
+   "documents": [],
+   "hasPassword": false
+ }

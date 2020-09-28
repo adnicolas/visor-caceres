@@ -1,0 +1,12 @@
+<div #mapContainer class="ol-map-div" id="{{target}}" (window:resize)="onResize($event)"></div>
+<div class="activeMapContainer" *ngIf="activateControl">
+  <div class="card-control map-unselected" *ngIf="!activeMapToggle">
+    <the-input-switch [(ngModel)]="activeMapToggle" (onChange)="activateMap($event)"
+      toolTip="{{'MAP_CONTAINER.ACTIVATE' | translate}}">
+    </the-input-switch>
+  </div>
+  <div class="card-control map-selected" *ngIf="activeMapToggle">
+    <span>{{'MAP_CONTAINER.ACTIVE' | translate}}</span>
+  </div>
+</div>
+<ng-content></ng-content>

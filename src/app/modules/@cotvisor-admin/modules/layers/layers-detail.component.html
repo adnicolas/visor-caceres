@@ -1,0 +1,190 @@
+<div class="p-grid" *ngIf="layer">
+  <div class="p-col-12 p-md-9">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <div id="preview-map" class="map"></div>
+        <p-message severity="info" [text]='"LAYER_DETAIL.NO_SERVICE" | translate' *ngIf="!layer.service?.url">
+        </p-message>
+      </div>
+      <div class="p-col-12">
+        <!-- Pestañas -->
+        <the-tab-menu [items]="tabs" [activeItem]="activeTab" styleClass='secondary'>
+          <div tabs-content>
+            <div *ngIf="activeTab.id == 'datos'">
+
+              <!-- <form #layerForm="ngForm"> -->
+              <div class='p-grid'>
+                <div class='p-col-12'>
+                  <the-box-title icon='pi pi-list'>{{ 'GLOBAL.PROPERTIES' | translate }}</the-box-title>
+                </div>
+                <div class='p-col-12'>
+                  <small>{{ 'GLOBAL.TITLE' | translate }}</small>
+                  <h3> {{layer.title}}</h3>
+                  <small>{{ 'GLOBAL.NAME' | translate }}</small>
+                  <h4>{{layer.name}}</h4>
+                  <div *ngIf="layer.description">
+                    {{layer.description}}
+                  </div>
+                </div>
+
+                <div class='p-col-12'>
+
+                  <!-- Propiedades -->
+                  <div class="p-grid">
+                    <div class='p-col-8'>
+                      <!-- Propiedades -->
+                      <div class="p-grid">
+
+                        <div class='p-col-12'>
+                          <the-box-title icon='pi pi-window-maximize'>{{ 'GLOBAL.EXTENT' | translate }}
+                          </the-box-title>
+                        </div>
+                        <!--FIXME @ADR: OJO 4326-->
+                        <div class='p-col-12 p-sm-6'>
+                          <!--<the-data-item [dataTitle]='"LAYER_DETAIL.MAXX" | translate' [data]='layer.bboxMaxX'>-->
+                          <the-data-item *ngIf="layer.projection === 'EPSG:4326'; else projectedMaxX"
+                            [dataTitle]='"LAYER_DETAIL.MAXLON" | translate' [data]='layer.bboxMaxY'>
+                          </the-data-item>
+                          <ng-template #projectedMaxX>
+                            <the-data-item [dataTitle]='"LAYER_DETAIL.MAXX" | translate' [data]='layer.bboxMaxX'>
+                            </the-data-item>
+                          </ng-template>
+                        </div>
+                        <div class='p-col-12 p-sm-6'>
+                          <!--<the-data-item [dataTitle]='"LAYER_DETAIL.MAXY" | translate' [data]='layer.bboxMaxY'>-->
+                          <the-data-item *ngIf="layer.projection === 'EPSG:4326'; else projectedMaxY"
+                            [dataTitle]='"LAYER_DETAIL.MAXLAT" | translate' [data]='layer.bboxMaxX'>
+                          </the-data-item>
+                          <ng-template #projectedMaxY>
+                            <the-data-item [dataTitle]='"LAYER_DETAIL.MAXY" | translate' [data]='layer.bboxMaxY'>
+                            </the-data-item>
+                          </ng-template>
+
+                        </div>
+                        <div class='p-col-12 p-sm-6'>
+                          <!--<the-data-item [dataTitle]='"LAYER_DETAIL.MINX" | translate' [data]='layer.bboxMinX'>-->
+                          <the-data-item *ngIf="layer.projection === 'EPSG:4326'; else projectedMinX"
+                            [dataTitle]='"LAYER_DETAIL.MINLON" | translate' [data]='layer.bboxMinY'>
+                          </the-data-item>
+                          <ng-template #projectedMinX>
+                            <the-data-item [dataTitle]='"LAYER_DETAIL.MINX" | translate' [data]='layer.bboxMinX'>
+                            </the-data-item>
+                          </ng-template>
+                        </div>
+                        <div class='p-col-12 p-sm-6'>
+                          <!--<the-data-item [dataTitle]='"LAYER_DETAIL.MINY" | translate' [data]='layer.bboxMinY'>-->
+                          <the-data-item *ngIf="layer.projection === 'EPSG:4326'; else projectedMinY"
+                            [dataTitle]='"LAYER_DETAIL.MINLAT" | translate' [data]='layer.bboxMinX'>
+                          </the-data-item>
+                          <ng-template #projectedMinY>
+                            <the-data-item [dataTitle]='"LAYER_DETAIL.MINY" | translate' [data]='layer.bboxMinX'>
+                            </the-data-item>
+                          </ng-template>
+                        </div>
+                        <div class='p-col-12 p-sm-6'>
+                          <the-data-item [dataTitle]='"LAYER_DETAIL.PROJECTION" | translate' [data]='layer.projection'>
+                          </the-data-item>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='p-col-4'>
+                      <!-- ESCALA -->
+                      <div class="p-grid">
+                        <div class='p-col-12'>
+                          <the-box-title icon='pi pi-window-maximize'>{{ 'LAYER_DETAIL.SCALE' | translate }}
+                          </the-box-title>
+                        </div>
+
+                        <div class='p-col-12 '>
+                          <the-data-item [dataTitle]='"LAYER_DETAIL.MINSCALE" | translate' [data]='layer.minScale'>
+                          </the-data-item>
+                        </div>
+                        <div class='p-col-12 '>
+                          <the-data-item [dataTitle]='"LAYER_DETAIL.MAXSCALE" | translate' [data]='layer.maxScale'>
+                          </the-data-item>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <ng-container *ngIf="layer.languages">
+                  <div class='p-col-12'>
+                    <the-box-title icon='mi language'>{{ 'LAYER_DETAIL.LANGUAGES' | translate }}</the-box-title>
+                  </div>
+                  <div class='p-col-12 p-sm-6'>
+
+                    <div *ngFor='let flagSrc of languagesFlagsSrcArray'>
+                      <img class="flagImg" [src]="flagSrc" />
+                    </div>
+
+                  </div>
+                </ng-container>
+
+
+                <div class='p-col-12'>
+
+                  <div class='p-grid' *ngIf="layer.service">
+                    <div class='p-col-12'>
+                      <the-box-title icon='pi pi-globe'>{{ 'GLOBAL.SERVICE' | translate }}</the-box-title>
+                    </div>
+
+                    <div class='p-col-12 p-sm-6'>
+                      <the-data-item [dataTitle]='"LAYER_DETAIL.SERVICE_TYPE" | translate' [data]='layer.service.type'>
+                      </the-data-item>
+                    </div>
+
+                    <div class='p-col-12 p-sm-6'>
+                      <the-data-item [dataTitle]='"LAYER_DETAIL.SERVICE_TITLE" | translate'
+                        [data]='layer.service.title'>
+                      </the-data-item>
+                    </div>
+
+                    <div class='p-col-12 p-sm-6'>
+                      <the-data-item [dataTitle]='"GLOBAL.URL" | translate' [data]='layer.service.url'>
+                      </the-data-item>
+                    </div>
+
+                    <div class='p-col-12 p-sm-6'>
+                      <the-data-item [dataTitle]='"GLOBAL.DESCRIPTION" | translate' [data]='layer.service.description'>
+                      </the-data-item>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="activeTab.id == 'compartir'">
+              <div class='p-grid'>
+                <div class='p-col-12'>
+                  <cot-share-options [resourceType]='resourceTypes.LAYER' [resourceId]='layer.id'>
+                    <!--*loggedUserCan="{ action: resourceActions.ADMIN,
+      resourceId: layer.id, resourceType: resourceTypes.LAYER, resourceOwner: layer.userOwner }"-->
+                  </cot-share-options>
+                </div>
+              </div>
+            </div>
+          </div>
+        </the-tab-menu>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="p-col-12 p-md-3">
+    <the-overview-box class="p-col-12" [title]="'LAYER_DETAIL.RETURN'|translate" [icon]='"mi reply"'
+      [routerLink]="'/capas'">
+    </the-overview-box>
+    <!-- FECHAS -->
+    <the-item icon="pi pi-calendar" [title]="'LAYER_DETAIL.CREATION_DATE' | translate"
+      [subTitle]='layer.stampCreation|date :"short"'>
+    </the-item>
+    <br/>
+
+    <the-button (onClick)="deleteLayer()" [label]="'BUTTON.DELETE_' | translate">
+      <!-- *loggedUserCan="{ action: resourceActions.ADMIN,
+      resourceId: layer.id, resourceType: resourceTypes.LAYER, resourceOwner: layer.userOwner }" -->
+    </the-button>
+  </div>
+
+</div>

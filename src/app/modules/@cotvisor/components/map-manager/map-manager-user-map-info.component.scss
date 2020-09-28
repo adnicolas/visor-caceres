@@ -1,0 +1,32 @@
+app-map-manager-user-map-info {
+  ion-label.label.label-md.ng-star-inserted {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .item-md.item-block .item-inner {
+    border: none;
+  }
+
+  .map-title {
+    font-weight: bold;
+  }
+
+  .map-properties {
+    line-height: 1.3rem;
+  }
+
+  ion-note.note {
+    font-size: 1rem;
+  }
+
+  button.button#properties_button {
+    position: absolute;
+    margin: 0;
+    top: 5px;
+    right: 5px;
+    width: 21px;
+    height: 21px;
+    color: #c8c8c8;
+  }
+}

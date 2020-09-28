@@ -1,0 +1,6 @@
+<!--component html goes here -->
+<the-button icon="pi pi-chevron-left" [tooltip]="tooltipPrev" [disabled]="index <= 0" (onClick)="previousView()">
+</the-button>
+<the-button icon="pi pi-chevron-right" [tooltip]="tooltipNext" [disabled]="index===(viewHistory.length -1)"
+  (onClick)="nextView()">
+</the-button>

@@ -1,0 +1,130 @@
+@import 'variables';
+
+#user-location-overlay {
+  box-shadow: none;
+  background-color: $primaryBg;
+  opacity: 0.9;
+  color: $primaryFg;
+  padding: 10px;
+}
+
+.popup-content {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.popup-footer {
+  text-align: center;
+}
+
+.popup-row {
+  color: $secondaryFg;
+
+  span {
+    color: $primaryFg;
+  }
+}
+
+.user-location-title {
+  margin-right: 5px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $tertiaryFg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-location-input-label {
+  margin-right: 10px;
+}
+
+.user-location-input-container {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.user-location-geog-info-label {
+  margin-left: 5px;
+}
+
+.popup-label {
+  color: $secondaryColorStrong;
+  margin-right: 5px;
+}
+
+.popup-icon-button {
+  font-size: 1.4em;
+}
+
+.popup-icon-button:hover {
+  color: $tertiaryBg;
+  cursor: pointer;
+}
+
+.copy-button {
+  margin-left: auto;
+}
+
+.coord-spinner {
+  font-size: 1em;
+}
+
+//poups
+.ol-popup {
+  position: absolute;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  border-radius: $borderRadius;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 250px;
+}
+
+.ol-popup::after,
+.ol-popup::before {
+  top: 100%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-popup::after {
+  border-top-color: $primaryBg;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+.ol-popup::before {
+  border-top-color: $primaryBg;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  z-index: 2;
+}
+
+.ol-popup-closer::after {
+  content: '✖';
+}
+
+.user-location-geog-info {
+  // text-align: right;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.user-location-geog-info-title {
+  margin-bottom: 0.5rem;
+}

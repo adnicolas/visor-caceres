@@ -1,13 +1,152 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="utf-8">
-  <title>VisorCaceres</title>
+  <title>Visor Cáceres</title>
   <base href="/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Gruppo|Montserrat&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <app-root></app-root>
+
+<body class="nr_48y">
+  <gss-root>
+    <style type="text/css">
+      html,
+      body {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body gss-root {
+        background: #e9edf2;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      gss-root {
+        display: flex;
+      }
+
+      .loading {
+        text-align: center;
+        width: 50%;
+        height: 50%;
+      }
+
+      .loading h2 {
+        color: rgb(129, 129, 129);
+        margin: 0;
+        font: 0.8em verdana;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .loading #tierra {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .loading img.logo {
+        width: 40%;
+
+      }
+
+
+      /*
+* Loading Dots
+* Can we use pseudo elements here instead :after?
+*/
+      .loading span {
+        display: inline-block;
+        vertical-align: middle;
+        width: 0.6em;
+        height: 0.6em;
+        margin: 0.19em;
+        background: #468ac2;
+        border-radius: 0.6em;
+        animation: loading 1s infinite alternate;
+      }
+
+      /*
+* Dots Colors
+* Smarter targeting vs nth-of-type?
+*/
+      .loading span:nth-of-type(2) {
+        background: #f06292;
+        animation-delay: 0.2s;
+      }
+
+      .loading span:nth-of-type(3) {
+        background: #4dd0e1;
+        animation-delay: 0.4s;
+      }
+
+      .loading span:nth-of-type(4) {
+        background: #ffd54f;
+        animation-delay: 0.6s;
+      }
+
+      .loading span:nth-of-type(5) {
+        background: #e91e63;
+        animation-delay: 0.8s;
+      }
+
+      .loading span:nth-of-type(6) {
+        background: #00bcd4;
+        animation-delay: 1s;
+      }
+
+      .loading span:nth-of-type(7) {
+        background: #ffc107;
+        animation-delay: 1.2s;
+      }
+
+      /*
+* Animation keyframes
+* Use transition opacity instead of keyframes?
+*/
+      @keyframes loading {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+    </style>
+
+    <div class="loading">
+
+      <img id="tierra" src='./assets/images/tierra3.svg'>
+
+      <div class="logos">
+        <img class="logo xunta" src='./assets/images/cotesa-trans.svg'>
+        <img class="logo" src='./assets/images/tecopy-trans.svg'>
+      </div>
+      <h2>Visor Cáceres</h2>
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </gss-root>
+
 </body>
+
 </html>

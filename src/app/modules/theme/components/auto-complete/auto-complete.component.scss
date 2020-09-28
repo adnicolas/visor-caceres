@@ -1,0 +1,17 @@
+the-auto-complete {
+  //   width: 100%;
+  // display: flex;
+  //   overflow: hidden;
+
+  p-autocomplete {
+    max-width: 100%;
+  }
+
+  .ui-autocomplete {
+    display: block;
+
+    input.ui-autocomplete-input {
+      max-width: 100%;
+    }
+  }
+}

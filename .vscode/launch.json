@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense para saber los atributos posibles.
+  // Mantenga el puntero para ver las descripciones de los existentes atributos
+  // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Carga por defecto",
+      "url": "http://localhost:4200/visor",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "runtimeArgs": [
+            "/a --allow-file-access-from-files --user-data-dir --allow-running-insecure-content --ignore-certificate-errors",
+        "-incognito", "--disable-web-security"
+        ],
+  },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Carga mapa 225",
+      "url": "http://localhost:4200/visor?map=225",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
+}]
+}

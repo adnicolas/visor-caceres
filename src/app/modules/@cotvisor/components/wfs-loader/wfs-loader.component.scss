@@ -1,0 +1,14 @@
+ @import 'variables';
+
+
+ .flex {
+   display: flex;
+ }
+
+ .title-container {
+   display: flex;
+   align-items: center;
+   background-color: $tertiaryBg;
+   color: $tertiaryFg;
+   padding: 0.5em;
+ }

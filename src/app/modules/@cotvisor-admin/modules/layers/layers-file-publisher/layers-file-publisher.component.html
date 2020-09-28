@@ -1,0 +1,15 @@
+    <form [formGroup]="layerForm" class="p-grid">
+      <the-input-group class="p-col-12 p-col-sm-8"
+        placeholder="{{ 'LOCAL_LAYER_PUBLISHER.NAME_PLACEHOLDER' | translate }}" iconInput='mi layers'
+        formControlName="name">
+      </the-input-group>
+      <the-input-file class="p-col-12 p-col-sm-8" [disabled]='loading' [accept]="filesAcepted"
+        formControlName="geomFile" (fileChanged)='changeFile($event)'>
+      </the-input-file>
+    </form>
+    <the-toolbar-container itemsAlign="right">
+      <the-button [showSpinner]='layersService.loading$|async'
+        label="{{ 'LOCAL_LAYER_PUBLISHER.BUTTON_PUBLISH' | translate }}" [disabled]='layerForm.invalid'
+        (onClick)='publish()'>
+      </the-button>
+    </the-toolbar-container>

@@ -1,0 +1,90 @@
+<the-full-panel [panelName]='panelName' position='right'>
+  <div panel-content>
+    <div class="p-grid">
+      <div class="p-col">
+
+        <the-card title="título" subtitle="Subtítulo">
+          <div card-header>
+            <img src="Card" src="assets/images/examples/usercard.png">
+          </div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae
+            numquam
+            deserunt
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+            quas!
+            <div card-footer>
+              <the-button label="Guardar" icon="pi pi-check"></the-button>
+              <the-button label="Cancelar" icon="pi pi-times"></the-button>
+            </div>
+        </the-card>
+
+      </div>
+      <div class="p-col">
+        <the-fieldset [title]='"Título"'>
+          <p fieldset-header>
+            Contenido adicional al titulo</p>
+          <div class="p-grid p-dir-col-rev">
+            <div class="p-col">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                <the-input-text placeholder="Username"></the-input-text>
+              </div>
+            </div>
+            <div class="p-col">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon">$</span>
+                <the-input-text placeholder="Price"></the-input-text>
+                <span class="ui-inputgroup-addon">.00</span>
+              </div>
+            </div>
+            <div class="p-col">
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                <the-input-text placeholder="Username"></the-input-text>
+              </div>
+            </div>
+            <div class="p-col">
+              <the-input-text [(ngModel)]="name"></the-input-text>
+            </div>
+          </div>
+
+        </the-fieldset>
+      </div>
+      <div class="p-col">
+        <h3>Lista</h3>
+        <the-list-box [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></the-list-box>
+        Opcion seleccionada (ngModel): {{selectedCity?.name}} - {{selectedCity?.code}}
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col">
+        <h3>Data Table Edición online</h3>
+        <the-datatable title='coches' [usePaginator]='true' [editInline]='true' [values]='cars' dataKey="carID"
+          [cols]='carCols' (rowSelectEvent)='logSelect($event)' (rowSaveEvent)='logSave($event)'
+          (rowDetailEvent)="logDetail($event)" (rowDeleteEvent)='logDelete($event)' (rowAddEvent)='logAdd($event)'>
+        </the-datatable>
+      </div>
+      <div class="p-col">
+        <h3>Data Table Sin Edición online, emite eventos</h3>
+        <the-datatable title='coches' [usePaginator]='true' [editInline]='false' [values]='cars' dataKey="carID"
+          [cols]='carCols' (rowSelectEvent)='logSelect($event)' (rowSaveEvent)='logSave($event)'
+          (rowDetailEvent)="logDetail($event)" (rowDeleteEvent)='logDelete($event)' (rowAddEvent)='logAdd($event)'>
+        </the-datatable>
+      </div>
+      <div class="p-col">
+        <h3>Data Table sólo lectura</h3>
+        <the-datatable title='coches' [usePaginator]='true' [readonly]='true' [values]='cars' dataKey="carID"
+          [cols]='carCols' (rowSelectEvent)='logSelect($event)' (rowSaveEvent)='logSave($event)'
+          (rowDetailEvent)="logDetail($event)" (rowDeleteEvent)='logDelete($event)' (rowAddEvent)='logAdd($event)'>
+        </the-datatable>
+      </div>
+    </div>
+
+
+  </div>
+  <div panel-footer>
+    <the-button label="Save" styleClass="ui-button-success"></the-button>
+    <the-button label="Cancel" styleClass="ui-button-secondary"></the-button>
+  </div>
+
+</the-full-panel>

@@ -1,1 +1,132 @@
+@import 'variables';
+
 /* You can add global styles to this file, and also import other style files */
+html,
+body.nr_48y {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* TOOLTIPS DEL MAPA*/
+.ol-tooltip {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: $borderRadius;
+  color: white;
+  padding: 4px 8px;
+  opacity: 0.8;
+  white-space: nowrap;
+  font-size: 12px;
+
+  &.ol-tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+  }
+
+  &.ol-tooltip-static {
+    opacity: 0.9;
+    background-color: $primaryBg;
+    color: $primaryFg;
+    border: 1px solid $primaryBg;
+    box-shadow: 6px -3px 5px 0 #0000007d;
+
+  }
+
+  &.ol-tooltip-measure::before,
+  &.ol-tooltip-static::before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+  }
+
+  &.ol-tooltip-static::before {
+    border-top-color: $primaryBg;
+  }
+}
+
+
+// configuracion de estilos al imprimir
+@media print {
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .scroll-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ui-scrollpanel-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .ui-scrollpanel {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ui-scrollpanel-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #mapPrinterContainer {
+    border: none;
+    position: relative;
+    margin: 0;
+  }
+
+  .p-grid {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ui-scrollpanel-bar {
+    display: none;
+  }
+
+  .ui-sidebar {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .noprint {
+    display: none;
+  }
+}
+
+@page {
+  .a4 {
+    size: A4;
+    margin: 0;
+  }
+
+  .a4_landscape {
+    size: A4 landscape;
+    margin: 0;
+  }
+}

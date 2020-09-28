@@ -1,0 +1,16 @@
+{
+  "editor.formatOnPaste": true,
+
+  "search.exclude": {
+    "**/docs": true
+  },
+  "workbench.settings.openDefaultKeybindings": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "docthis.includeAuthorTag": true,
+  "docthis.authorName": "Centro de Observación y Teledetección Espacial, S.L.U.",
+  "editor.formatOnSave": true,
+}

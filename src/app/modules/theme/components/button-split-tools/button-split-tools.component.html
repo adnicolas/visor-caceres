@@ -1,0 +1,20 @@
+<div class="split-button-container">
+  <p-button #splitButton [icon]="icon" [pTooltip]="tooltip" tooltipPosition="top" (onClick)='split($event)'
+    [styleClass]="styleClass" [disabled]="disabled">
+    <div class="split-indicator {{direction}}" *ngIf="!buttonsVisible">
+      <i class="pi pi-caret-right" *ngIf="direction == 'right'"></i>
+      <i class="pi pi-caret-left" *ngIf="direction == 'left'"></i>
+      <i class="pi pi-caret-up" *ngIf="direction == 'top'"></i>
+      <i class="pi pi-caret-down" *ngIf="direction == 'bottom'"></i>
+    </div>
+  </p-button>
+  <div *ngIf="buttonItems" class="menu-items-container {{direction}}" #splitButton [ngClass]="{'open': buttonsVisible}">
+    <ng-container *ngFor="let buttonItem of buttonItems">
+      <p-button *ngIf="buttonItem.visible" [icon]="buttonItem.icon" [pTooltip]="buttonItem.label"
+        (onClick)=itemClick($event,buttonItem) tooltipPosition="top" [disabled]="buttonItem.disabled"
+        [styleClass]="buttonItem.styleClass">
+      </p-button>
+    </ng-container>
+  </div>
+
+</div>

@@ -1,0 +1,4 @@
+<the-overview-box [title]="'Visores creados'"
+  value="{{ viewConfigsService.viewConfigsCount$ | async }} {{ 'VIEW_CONFIGS.TITLE' | translate }} "
+  [icon]="(viewConfigsService.loading$ | async) ? 'pi pi-spin pi-spinner' : 'mi desktop-windows'"
+  [styleClass]="'hightlight3'" [routerLink]="'/visores'"></the-overview-box>

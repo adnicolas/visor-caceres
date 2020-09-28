@@ -1,0 +1,23 @@
+<div class="p-grid p-align-center aoi-item item-container item-container--hidden_buttons">
+  <div class="p-col-fixed aoi-icon item-container__icon">
+    <i class="fas fa-vector-square"> </i>
+  </div>
+  <div class="p-col aoi-data">
+    <div class="p-grid p-nogutter">
+      <div class="p-col-12 item-container__title">
+        {{aoi.name}}
+      </div>
+      <div class="p-col-12 item-container__subtitle">
+        <i class="pi pi-save"></i>
+        {{aoi.timeStamp | date : 'dd/MM/yy hh:mm'}}
+      </div>
+    </div>
+  </div>
+  <div class="p-col-fixed">
+    <the-button icon="far fa-object-group" [small]='true' (onClick)=setAOI() tooltip="{{'AOI.SET' | translate}}">
+    </the-button>
+    <the-button icon="pi pi-trash" [small]='true' styleClass='ui-button-danger' (onClick)=deleteAOI()
+      tooltip="{{'GLOBAL.DELETE_' | translate}}">
+    </the-button>
+  </div>
+</div>

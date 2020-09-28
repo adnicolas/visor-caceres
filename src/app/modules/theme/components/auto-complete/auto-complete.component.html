@@ -1,0 +1,9 @@
+<p-autoComplete [(ngModel)]="value" [suggestions]="suggestions" (completeMethod)="emitComplete($event)"
+  (ngModelChange)="handleValueChange($event)" [dropdown]="dropdown" [emptyMessage]="emptyMessage"
+  [placeholder]="placeholder" [minLength]="minLength" [field]="field" (onKeyUp)="emitKeyUp($event)" [size]="size"
+  [name]="name">
+
+  <ng-template #rowsTemplate let-item pTemplate="listItem">
+    <ng-template *ngTemplateOutlet="itemsTemplate;context:{rowItem:item}"> </ng-template>
+  </ng-template>
+</p-autoComplete>

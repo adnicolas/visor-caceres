@@ -1,0 +1,97 @@
+@import 'variables';
+
+:host {
+  display: inline;
+  // margin: $defaultPadding;
+}
+
+.box-container {
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
+}
+
+.box-container .box-container-header {
+  min-height: 36px;
+  background-color: $secondaryFg;
+  padding: 0 30px;
+}
+
+.box-container .box-container-content {
+  padding: 8px 14px 14px;
+  background-color: darken($secondaryFg, $colorModificationPercent);
+}
+
+
+.box-container.hightlight1 .box-container-content .box-container-icon {
+  background-color: darken($secondaryFg, $colorModificationPercent);
+}
+
+
+.box-container .box-container-content .box-container-icon {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  margin-top: -40px;
+}
+
+.box-container .box-container-content .box-container-icon i {
+  line-height: inherit;
+  font-size: 70px;
+}
+
+.box-container.hightlight1 .box-container-header {
+  background-color: $BoxPrimaryHeader;
+}
+
+.box-container.hightlight1 .box-container-content {
+  background-color: $BoxPrimaryContent;
+}
+
+.box-container.hightlight1 .box-container-content .box-container-icon {
+  background-color: $BoxPrimaryIcon;
+}
+
+.box-container.hightlight2 .box-container-header {
+  background-color: $BoxSecondaryHeader;
+}
+
+.box-container.hightlight2 .box-container-content {
+  background-color: $BoxSecondaryContent;
+}
+
+.box-container.hightlight2 .box-container-content .box-container-icon {
+  background-color: $BoxSecondaryIcon;
+}
+
+.box-container.hightlight3 .box-container-header {
+  background-color: $BoxTertiaryHeader;
+}
+
+.box-container.hightlight3 .box-container-content {
+  background-color: $BoxTertiaryContent;
+}
+
+.box-container.hightlight3 .box-container-content .box-container-icon {
+  background-color: $BoxTertiaryIcon;
+}
+
+.box-container.hightlight4 .box-container-header {
+  background-color: $BoxQuaternaryHeader;
+}
+
+.box-container.hightlight4 .box-container-content {
+  background-color: $BoxQuaternaryContent;
+}
+
+.box-container.hightlight4 .box-container-content .box-container-icon {
+  background-color: $BoxQuaternaryIcon;
+}
+
+.box-container-header-container {
+  line-height: $fontBiggerSize;
+  font-size: $fontBiggerSize;
+  padding-bottom: 0.6em;
+}

@@ -1,0 +1,31 @@
+  @import 'variables';
+
+  .generic-search-container {
+    display: flex;
+
+    .resultList {
+      // border: map-get($colors, primary) solid 1px;
+      border-top: 0;
+      background-color: $primaryFg;
+      width: 100%;
+      overflow-y: auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      max-height: 40rem;
+      opacity: 0.9;
+
+      a.item {
+        .label {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .search-result-item {
+    border-bottom: 1px solid $primaryFg;
+  }
+
+  .search-result-address {
+    text-align: left;
+  }

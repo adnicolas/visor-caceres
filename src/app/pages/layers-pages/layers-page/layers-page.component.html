@@ -1,0 +1,31 @@
+<div class='dashboard-container'>
+  <div class="p-grid">
+    <div class=" p-col-12 p-sm-3">
+      <div class='p-grid'>
+        <the-overview-box class="p-col-12" [title]='"Volver al dashboard"' [icon]='"mi reply"'
+          [routerLink]="'/dashboard'"></the-overview-box>
+        <div class="p-col-12">
+          <gss-layers-summary></gss-layers-summary>
+        </div>
+        <!--<the-overview-box class="p-col-12" [title]='"_Creadas"' [value]="'1Kg'" [icon]='"mi layers"'
+          [styleClass]="'hightlight2'"></the-overview-box>-->
+        <!--<the-overview-box class="p-col-6" [title]='"_Publicadas"' [value]="'5 Capas'" [icon]='"mi layers"'
+          [styleClass]="'hightlight1'"></the-overview-box>
+        <the-overview-box class="p-col-6" [title]='"_Sin publicar"' [value]="'42 Capas'" [icon]='"mi layers"'
+          [styleClass]="'hightlight3'"></the-overview-box>-->
+        <the-box-panel styleClass='hightlight3' [title]="'LOCAL_LAYER_PUBLISHER.BOX_TITLE' | translate"
+          icon='pi pi-cloud-upload' class="p-col-12">
+          <gss-layer-shp-publish-card></gss-layer-shp-publish-card>
+        </the-box-panel>
+      </div>
+
+    </div>
+    <div class="p-col-12 p-sm-9">
+      <div class='p-grid'>
+        <gss-layers-list></gss-layers-list>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIXME No debería ser necesario cargar el the-confirm-dialog en cada página , debería bastar con cargarlo en el layout pero en layout no funciona  -->
+<the-confirm-dialog></the-confirm-dialog>

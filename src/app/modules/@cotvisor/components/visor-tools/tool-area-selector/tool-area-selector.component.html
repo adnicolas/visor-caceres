@@ -1,0 +1,26 @@
+<!-- <the-button-split icon="fas fa-edit" [tooltip]="tooltip" styleClass='tool' [menuItems]='splitButtonItems'>
+</the-button-split> -->
+<the-button-split-tools [direction]="direction" icon="fas fa-pencil-ruler" [active]='isActive'
+  tooltip="{{'TOOLS.AREA_SELECTOR' | translate}}" styleClass='tool ui-button-primary' [buttonItems]='splitButtonItems'>
+</the-button-split-tools>
+
+
+<!-- Overlay de ayuda -->
+<div #mouseOverlay [hidden]="!areaType" class="ol-tooltip ol-tooltip-measure">
+  <span *ngIf="(areaType === 'Polygon' || areaType === 'Rectangle') && !isDrawing">{{'TOOLS.INIT_GEOMETRY_HELP' | translate}}</span>
+  <span *ngIf="areaType === 'Polygon' && isDrawing">{{'TOOLS.END_POLYGON_HELP' | translate}}</span>
+  <span *ngIf="areaType === 'Circle' && !isDrawing">{{'TOOLS.INIT_CIRCLE_HELP' | translate}}</span>
+  <span *ngIf="(areaType === 'Circle' || areaType ===  'Rectangle') && isDrawing">{{'TOOLS.END_GEOMETRY_HELP' | translate}}</span>
+</div>
+
+<!-- Modal para añadir shp/kml -->
+<the-dialog appendTo="body" header="{{'TOOLS.AREA_SELECTOR.ADD_LAYER' | translate}}" [(visible)]="showLayerLoader"
+  styleClass="responsiveDialog autoDimensions" [modal]="false">
+
+  <!-- subir archivos -->
+  <the-file-upload customUpload='true' (uploadEvent)="loadLayer()" (fileChangedEvent)="changeFile($event.files[0])"
+    [accept]="fileFormatsAccepts" chooseLabel="{{'FILE_UPLOADER.CHOOSE' | translate}}"
+    uploadLabel="{{'FILE_UPLOADER.UPLOAD' | translate}}" cancelLabel="{{'FILE_UPLOADER.CANCEL' | translate}}">
+  </the-file-upload>
+
+</the-dialog>

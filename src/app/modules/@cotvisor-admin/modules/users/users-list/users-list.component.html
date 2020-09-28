@@ -1,0 +1,4 @@
+<the-datatable [usePaginator]='true' [editInline]='false' [values]='users' [readonly]='false' [allowAdd]='false'
+  [loading]="usersService.loading$ | async" dataKey="id" [cols]='usersCols' (rowDetailEvent)="emitGoToUser($event)"
+  (rowDeleteEvent)='deleteUser($event)' styleClass="user-list" (rowSelectEvent)='emitSelectedUser($event)'>
+</the-datatable>
