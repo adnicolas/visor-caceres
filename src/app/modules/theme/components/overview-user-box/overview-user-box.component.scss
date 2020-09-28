@@ -1,7 +1,5 @@
 @import 'variables';
 
-// TODO convertri a SASS
-
 .overview-box {
   text-align: center;
   color: #ffffff;
@@ -65,14 +63,14 @@
 
 .overview-box {
   .overview-box-header {
-    background-color: #9e9e9e;
+    background-color: $secondaryFg;
   }
 
   .overview-box-content {
-    background-color: #616161;
+    background-color: darken($secondaryFg, $colorModificationPercent);
 
     .overview-box-icon {
-      background-color: #616161;
+      background-color: darken($secondaryFg, $colorModificationPercent);
     }
   }
 }
@@ -81,42 +79,42 @@
 .overview-box.hightlight1 {
   .overview-box-header {
 
-    background-color: #f06292;
+    background-color: $BoxPrimaryHeader;
   }
 
   .overview-box-content {
-    background-color: #e91e63;
+    background-color: $BoxPrimaryContent;
 
     .overview-box-icon {
-      background-color: #e91e63;
+      background-color: $BoxPrimaryIcon;
     }
   }
 }
 
 .overview-box.hightlight2 {
   .overview-box-header {
-    background-color: #4dd0e1;
+    background-color: $BoxSecondaryHeader;
   }
 
   .overview-box-content {
-    background-color: #00bcd4;
+    background-color: $BoxSecondaryContent;
 
     .overview-box-icon {
-      background-color: #00bcd4;
+      background-color: $BoxSecondaryIcon;
     }
   }
 }
 
 .ov .overview-box.hightlight3 .overview-box-header {
-  background-color: #ffd54f;
+  background-color: $BoxTertiaryHeader;
 }
 
 .overview-box.hightlight3 .overview-box-content {
-  background-color: #ffc107;
+  background-color: $BoxTertiaryContent;
 }
 
 .overview-box.hightlight3 .overview-box-content .overview-box-icon {
-  background-color: #ffc107;
+  background-color: $BoxTertiaryIcon;
 }
 
 
