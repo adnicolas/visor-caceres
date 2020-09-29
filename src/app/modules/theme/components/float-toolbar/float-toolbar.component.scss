@@ -9,6 +9,8 @@ p-toolbar.float-toolbar {
   align-items: center;
 
   .ui-button-icon-only {
+    margin-left: 5px;
+    border-radius: $borderRadius;
     width: 6vh;
     height: 6vh;
     max-width: 2.5rem;
@@ -36,6 +38,11 @@ p-toolbar.float-toolbar {
   &.top {
     margin-top: 0.5rem;
     flex-direction: row;
+    right: 8px;
+
+    &.center {
+      right: 38.5%;
+    }
 
     .ui-toolbar {
       .buttons-container {

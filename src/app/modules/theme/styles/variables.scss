@@ -13,7 +13,7 @@ sans-serif;
 $fontSize: 1em; //Tamaño normal de fuente
 $fontBiggerSize: 2em;
 $fontReducedSize: 0.8em; //fuente reducida
-$borderRadius: 0;
+$borderRadius: 10px;
 $disabledOpacity: 0.35;
 $headerHeight: 48px; //alto de la cabecera
 $colorModificationPercent: 10%; //Porcentaje para aclarar u oscurecer colores con lighten o darken
@@ -21,7 +21,7 @@ $defaultPadding: 0.5em;
 $smallButton:28px;
 
 //Declaracion de colores básicos
-$primaryFg:#5b252d;
+$primaryFg:#842c30;
 $primaryBg:#f9f9f9;
 $secondaryFg:#973a3a;
 $secondaryBg:#ffffff;

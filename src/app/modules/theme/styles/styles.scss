@@ -280,6 +280,7 @@ severity color for its background. */
 
   &.ui-state-default {
     &.ui-button-primary {
+      border-radius: $borderRadius;
       background-color: $stateDefaultBgColor;
       border: 1px solid $stateDefaultBorderColor;
       color: $stateDefaultTextColor;
@@ -367,8 +368,7 @@ severity color for its background. */
   .ui-state-active.ui-state-focus {
 
     &.ui-button-primary {
-
-
+      border-radius: $borderRadius;
       background-color: darken($stateDefaultTextColor, $colorModificationPercent);
       border-color: darken($stateDefaultTextColor, $colorModificationPercent);
       color: $stateDefaultBgColor;
@@ -420,6 +420,7 @@ severity color for its background. */
   color: $toasterTextColor;
 
   .ui-toast-message {
+    border-radius: $borderRadius;
     overflow: auto;
     max-height: 80vh;
 
@@ -455,7 +456,7 @@ way too small otherwise. */
 }
 
 .ui-corner-all {
-  border-radius: $borderRadius;
+  border-radius: 0; // $borderRadius;
 }
 
 .ui-fieldset {

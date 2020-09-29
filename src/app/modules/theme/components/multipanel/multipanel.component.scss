@@ -3,7 +3,7 @@
 p-toolbar {
   &.multipanel-toolbar {
     position: absolute;
-    right: 0;
+    left: 0;
     top: $headerHeight;
     height: calc(100% - #{$headerHeight});
     background-color: $primaryBg;
@@ -32,6 +32,17 @@ p-toolbar {
 
   &.ui-sidebar-right {
     right: 40px;
+    top: $headerHeight;
+    height: calc(100% - #{$headerHeight});
+    width: calc(100% - 2.5rem);
+    max-width: 350px;
+    border-right: 1px solid lighten($primaryBg, $colorModificationPercent);
+    margin: 0;
+    padding: 0 $sidebarDefaultPadding;
+  }
+
+  &.ui-sidebar-left {
+    left: 40px;
     top: $headerHeight;
     height: calc(100% - #{$headerHeight});
     width: calc(100% - 2.5rem);
