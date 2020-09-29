@@ -6,11 +6,13 @@ the-box-panel {
   padding: 0 3px;
 
   .ui-panel {
+    border-radius: $borderRadius;
     //box-shadow: 3px 3px 5px 0 rgba(45, 45, 45, 0.24);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.14);
     padding: 0;
 
     .ui-panel-titlebar {
+      border-radius: $borderRadius $borderRadius 0 0;
       border-width: 0;
       padding: 0 0.75em 0.2em;
       color: $tertiaryFg;

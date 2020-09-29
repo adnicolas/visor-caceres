@@ -1,7 +1,7 @@
 @import 'variables';
 
 the-box-title {
-
+  border-radius: $borderRadius;
   display: block;
   background-color: $BoxPrimaryHeader;
 
@@ -16,6 +16,7 @@ the-box-title {
     padding-top: 10px;
 
     .box-title__container {
+      border-radius: 0 0 $borderRadius $borderRadius;
       background: $BoxPrimaryContent;
       font-weight: bold;
       padding-bottom: 0.2em;

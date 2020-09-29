@@ -41,6 +41,7 @@ div.tab-container {
   }
 
   .tabs-content {
+    border-radius: 0 0 $borderRadius $borderRadius;
     padding: 0.5em;
     display: inline-block;
     width: 100%;

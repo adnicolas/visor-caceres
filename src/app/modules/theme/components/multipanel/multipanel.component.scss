@@ -17,6 +17,7 @@ p-toolbar {
       button.multipanel-button,
       div.ui-togglebutton {
         display: flex;
+        border-radius: 0 !important;
 
       }
 

@@ -456,7 +456,7 @@ way too small otherwise. */
 }
 
 .ui-corner-all {
-  border-radius: 0; // $borderRadius;
+  border-radius: $borderRadius;
 }
 
 .ui-fieldset {
