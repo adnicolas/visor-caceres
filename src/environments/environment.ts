@@ -7,7 +7,7 @@ import { NgxLoggerLevel } from 'ngx-logger';
 export const environment = {
   production: false,
   app_name_enviroment: 'local',
-  app_name: 'VisorCáceres',
+  app_name: 'Cáceres - Propuesta 1',
   apis: {
     geospatialAPI: {
       baseUrl: '',
