@@ -1,50 +1,54 @@
 <!-- capas -->
 
 <!-- Botones de capas-->
-<the-toolbar-container>
+<the-toolbar-container itemsAlign="darkMode">
   <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.CREATE_LAYER' | translate }}" (onClick)="activateCreate()"
-    [icon]="'pi pi-plus'">
+    [icon]="'pi pi-plus'" styleClass="ui-button-primary-inverse">
   </the-button>
   <the-button [small]='true' tooltip="{{ 'LAYERS.DELETE' | translate }}" [disabled]="!selectedVsLayer"
-    (onClick)="_showConfirmDeleteLayer()" [icon]="'pi pi-minus'">
+    (onClick)="_showConfirmDeleteLayer()" [icon]="'pi pi-minus'" styleClass="ui-button-primary-inverse">
   </the-button>
 
   <cot-vector-layers-editor-save-as [layerProjection]='selectedVsLayer?.projection' [vsLayer]='selectedVsLayer'>
   </cot-vector-layers-editor-save-as>
 
   <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.SAVE_TOGEO' | translate }}"
-    [disabled]="selectedVsLayer?.sourceType!=='WFS'" (onClick)="confirmSaveLayer()" [icon]="'pi pi-save'"></the-button>
+    [disabled]="selectedVsLayer?.sourceType!=='WFS'" (onClick)="confirmSaveLayer()" [icon]="'pi pi-save'"
+    styleClass="ui-button-primary-inverse"></the-button>
 
   <the-button [small]='true' tooltip="{{ 'LAYER_EDITOR.RESET_BUTTON' | translate }}"
-    [disabled]="selectedVsLayer?.sourceType!=='WFS' || !dirty" (onClick)="confirmResetLayer()" [icon]="'fas
-    fa-undo-alt'">
+    [disabled]="selectedVsLayer?.sourceType!=='WFS' || !dirty" (onClick)="confirmResetLayer()" [icon]="'fa fa-undo-alt'"
+    styleClass="ui-button-primary-inverse">
   </the-button>
 
   <!-- TODO @joe Mejorar con componente del tema -->
-  <p-toggleButton [styleClass]="'small'" (onChange)="handleDraw()" [offIcon]="'fas fa-pen'" onLabel='' offLabel=''
-    [onIcon]="'fas fa-pen'" [(ngModel)]="drawingStatus" pTooltip="{{ 'LAYER_EDITOR.DRAW_GEOMETRY' | translate }}"
-    [disabled]="!selectedVsLayer">
+  <p-toggleButton [styleClass]="'small ui-button-primary-inverse'" (onChange)="handleDraw()" [offIcon]="'fas fa-pen'"
+    onLabel='' offLabel='' [onIcon]="'fas fa-pen'" [(ngModel)]="drawingStatus"
+    pTooltip="{{ 'LAYER_EDITOR.DRAW_GEOMETRY' | translate }}" [disabled]="!selectedVsLayer">
   </p-toggleButton>
-  <p-toggleButton [styleClass]="'small'" (onChange)="handleModify()" [onIcon]="'fas fa-edit'" [offIcon]="'fas fa-edit'"
-    onLabel='' offLabel='' [(ngModel)]="modifyingStatus" pTooltip="{{ 'LAYER_EDITOR.MODIFY_GEOMETRY' | translate }}"
-    [disabled]="!selectedVsLayer">
+  <p-toggleButton [styleClass]="'small ui-button-primary-inverse'" (onChange)="handleModify()" [onIcon]="'fas fa-edit'"
+    [offIcon]="'fas fa-edit'" onLabel='' offLabel='' [(ngModel)]="modifyingStatus"
+    pTooltip="{{ 'LAYER_EDITOR.MODIFY_GEOMETRY' | translate }}" [disabled]="!selectedVsLayer">
   </p-toggleButton>
 
   <the-button *ngIf="selectedFeature" [small]='true' icon="pi pi-trash"
-    tooltip="{{ 'LAYER_EDITOR.DELETE_GEOMETRY' | translate }}" (onClick)="removeSelectedFeatures()">
+    tooltip="{{ 'LAYER_EDITOR.DELETE_GEOMETRY' | translate }}" (onClick)="removeSelectedFeatures()"
+    styleClass="ui-button-primary-inverse">
   </the-button>
   <the-button *ngIf="selectedFeature " [small]='true' icon="pi pi-table"
-    tooltip="{{ 'LAYER_EDITOR.ATTRIB_TABLE' | translate }}" (onClick)="editSelectedFeaturesAttributes()">
+    tooltip="{{ 'LAYER_EDITOR.ATTRIB_TABLE' | translate }}" (onClick)="editSelectedFeaturesAttributes()"
+    styleClass="ui-button-primary-inverse">
   </the-button>
-  <the-input-switch label="{{ 'LAYER_EDITOR.SNAPING' | translate }}" [small]='true' [(ngModel)]="snapping"
-    (ngModelChange)="setSnapping()">
+  <the-input-switch label="{{ 'LAYER_EDITOR.SNAPING' | translate }}" [small]="'small'" [darkMode]="'darkMode'"
+    [(ngModel)]="snapping" (ngModelChange)="setSnapping()">
   </the-input-switch>
 </the-toolbar-container>
 
 <!-- Barra de geometrías -->
 <the-toolbar-container *ngIf="drawingStatus">
-  <p-selectButton [styleClass]="'small'" [options]="geometryTypesOptions" [(ngModel)]="geometryType"
-    [disabled]="!drawingStatus" (onOptionClick)='changeDrawInteraction(geometryType,$event)'>
+  <!-- itemsAlign="darkMode"-->
+  <p-selectButton [styleClass]="'small ui-button-primary-inverse'" [options]="geometryTypesOptions"
+    [(ngModel)]="geometryType" [disabled]="!drawingStatus" (onOptionClick)='changeDrawInteraction(geometryType,$event)'>
   </p-selectButton>
   <the-input-text *ngIf="this.geometryType === 'Text'" type="text" [size]='15' [(ngModel)]="featureText"
     #inputGeometryText [floatLabel]='false' (ngModelChange)="setStyle()">
@@ -58,10 +62,10 @@
     #layerNameInput (keyup.enter)="newLayer()">
   </the-input-text>
   <the-button [small]="true" [icon]="'pi pi-check'" [disabled]="!layerName" tooltip="{{ 'BUTTON.SAVE' | translate }}"
-    (onClick)="newLayer()">
+    (onClick)="newLayer()" styleClass="ui-button-primary-inverse">
   </the-button>
   <the-button [small]="true" [icon]="'pi pi-times'" tooltip="{{ 'LAYER_EDITOR.END_EDITION' | translate }}"
-    (onClick)="creating=false">
+    (onClick)="creating=false" styleClass="ui-button-primary-inverse">
   </the-button>
 </div>
 
@@ -89,7 +93,7 @@
         <div class="p-col-12 item-container__title" *ngIf="!layerItem.nameEditing">
           {{layerItem.vsLayer.title}}
           <the-button [small]="true" [icon]="'pi pi-pencil'" tooltip="{{ 'LAYER_EDITOR.LAYER_RENAME' | translate }}"
-            (onClick)="editLayerTitle($event, layerItem)"> </the-button>
+            (onClick)="editLayerTitle($event, layerItem)" styleClass="ui-button-primary-inverse"> </the-button>
 
         </div>
 

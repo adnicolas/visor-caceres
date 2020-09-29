@@ -141,11 +141,11 @@ div.dashboard-container {
   }
 
   &__title {
-    color: $primaryFg;
+    color: $primaryBg;
   }
 
   &__subtitle {
-    color: $secondaryFg;
+    color: $secondaryBg;
     font-size: $fontReducedSize;
   }
 }
@@ -171,7 +171,7 @@ div.dashboard-container {
 }
 
 .ui-widget-content {
-  background-color: $widget-content-bg;
+  background-color: $primaryBg;
   border: 0;
 }
 
@@ -207,7 +207,6 @@ severity color for its background. */
     color: $dangerColorText;
   }
 }
-
 
 .ui-togglebutton {
   &.ui-state-active {
@@ -449,8 +448,8 @@ way too small otherwise. */
 }
 
 .ui-card {
-  background-color: $primaryBg;
-  color: $primaryFg;
+  background-color: $primaryFg;
+  color: $primaryBg;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -508,6 +507,12 @@ body > span.ng-tooltip {
   .ui-slider-handle {
 
     border-radius: 50%;
+  }
+}
+
+.ui-table-caption {
+  &.ui-widget-header {
+    background-color: transparent;
   }
 }
 

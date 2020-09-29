@@ -1,7 +1,7 @@
  @import 'variables';
 
  .item-container {
-   color: $secondaryFg;
+   color: $secondaryBg;
  }
 
  .flex {
@@ -19,6 +19,7 @@
    display: flex;
    align-items: center;
    padding-left: 0;
+   color: $primaryBg;
  }
 
  .legend-title {

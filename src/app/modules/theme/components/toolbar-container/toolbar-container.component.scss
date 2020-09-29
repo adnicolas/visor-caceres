@@ -1,9 +1,12 @@
+@import 'variables';
+
 ::ng-deep {
   div.ui-toolbar {
     display: flex;
     flex-direction: row;
 
     &-right {
+      background-color: transparent;
       padding-left: 0.5em;
       justify-content: flex-end;
     }
@@ -17,6 +20,17 @@
       padding-right: 0.25em;
       padding-left: 0.25em;
       justify-items: center;
+    }
+
+    &-darkMode {
+      background-color: $tertiaryFg;
+
+      /*.ui-button.ui-state-default.ui-button-primary,
+      .ui-togglebutton.ui-widget.ui-state-disabled {
+        background-color: darken($tertiaryFg, $colorModificationPercent) !important;
+        border: darken($tertiaryFg, $colorModificationPercent) !important;
+        color: $primaryBg !important;
+      }*/
     }
 
     .ui-toolbar-vertical {

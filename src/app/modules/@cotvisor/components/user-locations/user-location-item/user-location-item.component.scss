@@ -27,6 +27,16 @@
      opacity: 0;
    }
 
+   &__icon {
+     background-color: $primaryBg;
+     color: $stateFocusTextColor;
+   }
+
+   &__title,
+   &__subtitle {
+     color: $stateFocusTextColor;
+   }
+
    &:hover {
      the-button {
        opacity: 1;

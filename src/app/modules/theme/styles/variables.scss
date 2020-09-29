@@ -4,10 +4,10 @@ Archivo que declara variables para el tema
 https: //browninglogic.com/2018/11/30/92/
 
 */
-$fontFamily: 'Montserrat',
+$fontFamily: 'Poppins',
 sans-serif;
 
-$headersFontFamily:'Roboto',
+$headersFontFamily:'Poppins',
 sans-serif;
 
 $fontSize: 1em; //Tamaño normal de fuente
@@ -21,20 +21,21 @@ $defaultPadding: 0.5em;
 $smallButton:28px;
 
 //Declaracion de colores básicos
-$primaryFg:#5f5f5f;
-$primaryBg:#f9f9f9;
-$secondaryFg:#777777;
-$secondaryBg:#ffffff;
-$tertiaryFg:#ffffff;
-$tertiaryBg:#468ac2;
+$primaryFg:#c3bdba;
+$primaryBg:#3c4245;
+$secondaryFg:#c3bdba;
+$secondaryBg:#5f6769;
+$tertiaryFg:#c3bdba;
+$tertiaryBg:#719192;
+
 
 $colors: (tertiary: '#f4f4f4', primary: '#4c9ae7');
 
 //hightlignts
-$hightlight1: #e91e63;
-$hightlight2: #00bcd4;
-$hightlight3: #ffc107;
-$hightlight4: #46e64e;
+$hightlight1: #6b8c42;
+$hightlight2: #90303d;
+$hightlight3: #ba7967;
+$hightlight4: #ef962d;
 
 
 $defaultColorTransparency: a1;
