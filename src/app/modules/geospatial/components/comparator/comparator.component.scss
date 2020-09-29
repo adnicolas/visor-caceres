@@ -6,8 +6,10 @@ gss-comparator {
   }
 
   div.container {
+    position: absolute;
+    left: 40px;
     height: 100%;
-    width: 100%;
+    // width: 100%;
     flex-wrap: nowrap;
     display: flex;
     flex-direction: column;
