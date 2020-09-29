@@ -85,7 +85,7 @@ export class UserMapsDetailComponent extends ParentComponent implements OnInit {
       .save(this.userMap)
       .pipe(takeUntil(this.unSubscribe))
       .subscribe((userMap) => {
-        this.toastService.showInfo({ detail: `Mapa ${userMap.name} guardado correctamente`, summary: 'Guardado' });
+        this.toastService.showSuccess({ detail: `Mapa ${userMap.name} guardado correctamente`, summary: 'Guardado' });
         this.userMapForm.form.markAsPristine();
       });
   }

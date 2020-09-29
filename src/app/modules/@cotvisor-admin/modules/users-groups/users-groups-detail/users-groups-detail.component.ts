@@ -128,7 +128,7 @@ export class UsersGroupsDetailComponent extends ParentComponent implements OnCha
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (group) => {
-          this.toastService.showInfo({ detail: 'Grupo guardado correctamente', summary: 'Guardado' });
+          this.toastService.showSuccess({ detail: 'Grupo guardado correctamente', summary: 'Guardado' });
           this.groupForm.markAsPristine();
           this.router.navigateByUrl(GROUPS_LIST_URL);
         },
@@ -156,7 +156,7 @@ export class UsersGroupsDetailComponent extends ParentComponent implements OnCha
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (group) => {
-          this.toastService.showInfo({ detail: 'Grupo creado correctamente', summary: 'Creado' });
+          this.toastService.showSuccess({ detail: 'Grupo creado correctamente', summary: 'Creado' });
           this.groupForm.markAsPristine();
           this.router.navigateByUrl(GROUPS_LIST_URL);
         },

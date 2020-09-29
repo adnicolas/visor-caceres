@@ -168,7 +168,7 @@ export class ViewConfigsDetailComponent extends ParentComponent implements OnIni
         .save(viewConfigObj)
         .pipe(takeUntil(this.unSubscribe))
         .subscribe((viewConfig) => {
-          this.toastService.showInfo({ detail: `Visor ${viewConfig.name} guardado correctamente`, summary: 'Guardado' });
+          this.toastService.showSuccess({ detail: `Visor ${viewConfig.name} guardado correctamente`, summary: 'Guardado' });
           this.viewConfigDetailForm.markAsPristine();
         });
     } else {
@@ -176,7 +176,7 @@ export class ViewConfigsDetailComponent extends ParentComponent implements OnIni
         .create(viewConfigObj)
         .pipe(takeUntil(this.unSubscribe))
         .subscribe((viewConfig) => {
-          this.toastService.showInfo({ detail: `Visor ${viewConfig.name} guardado correctamente`, summary: 'Guardado' });
+          this.toastService.showSuccess({ detail: `Visor ${viewConfig.name} guardado correctamente`, summary: 'Guardado' });
           this.viewConfigDetailForm.markAsPristine();
           this.router.navigateByUrl('/visores');
         });

@@ -88,7 +88,7 @@ export class MapManagerUserMapInfoComponent extends ParentComponent implements O
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (userMap) => {
-          this.toastService.showInfo({ detail: 'Mapa guardado correctamente', summary: 'Mapa guardado' });
+          this.toastService.showSuccess({ detail: 'Mapa guardado correctamente', summary: 'Mapa guardado' });
         },
         (error) => {
           // this.loader.closeLoading();

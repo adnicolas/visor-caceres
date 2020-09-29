@@ -140,7 +140,7 @@ export class UsersDetailComponent extends ParentComponent implements OnChanges {
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (user) => {
-          this.toastService.showInfo({ detail: 'Usuario guardado correctamente', summary: 'Guardado' });
+          this.toastService.showSuccess({ detail: 'Usuario guardado correctamente', summary: 'Guardado' });
           this.userForm.form.markAsPristine();
         },
 
@@ -158,7 +158,7 @@ export class UsersDetailComponent extends ParentComponent implements OnChanges {
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (user) => {
-          this.toastService.showInfo({ detail: 'Usuario creado correctamente', summary: 'Guardado' });
+          this.toastService.showSuccess({ detail: 'Usuario creado correctamente', summary: 'Guardado' });
           this.user = user;
           this.userForm.form.markAsPristine();
           this.router.navigateByUrl(USERS_LIST_URL);
