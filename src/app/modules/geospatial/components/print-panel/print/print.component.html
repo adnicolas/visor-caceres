@@ -155,53 +155,53 @@
         </div>
         <div>
           <img [src]="legend.url" />
+        </div>
       </div>
+
+      <div cdkDrag (mousedown)="changeZindex($event)" class="draggable card-draggable" id="mapTitle"
+        [hidden]="!mapTitle || !activationArray.title" cdkDragBoundary=".innerPrinterContainer">
+        {{mapTitle}}
+      </div>
+
+      <div cdkDrag ngResizable id="mapDescription" class="draggable card-draggable"
+        [hidden]="!mapDescription || !activationArray.description" cdkDragBoundary=".innerPrinterContainer"
+        (mousedown)="changeZindex($event)">{{mapDescription}}</div>
+
+      <div cdkDrag [hidden]="!activationArray.centerCoord" class="draggable card-draggable" id="mapCenterCoord"
+        cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
+        <div class="print-card-header">
+          <span>center</span>
+          <!-- <img [src]="centerIcon" /> -->
+          <i class="fas fa-crosshairs"></i>
         </div>
-
-        <div cdkDrag (mousedown)="changeZindex($event)" class="draggable card-draggable" id="mapTitle"
-          [hidden]="!mapTitle || !activationArray.title" cdkDragBoundary=".innerPrinterContainer">
-          {{mapTitle}}
-        </div>
-
-        <div cdkDrag ngResizable id="mapDescription" class="draggable card-draggable"
-          [hidden]="!mapDescription || !activationArray.description" cdkDragBoundary=".innerPrinterContainer"
-          (mousedown)="changeZindex($event)">{{mapDescription}}</div>
-
-        <div cdkDrag [hidden]="!activationArray.centerCoord" class="draggable card-draggable" id="mapCenterCoord"
-          cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
-          <div class="print-card-header">
-            <span>center</span>
-            <!-- <img [src]="centerIcon" /> -->
-            <i class="fas fa-crosshairs"></i>
-          </div>
-          <div class="print-card-content">
-            X: {{centerCoord[0]}}
-            <br>
+        <div class="print-card-content">
+          X: {{centerCoord[0]}}
+          <br>
         Y: {{centerCoord[1]}}
-          </div>
         </div>
-
-        <div cdkDrag [hidden]="!activationArray.srs" class="draggable card-draggable" id="mapSRS"
-          cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
-          <div class="print-card-header">
-            {{"PRINT.REFERENCE_SYSTEM" | translate }}
-          </div>
-          <div class="print-card-content">
-            {{srs}}
-          </div>
-        </div>
-
-        <img id="logo" (mousedown)="changeZindex($event)" cdkDrag cdkDragBoundary=".innerPrinterContainer"
-      class="draggable card-draggable" src="assets/images/tierra3.svg">
-
-
-        <!-- <cot-map-container target="map-printer" [map]="map"> </cot-map-container> -->
-        <!-- NODO MAPA -->
-        <cot-map-container *ngIf="map; else noMap" [target]="'map-printer'" [map]="map"></cot-map-container>
-
-        <ng-template #noMap>
-          <h1>No existe un mapa cargado</h1>
-        </ng-template>
       </div>
+
+      <div cdkDrag [hidden]="!activationArray.srs" class="draggable card-draggable" id="mapSRS"
+        cdkDragBoundary=".innerPrinterContainer" (mousedown)="changeZindex($event)">
+        <div class="print-card-header">
+          {{"PRINT.REFERENCE_SYSTEM" | translate }}
+        </div>
+        <div class="print-card-content">
+          {{srs}}
+        </div>
+      </div>
+
+      <img id="logo" (mousedown)="changeZindex($event)" cdkDrag cdkDragBoundary=".innerPrinterContainer"
+        class="draggable card-draggable" src="assets/images/logo-sig-3.png">
+
+
+      <!-- <cot-map-container target="map-printer" [map]="map"> </cot-map-container> -->
+      <!-- NODO MAPA -->
+      <cot-map-container *ngIf="map; else noMap" [target]="'map-printer'" [map]="map"></cot-map-container>
+
+      <ng-template #noMap>
+        <h1>No existe un mapa cargado</h1>
+      </ng-template>
     </div>
   </div>
+</div>
