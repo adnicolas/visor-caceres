@@ -321,7 +321,7 @@ export const environment = {
     options: {
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/osmBasic.png'
+    imgUrl: 'assets/images/basemaps/caceres_osm-callejero.png'
   },
   {
     id: 2,
@@ -333,7 +333,7 @@ export const environment = {
       projection: 'EPSG:3857',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/osmTerrain.png'
+    imgUrl: 'assets/images/basemaps/caceres_terrain.jpg'
   },
   {
     id: 3,
@@ -345,7 +345,7 @@ export const environment = {
       projection: 'EPSG:3857',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/cartodb_dark.png'
+    imgUrl: 'assets/images/basemaps/caceres_dark.png'
   },
   {
     id: 4,
@@ -357,7 +357,7 @@ export const environment = {
       projection: 'EPSG:3857',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/opentopomap.png'
+    imgUrl: 'assets/images/basemaps/caceres_opentopo.png'
   },
   {
     id: 5,
@@ -369,7 +369,7 @@ export const environment = {
       projection: 'EPSG:3857',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/toner.png'
+    imgUrl: 'assets/images/basemaps/caceres_stamen.png'
   },
   {
     id: 7,
@@ -381,7 +381,7 @@ export const environment = {
       layer: 'OI.OrthoimageCoverage',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/pnoa.png'
+    imgUrl: 'assets/images/basemaps/caceres_pnoa.jpg'
   }
   ],
 
