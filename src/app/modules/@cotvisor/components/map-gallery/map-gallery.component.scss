@@ -1,0 +1,57 @@
+@import 'variables';
+
+h3.title {
+  padding-left: 16px;
+}
+
+.baselayers-container {
+
+  padding: $defaultPadding;
+}
+
+.baselayer-card {
+  position: relative;
+  margin-top: 0;
+  overflow: hidden;
+
+  img {
+    display: block;
+    height: 100%;
+  }
+
+  .caption {
+    padding: 10px;
+    width: 100%;
+    text-align: center; // background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba($secondaryBg, 0.5);
+    position: absolute;
+    top: 100%;
+    color: #fff;
+    z-index: 100;
+    left: 0;
+  }
+
+  &.active {
+    border: solid 3px $tertiaryBg;
+  }
+}
+
+.baselayer-card:hover {
+  .caption {
+    transform: translateY(-100%);
+  }
+}
+
+.col-2 {
+  width: calc(50% - 20px);
+}
+
+.titlePane {
+  background-color: $secondaryBg;
+  color: $successColorMiddle;
+  padding-left: 1rem !important;
+
+  ion-label {
+    margin: 0 !important;
+  }
+}
