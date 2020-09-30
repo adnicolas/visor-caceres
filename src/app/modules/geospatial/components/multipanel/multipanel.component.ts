@@ -16,8 +16,8 @@ export class MultipanelComponent extends ThemeBaseComponentClass implements OnIn
   constructor() { super(); }
 
   ngOnInit() {
-    this.panelIcons = ['mi map', 'mi layers', 'fas fa-globe-europe', 'fas fa-map-marker-alt', 'fas fa-atlas', 'fa fa-print'];
-    this.panelNames = ['Mapa', 'Capas', 'Capas Base', 'Ubicaciones Guardadas', 'Catálogo', 'Impresión'];
+    this.panelIcons = ['mi map', 'mi layers', 'fas fa-globe-europe', 'fas fa-map-marker-alt', /* 'fas fa-atlas', */'fa fa-print'];
+    this.panelNames = ['Mapa', 'Capas', 'Capas Base', 'Ubicaciones Guardadas', /* 'Catálogo', */'Impresión'];
 
     if (environment.app_name_enviroment === 'local') {
       this.panelIcons.push('fa fa-archive');
@@ -29,9 +29,9 @@ export class MultipanelComponent extends ThemeBaseComponentClass implements OnIn
       'TOC.TITLE',
       'BASE_LAYERS.TITLE',
       'USER_LOCATIONS.TITLE',
-      'Catálogo',
+      // 'Catálogo',
       'PRINT.TITLE',
-      'Ejemplos'];
+    /*'Ejemplos'*/];
     // Asignamos las etiquetas del lenguaje activo y nos subscribimos a los cambios de idioma que se hagan
     this.onComponentLiteralsChange.pipe(takeWhile(() => this.alive)).subscribe(() => {
       this.panelTooltips = [];
