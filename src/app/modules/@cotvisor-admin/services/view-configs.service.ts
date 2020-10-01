@@ -45,7 +45,7 @@ export class ViewConfigsService extends ParentAdminService {
     this.notifyLoading(true);
     this.httpClient
       .get<ViewConfigModel[]>(environment.apis.geospatialAPI.baseUrl + environment.apis.geospatialAPI.endpoints.views)
-      .pipe(catchError((error) => this.servicesErrorManager.handleError(error, op)))
+      .pipe(catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject)))
       .subscribe((views) => {
         this.views = views;
         this.viewConfigsCountSubject.next(this.views.length);
