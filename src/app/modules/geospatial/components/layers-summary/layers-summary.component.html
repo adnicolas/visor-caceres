@@ -1,5 +1,5 @@
-  <the-overview-box [routerLink]="routerLink" [title]="'Capas disponibles'"
-    value="{{ layersService.layersCount$ | async }} {{ 'TOC.TITLE' | translate }} "
+  <the-overview-box [routerLink]="routerLink" title="{{ 'LAYERMANAGER.AVAILABLE' | translate }}"
+    value="{{ layersService.layersCount$ | async }} {{ 'TOC.TITLE' | translate }}"
     [icon]="(layersService.loading$ | async) ? 'pi pi-spin pi-spinner' : 'mi layers'" [styleClass]="'hightlight1'">
   </the-overview-box>
   <!--<the-overview-box class="p-col-6" [title]="'_Publicadas'" [value]="'5 Capas'" [icon]="'mi layers'"

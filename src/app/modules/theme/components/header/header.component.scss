@@ -22,6 +22,7 @@ the-header {
       }
 
       .brand {
+        padding-left: 2em;
         margin: auto;
         font-size: 2vw;
 
@@ -51,6 +52,23 @@ the-header {
       }
 
 
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  the-header {
+    p-toolbar {
+      .ui-toolbar {
+        img.logo {
+          align-self: center;
+          max-height: 50%;
+        }
+
+        .brand {
+          padding-left: 0;
+        }
+      }
     }
   }
 }

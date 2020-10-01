@@ -2,10 +2,10 @@
 
 
    <div class="item-group-center">
-     <img src='assets/images/logo-ayto-2.png' class='logo' [ngClass]="{'loading': loading}">
-     <img src='assets/images/logo-sig-3.png' class='logo' [ngClass]="{'loading': loading}">
+     <!--<img src='assets/images/logo-ayto-1.png' class='logo' [ngClass]="{'loading': loading}">-->
+     <img src='assets/images/logo-sig-1.png' class='logo' [ngClass]="{'loading': loading}">
      <h2 class="brand">
-     {{title}} <small>{{version}} - {{enviroment}}</small></h2>
+     {{title}} <small *ngIf="screenWidth >= 576">{{version}} - {{enviroment}}</small></h2>
    </div>
 
    <div class="item-group-right">
@@ -14,8 +14,8 @@
        [styleClass]="'ui-button-primary'">
      </the-button>
      <the-menu #languageMenuOverlay [popup]="true" [model]="languageMenu" styleClass='language-menu'></the-menu>
-
-     <the-button *ngIf="currentUser" label="{{currentUser.userName}}" icon="mi face"
+     <the-button *ngIf="currentUser"
+       label="{{screenWidth < 576 ? currentUser.userName.slice(0,3) + '...': currentUser.userName}}" icon="mi face"
        (onClick)="userMenuOverlay.toggle($event)" [styleClass]="'ui-button-primary'">
        <!--[tooltip]="currentUser.email" tooltipPosition="left" -->
      </the-button>

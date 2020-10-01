@@ -8,13 +8,13 @@
 
     <dl class="overview-box-data">
       <dt>Rol</dt>
-      <dd *ngIf="user.roles.length > 0; else noRole">{{user.roles[0].name}}</dd>
+      <dd *ngIf="user.roles && user.roles.length > 0; else noRole">{{user.roles[0].name}}</dd>
       <ng-template #noRole>
         <dd>Sin rol</dd>
       </ng-template>
       <hr>
       <dt>Grupos</dt>
-      <dd *ngIf="user.groups.length > 0; else noGroup">
+      <dd *ngIf="user.groups && user.groups.length > 0; else noGroup">
       <dd *ngFor="let grupo of user.groups">{{grupo.name}}</dd>
       <ng-template #noGroup>
         <dd>Sin grupo</dd>
