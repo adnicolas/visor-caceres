@@ -77,11 +77,11 @@ export class WmsLoaderComponent extends ParentComponent implements OnInit {
     ];
     // Asignamos las etiquetas del lenguaje activo y nos subscribimos a los cambios de idioma que se hagan
     this.onComponentLiteralsChange.pipe(takeUntil(this.unSubscribe)).subscribe(() => {
-      this.tabs[0].label = this.componentLiterals['WMS_LOADER.SUGGESTED_SERVERS'];
-      this.tabs[1].label = this.componentLiterals['WMS_LOADER.LAYERS'];
+      this.tabs[0].label = this.componentLiterals['LOADER.SUGGESTED_SERVERS'];
+      this.tabs[1].label = this.componentLiterals['LOADER.LAYERS'];
 
     });
-    this.useLiterals(['WMS_LOADER.SUGGESTED_SERVERS', 'WMS_LOADER.LAYERS', 'ERRORS.ERROR', 'ERRORS.NO_SERVER_RESPONSE', 'ERRORS.BAD_SERVER_RESPONSE']);
+    this.useLiterals(['LOADER.SUGGESTED_SERVERS', 'LOADER.LAYERS', 'ERRORS.ERROR', 'ERRORS.NO_SERVER_RESPONSE', 'ERRORS.BAD_SERVER_RESPONSE']);
 
     this.activeTab = this.tabs[0];
   }

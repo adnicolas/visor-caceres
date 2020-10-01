@@ -1,6 +1,6 @@
 <!-- boton para abrir panel de filtros -->
-<the-button [icon]="(filterPanelOpen) ? 'fas fa-times' :'fas fa-sliders-h'" tooltip="Filtros" label=""
-  (onClick)="togglePanelFiltros($event)">
+<the-button [icon]="(filterPanelOpen) ? 'fas fa-times' :'fas fa-sliders-h'" tooltip="{{'FILTERS.TITLE' | translate}}"
+  label="" (onClick)="togglePanelFiltros($event)">
 </the-button>
 
 <!-- panel de filtros -->
@@ -34,13 +34,13 @@
 
     <!-- sliders -->
     <div class="p-col-12 p-col-align-center">
-      <img class="svg-icon-25" src="assets/icons/cloud.svg" alt="nube" >
+      <img class="svg-icon-25" src="assets/icons/cloud.svg" alt="nube">
       <label class="filter-label"> {{"FILTERS.CLOUDCOVERAGE" | translate }} <span>≤ {{scenesFilter.cloudCover}}%</span>
       </label>
       <the-slider [(value)]="scenesFilter.cloudCover" (valueChange)="filterChangeHandler()"></the-slider>
     </div>
     <div class="p-col-12 p-col-align-center">
-      <img class="svg-icon-25" src="assets/icons/sun.svg" alt="sun" >
+      <img class="svg-icon-25" src="assets/icons/sun.svg" alt="sun">
       <label class="filter-label"> {{"FILTERS.SUNELEVATION" | translate }}
       <span>≤ {{scenesFilter.sunElevation}}°</span>
       </label>

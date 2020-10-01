@@ -1,10 +1,10 @@
 <div class="p-grid p-nogutter">
-  <p>{{'WFS_LOADER.LOAD_FROM_URL' | translate}}</p>
+  <p>{{'LOADER.LOAD_FROM_URL' | translate}}</p>
 
-  <the-input-group required="true" class="p-col-12" [(ngModel)]="url" placeholder="{{'WFS_LOADER.URL_WFS' | translate}}"
+  <the-input-group required="true" class="p-col-12" [(ngModel)]="url" placeholder="{{'LOADER.URL' | translate}}"
     iconButton="fas fa-search" [pattern]="pattern" (clickButton)="getDataFromReaderServices()"></the-input-group>
 
-  <p>{{'WFS_LOADER.SELECT_SUGGESTED' | translate}}</p>
+  <p>{{'LOADER.SELECT_SUGGESTED' | translate}}</p>
 
   <the-tab-menu class="p-col-12" [items]="tabs" [activeItem]="activeTab" styleClass='secondary'>
     <div tabs-content>
@@ -42,8 +42,8 @@
           <div class="title-container">
             <i class="fas fa-exclamation-triangle ui-round-icon ui-round-icon-tertiary-inverse"></i>
             <div>
-              <h2>{{"WFS_LOADER.NO_DATA" | translate}}</h2>
-              <p>{{"WFS_LOADER.NO_LAYERS" | translate}}</p>
+              <h2>{{"LOADER.NO_DATA" | translate}}</h2>
+              <p>{{"LOADER.NO_LAYERS" | translate}}</p>
             </div>
           </div>
         </ng-container>
@@ -54,7 +54,7 @@
             <i class="fas fa-exclamation-triangle ui-round-icon ui-round-icon-tertiary-inverse"></i>
             <div>
               <h2>{{"ERRORS.ERROR" | translate}}</h2>
-              <p>{{"WFS_LOADER.CONSULT_ERROR" | translate}}</p>
+              <p>{{"LOADER.CONSULT_ERROR" | translate}}</p>
             </div>
           </div>
         </ng-container>
@@ -66,7 +66,7 @@
           <i class="fas fa-server ui-round-icon ui-round-icon-tertiary-inverse"></i>
           <div>
             <h2>{{serverTitle}}</h2>
-            <p>{{"WFS_LOADER.SERVER_HINT" | translate}}</p>
+            <p>{{"LOADER.SERVER_HINT" | translate}}</p>
           </div>
         </div>
         <the-progress-spinner *ngIf="!serverListLoaded" class="p-justify-center" size="40px" strokeWidth="5"

@@ -28,7 +28,7 @@ export class MultipanelComponent extends ThemeBaseComponentClass implements OnIn
       'GLOBAL.MAP',
       'TOC.TITLE',
       'BASE_LAYERS.TITLE',
-      'Galería de Mapas',
+      'MAPS_GALLERY.TITLE',
       'USER_LOCATIONS.TITLE',
       // 'Catálogo',
       'PRINT.TITLE',
