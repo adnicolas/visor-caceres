@@ -60,21 +60,21 @@ export class LayersDetailComponent extends ParentComponent implements AfterViewI
         command: () => {
           this.changeActiveTab('datos');
         }
-      },
+      }/*,
       {
         id: 'compartir',
         icon: 'pi pi-share-alt',
         command: () => {
           this.changeActiveTab('compartir');
         }
-      },
+      },*/
     ];
     this.activeTab = this.tabs[0];
     this.onComponentLiteralsChange
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(() => {
         this.tabs[0].label = this.componentLiterals['GLOBAL.INFO'];
-        this.tabs[1].label = this.componentLiterals['GLOBAL.SHARE'];
+        // this.tabs[1].label = this.componentLiterals['GLOBAL.SHARE'];
 
       });
     this.useLiterals([
