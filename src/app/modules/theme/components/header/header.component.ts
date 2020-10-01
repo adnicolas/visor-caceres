@@ -7,6 +7,7 @@ import { takeWhile, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserModel } from '@cotvisor-admin/models';
 import { GlobalAuthService } from '@cotvisor-admin/services';
+import { HostListener } from '@angular/core';
 declare var require: any;
 const VERSION = require('../../../../../../package.json').version;
 
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnDestroy {
   languageMenu: MenuItem[];
   currentLanguage: string;
   currentFlag: any;
+  screenWidth: number;
 
   constructor(private sidebarsManagerService: PanelsManagerService, private themeService: ThemeService, private router: Router, private activatedRoute: ActivatedRoute, private globalAuthService: GlobalAuthService) {
     this.title = environment.app_name;
@@ -102,7 +104,13 @@ export class HeaderComponent implements OnDestroy {
 
     this.currentLanguage = this.themeService.getCurrentLanguage();
     this.currentFlag = `flag-${this.currentLanguage}`;
+    this.onResize();
+  }
 
+  // @ADR: Para obtener tamaño de la ventana en tiempo real y poder acortar labels en la plantilla en función de dicho tamaño
+  @HostListener('window:resize', ['$event'])
+  onResize($event?) {
+    this.screenWidth = window.innerWidth;
   }
 
   ngOnDestroy(): void {
