@@ -16,8 +16,8 @@ export class MultipanelComponent extends ThemeBaseComponentClass implements OnIn
   constructor() { super(); }
 
   ngOnInit() {
-    this.panelIcons = ['mi map', 'mi layers', 'fas fa-globe-europe', 'fas fa-map-marker-alt', /*'fas fa-atlas',*/ 'fa fa-print'];
-    this.panelNames = ['Mapa', 'Capas', 'Capas Base', 'Ubicaciones Guardadas', /*'Catálogo',*/ 'Impresión'];
+    this.panelIcons = ['mi map', 'mi layers', 'fas fa-globe-europe', 'fas fa-atlas', 'fas fa-map-marker-alt', /* 'fas fa-globe-europe',*/ 'fa fa-print'];
+    this.panelNames = ['Mapa', 'Capas', 'Capas Base', 'Galería de Mapas', 'Ubicaciones Guardadas', /* 'Catálogo', */'Impresión'];
 
     if (environment.app_name_enviroment === 'local') {
       this.panelIcons.push('fa fa-archive');
@@ -28,6 +28,7 @@ export class MultipanelComponent extends ThemeBaseComponentClass implements OnIn
       'GLOBAL.MAP',
       'TOC.TITLE',
       'BASE_LAYERS.TITLE',
+      'Galería de Mapas',
       'USER_LOCATIONS.TITLE',
       // 'Catálogo',
       'PRINT.TITLE',

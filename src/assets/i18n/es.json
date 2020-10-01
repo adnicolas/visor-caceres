@@ -37,6 +37,8 @@
   "BASE_LAYERS.TITLE": "Capas Base",
   "BASE_LAYERS.TOOLTIP": "Seleccionar capa base...",
 
+  "MAPS_GALLERY.TITLE": "Galería de Mapas",
+
   "BUTTON.SAVE": "Guardar",
   "BUTTON.SAVE_": "Guardar...",
   "BUTTON.DELETE": "Eliminar",

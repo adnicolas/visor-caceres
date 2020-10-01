@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LoginPanelComponent } from './components/login-panel/login-panel.component';
 import { ThemeModule } from '@theme/theme.module';
 import { BaselayersPanelComponent } from './components/baselayers-panel/baselayers-panel.component';
+import { MapGalleryPanelComponent } from './components/map-gallery-panel/map-gallery-panel.component';
 import { CotVisorModule } from '@cotvisor/cot-visor.module';
 import { MultipanelComponent } from './components/multipanel/multipanel.component';
 import { EjemplosPanelComponent } from './components/ejemplos-panel/ejemplos-panel.component';
 import { BaseLayersModule } from '@cotvisor/components/base-layers';
+import { MapGalleryModule } from '@cotvisor/components/map-gallery';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { VisorToolsModule } from '@cotvisor/components/visor-tools/visor-tools.module';
 import { TocModule } from '@cotvisor/components/toc/toc-module';
@@ -65,6 +67,7 @@ import { UsersGroupsListComponent } from './components/users-groups-list/users-g
     EjemplosPanelComponent,
     LoginPanelComponent,
     BaselayersPanelComponent,
+    MapGalleryPanelComponent,
     MultipanelComponent,
     EjemplosPanelComponent,
     ToolbarComponent,
@@ -110,6 +113,7 @@ import { UsersGroupsListComponent } from './components/users-groups-list/users-g
     EjemplosPanelComponent,
     LoginPanelComponent,
     BaselayersPanelComponent,
+    MapGalleryPanelComponent,
     MultipanelComponent,
     EjemplosPanelComponent,
     ToolbarComponent,
@@ -161,6 +165,7 @@ import { UsersGroupsListComponent } from './components/users-groups-list/users-g
     UserMapsModule,
     MapManagerModule,
     BaseLayersModule,
+    MapGalleryModule,
     ThemeModule,
     VisorToolsModule,
     TocModule,
