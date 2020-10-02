@@ -11,8 +11,8 @@ p-toolbar.float-toolbar {
   .ui-button-icon-only {
     margin-left: 5px;
     border-radius: $borderRadius;
-    width: 6vh;
-    height: 6vh;
+    width: 30px;
+    height: 30px;
     max-width: 2.5rem;
     max-height: 2.5rem;
   }
@@ -38,10 +38,14 @@ p-toolbar.float-toolbar {
   &.top {
     margin-top: 0.5rem;
     flex-direction: row;
-    right: 8px;
 
     &.center {
-      right: 38.5%;
+      left: calc(50% + 20px);
+      transform: translate(-50%, 0);
+    }
+
+    &.right {
+      right: 8px;
     }
 
     .ui-toolbar {
@@ -82,6 +86,22 @@ p-toolbar.float-toolbar {
     .ui-toolbar {
       & > * {
         padding: 0.1rem 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  p-toolbar.float-toolbar {
+    &.top {
+      &.searchbar {
+        left: calc(50% + 22px);
+        right: unset;
+        transform: translateX(-50%);
+      }
+
+      &.center {
+        top: 100px;
       }
     }
   }
