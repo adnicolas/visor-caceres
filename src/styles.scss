@@ -13,6 +13,13 @@ body.nr_48y {
   box-sizing: border-box;
 }
 
+/*ScaleControl*/
+.ol-scale-line {
+  left: unset !important;
+  right: 8px !important;
+  bottom: 48px !important;
+}
+
 /* TOOLTIPS DEL MAPA*/
 .ol-tooltip {
   position: relative;
