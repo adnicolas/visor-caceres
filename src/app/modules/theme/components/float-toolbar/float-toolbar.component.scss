@@ -9,6 +9,8 @@ p-toolbar.float-toolbar {
   align-items: center;
 
   .ui-button-icon-only {
+    margin-left: 5px;
+    border-radius: $borderRadius;
     width: 30px;
     height: 30px;
     max-width: 2.5rem;
@@ -25,10 +27,21 @@ p-toolbar.float-toolbar {
   &.bottom {
     margin-bottom: 0.5rem;
     flex-direction: row;
+    bottom: 50px;
+
+    &.center {
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
 
     .ui-toolbar {
-      & > * {
-        padding: 0 0.1rem;
+      .buttons-container {
+        display: flex;
+        flex-direction: row;
+
+        & > * {
+          padding: 0 0.1rem;
+        }
       }
     }
   }
@@ -36,6 +49,15 @@ p-toolbar.float-toolbar {
   &.top {
     margin-top: 0.5rem;
     flex-direction: row;
+
+    &.center {
+      left: calc(50% + 20px);
+      transform: translate(-50%, 0);
+    }
+
+    &.right {
+      right: 8px;
+    }
 
     .ui-toolbar {
       .buttons-container {
@@ -75,6 +97,22 @@ p-toolbar.float-toolbar {
     .ui-toolbar {
       & > * {
         padding: 0.1rem 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  p-toolbar.float-toolbar {
+    &.top {
+      &.searchbar {
+        left: calc(50% + 22px);
+        right: unset;
+        transform: translateX(-50%);
+      }
+
+      &.center {
+        top: 100px;
       }
     }
   }
