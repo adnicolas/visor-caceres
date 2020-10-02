@@ -7,7 +7,7 @@ import { NgxLoggerLevel } from 'ngx-logger';
 export const environment = {
   production: false,
   app_name_enviroment: 'local',
-  app_name: 'Cáceres - Propuesta 2',
+  app_name: 'Cáceres - Propuesta 3',
   apis: {
     geospatialAPI: {
       baseUrl: '',
@@ -28,6 +28,7 @@ export const environment = {
         userDocs: 'http://geospatialsaitest.grupotecopy.es/geospatialsaiback/documents',
         // login
         login: 'http://geospatialsaitest.grupotecopy.es/geospatialsaiback/dologin',
+        // login: 'https://run.mocky.io/v3/8dd4b2ff-4fef-4d05-8f0b-0238a6bf5a35',
         // roles
         roles: 'http://geospatialsaitest.grupotecopy.es/geospatialsaiback/roles',
         // services
@@ -310,6 +311,7 @@ export const environment = {
     use_proxy: true,
     use_encode_uri: true,
     proxy_address: 'http://geospatialsaitest.grupotecopy.es/geospatialsaiback/proxy?url=',
+    // proxy_address: 'http://geospatialsai.grupotecopy.es/geospatialsaiback/proxy?url=',
     // proxy_address: 'http://127.0.0.1:8123/',
   },
 

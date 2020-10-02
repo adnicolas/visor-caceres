@@ -3,16 +3,19 @@
 p-toolbar {
   &.multipanel-toolbar {
     position: absolute;
-    right: 0;
-    top: $headerHeight;
-    height: calc(100% - #{$headerHeight});
+    // right: 0;
+    left: 0;
+    // top: $headerHeight;
+    bottom: 0;
+    width: 100%;
+    height: $multipanelHeight; // calc(100% - #{$headerHeight});
     background-color: $primaryBg;
     z-index: $z-index-overlay-l1;
-    flex-direction: column;
+    flex-direction: row;
 
     .ui-toolbar {
       padding: 0;
-      flex-direction: column;
+      flex-direction: row;
 
       button.multipanel-button,
       div.ui-togglebutton {
@@ -25,15 +28,19 @@ p-toolbar {
 
   &.inverse {
     background-color: $primaryFg;
+
+    .ui-toolbar {
+      background-color: $primaryFg;
+    }
   }
 }
 
 .multipanel-panel.ui-sidebar {
 
   &.ui-sidebar-right {
-    right: 40px;
+    right: 0; // 40px;
     top: $headerHeight;
-    height: calc(100% - #{$headerHeight});
+    height: calc(100% - #{$headerHeight} - #{$multipanelHeight});
     width: calc(100% - 2.5rem);
     max-width: 350px;
     border-right: 1px solid lighten($primaryBg, $colorModificationPercent);
