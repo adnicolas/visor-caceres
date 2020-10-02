@@ -14,6 +14,7 @@ import {
   UserMapModel,
   ToolModel,
 } from '@cotvisor-admin/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'cot-view-configs-detail',
@@ -111,6 +112,9 @@ export class ViewConfigsDetailComponent extends ParentComponent implements OnIni
     });
 
     this.userMapsService.userMaps$.pipe(takeUntil(this.unSubscribe)).subscribe((userMaps) => {
+      userMaps.forEach(userMap => {
+        userMap.img = userMap.img ? userMap.img : environment.default_visor_map_image;
+      })
       this.userMaps = userMaps;
 
       const userMapids = this.viewConfigDetailForm.get('availableMaps') as FormArray;

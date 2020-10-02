@@ -146,9 +146,9 @@ export class ShareOptionsComponent extends ParentComponent implements OnInit {
     return this.fb.group({
       id: subject.id,
       subjectName: subject.subjectName,
-      read: subject.read,
-      write: subject.write,
-      admin: subject.admin
+      read: [{ value: subject.read, disabled: false }],
+      write: [{ value: subject.write, disabled: false }],
+      admin: [{ value: subject.admin, disabled: false }]
     });
   }
 
@@ -373,4 +373,11 @@ export class ShareOptionsComponent extends ParentComponent implements OnInit {
     this.removeRequests = this.removeRequests.filter(el => el != null);
   }
 
+  handleChange($event: boolean, rowIndex: number, isAdmin: boolean) {
+    this.permissions().at(rowIndex).get('write').patchValue($event);
+    this.permissions().at(rowIndex).get('read').patchValue($event);
+    if (isAdmin) {
+      this.permissions().at(rowIndex).get('admin').patchValue($event);
+    }
+  }
 }

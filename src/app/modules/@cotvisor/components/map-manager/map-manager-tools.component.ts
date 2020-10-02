@@ -221,7 +221,7 @@ export class MapManagerToolsComponent extends ParentComponent implements OnInit 
   private saveNewMap() {
     this.currentVsUserMap.userMapSource.id = null;
     this.currentVsUserMap.userMapSource.userOwner = null;
-    this.currentVsUserMap.userMapSource.baseLayerId = this.currentVsUserMap.getCurrentBaseLayerIndex();
+    // this.currentVsUserMap.userMapSource.baseLayerId = this.currentVsUserMap.getCurrentBaseLayerIndex();
     this.currentVsUserMap.userMapSource.folders.forEach((folder) => {
       folder.id = null;
     });
@@ -231,7 +231,7 @@ export class MapManagerToolsComponent extends ParentComponent implements OnInit 
       .subscribe(
         (userMap) => {
           //  this.loader.closeLoading();
-          this.toast.showInfo({ detail: 'Mapa guardado correctamente', summary: 'Mapa guardado' });
+          this.toast.showSuccess({ detail: 'Mapa guardado correctamente', summary: 'Mapa guardado' });
           this.router.navigate(['visor'], { queryParams: { map: userMap.id } });
         },
         (error) => {

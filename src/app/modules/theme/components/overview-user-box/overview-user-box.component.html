@@ -7,8 +7,9 @@
     <div class="overview-box-title">{{user.email}}</div>
 
     <dl class="overview-box-data">
-      <dt>Rol</dt>
-      <dd *ngIf="user.roles && user.roles.length > 0; else noRole">{{user.roles[0].name}}</dd>
+      <dt>Roles</dt>
+      <dd *ngIf="user.roles && user.roles.length > 0; else noRole">
+      <dd *ngFor="let rol of user.roles">{{rol.name}}</dd>
       <ng-template #noRole>
         <dd>Sin rol</dd>
       </ng-template>

@@ -19,7 +19,7 @@ export class UserMapsListComponent extends ParentComponent implements OnInit {
   @Output() goToMap: EventEmitter<number> = new EventEmitter();
   public userMaps: UserMapModel[] = [];
   public mapsCols = [
-    { field: 'img', header: 'imagen', format: 'img' },
+    { field: 'img', header: 'imagen', format: 'img', hideFilter: true },
     { field: 'name', header: 'Nombre', format: 'text' },
     { field: 'description', header: 'Descripción', format: 'text' },
     { field: 'stampCreation', header: 'Creado', format: 'date' }
@@ -39,6 +39,9 @@ export class UserMapsListComponent extends ParentComponent implements OnInit {
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (userMaps) => {
+          userMaps.forEach(userMap => {
+            userMap.img = userMap.img ? userMap.img : environment.default_visor_map_image;
+          });
           this.userMaps = userMaps;
         }
       );
