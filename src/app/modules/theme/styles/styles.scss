@@ -444,6 +444,13 @@ way too small otherwise. */
   height: 2.5rem;
 }
 
+.generic-search-container {
+  .ui-button-icon-only {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 /* Imagenes responvive contenidas en flex */
 .ui-image-responsive {
   max-width: 100%;

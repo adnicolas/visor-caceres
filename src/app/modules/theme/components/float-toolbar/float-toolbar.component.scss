@@ -13,8 +13,8 @@ p-toolbar.float-toolbar {
     border-radius: $borderRadius;
     width: 30px;
     height: 30px;
-    max-width: 2.5rem;
-    max-height: 2.5rem;
+    max-width: 30px; // 2.5rem;
+    max-height: 30px; // 2.5rem;
   }
 
 
