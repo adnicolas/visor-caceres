@@ -22,6 +22,7 @@ export class ViewConfigsListComponent extends ParentComponent implements OnInit 
   public userMaps: UserMapModel[] = [];
   public toolsGroups: ToolsGroupModel[] = [];
   public viewConfigsCols = [
+    { field: 'urlLogo', header: 'Logo', format: 'img', hideFilter: true },
     { field: 'name', header: 'Nombre', format: 'text' },
     { field: 'description', header: 'Descripción', format: 'text' },
   ];

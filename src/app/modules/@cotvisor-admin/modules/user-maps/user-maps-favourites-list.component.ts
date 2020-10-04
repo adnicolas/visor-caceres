@@ -15,7 +15,7 @@ export class UserMapsFavouritesListComponent extends ParentComponent implements 
   @Input() public userId: number;
   public favoritesUserMaps: UserMapModel[] = [];
   public mapsCols = [
-    { field: 'img', header: 'imagen', format: 'img' },
+    { field: 'img', header: 'imagen', format: 'img', hideFilter: true },
     { field: 'name', header: 'Nombre', format: 'text' },
     { field: 'description', header: 'Descripción', format: 'text' },
     { field: 'stampCreation', header: 'Creado', format: 'date' }

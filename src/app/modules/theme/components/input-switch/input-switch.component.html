@@ -1,4 +1,4 @@
-<div class="input-switch" [ngClass]="[small, darkMode]">
+<div class="input-switch" [ngClass]="{'small': small, 'share': share, 'darkMode': darkMode}">
   <p-inputSwitch [(ngModel)]="value" (onChange)="handleChange($event)" [disabled]='disabled' [pTooltip]="toolTip">
   </p-inputSwitch>
   <label *ngIf="label">{{label}}</label>

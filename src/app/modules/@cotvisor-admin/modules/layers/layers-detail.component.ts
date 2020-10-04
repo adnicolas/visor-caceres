@@ -95,9 +95,10 @@ export class LayersDetailComponent extends ParentComponent implements AfterViewI
     this.layer = value;
     if (this.layer) {
       // @ADR: Para 4326 vienen al revés
-      this.layerExtent = this.layer.projection === 'EPSG:4326' ?
+      /*this.layerExtent = this.layer.projection === 'EPSG:4326' ?
         [this.layer.bboxMinY, this.layer.bboxMinX, this.layer.bboxMaxY, this.layer.bboxMaxX] :
-        [this.layer.bboxMinX, this.layer.bboxMinY, this.layer.bboxMaxX, this.layer.bboxMaxY];
+        [this.layer.bboxMinX, this.layer.bboxMinY, this.layer.bboxMaxX, this.layer.bboxMaxY];*/
+      this.layerExtent = [this.layer.bboxMinX, this.layer.bboxMinY, this.layer.bboxMaxX, this.layer.bboxMaxY];
       this.convertLanguagesStringToArray(this.layer.languages);
     }
   }

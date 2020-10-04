@@ -7,7 +7,7 @@
   </div>
 
   <p class="username">{{user.userName}}</p>
-  <p class="role"> {{user.roles[0].name}}</p>
+  <p class="role" *ngFor="let rol of user.roles">{{rol.name}}</p>
   <p-message *ngIf="user.disabled" severity="warn" text="{{'USER.DISABLED'|translate}}"> </p-message>
 
 
