@@ -6,7 +6,7 @@ import { VsLayer } from '@cotvisor/models/vs-layer';
 import { ToastService } from '@theme/services/toast.service';
 import { LayersFoldersTreeService } from '@cotvisor/components/map-manager/layers-folders/layers-folders-tree.service';
 import { LayerToDraw } from './LayerToDraw.class';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AbstractParentToolSelectableComponent } from '@cotvisor/classes/parent/abstract-parent-tool-selectable.component';
 import { ConfirmDialogService } from '@theme/services/confirm-dialog.service';
@@ -215,7 +215,10 @@ export class VectorLayersEditorComponent extends AbstractParentToolSelectableCom
 
     // nos suscribimos al evento de capa eliminada para actualizar el estado de las capas
     this.map.observableLayerDeleted$
-      .pipe(takeUntil(this.unSubscribe))
+      // @ADR: Para evitar error en apertura del panel de impresión (Fuente: https://blog.angular-university.io/angular-debugging/)
+      .pipe(
+        delay(0),
+        takeUntil(this.unSubscribe))
       .subscribe((layer) => {
         this.updateLayers();
         if (layer === this.selectedVsLayer) {
@@ -226,7 +229,10 @@ export class VectorLayersEditorComponent extends AbstractParentToolSelectableCom
 
     // nos suscribimos al evento de capa añadida para actualizar el estado de las capas
     this.map.observableLayerAdded$
-      .pipe(takeUntil(this.unSubscribe))
+      // @ADR: Para evitar error en apertura del panel de impresión (Fuente: https://blog.angular-university.io/angular-debugging/)
+      .pipe(
+        delay(0),
+        takeUntil(this.unSubscribe))
       .subscribe((layer: VsLayerVector) => {
         // La capa de medición no la tratamos
         if (layer.name === 'Measure') return;
@@ -716,11 +722,13 @@ export class VectorLayersEditorComponent extends AbstractParentToolSelectableCom
   }
 
   private setMapEvents() {
-    this.map.on('pointermove', this.pointerMoveMap);
+    // this.map.on('pointermove', this.pointerMoveMap);
+    this.map.on('pointermove', () => this.pointerMoveMap);
   }
 
   private unsetMapEvents() {
-    this.map.un('pointermove', this.pointerMoveMap);
+    // this.map.un('pointermove', this.pointerMoveMap);
+    this.map.un('pointermove', () => this.pointerMoveMap);
   }
 
   private pointerMoveMap = (evt: ol.MapBrowserEvent) => {
