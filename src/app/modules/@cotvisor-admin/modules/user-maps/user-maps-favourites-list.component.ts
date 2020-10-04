@@ -3,7 +3,7 @@ import { ParentComponent } from '@cotvisor/classes/parent/parent-component.class
 import { UserMapModel } from '@cotvisor-admin/models';
 import { UserMapsService } from '@cotvisor-admin/services';
 import { takeUntil } from 'rxjs/operators';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'cot-user-maps-favourites-list',
@@ -31,6 +31,9 @@ export class UserMapsFavouritesListComponent extends ParentComponent implements 
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (userMaps) => {
+          userMaps.forEach(userMap => {
+            userMap.img = userMap.img ? userMap.img : environment.default_visor_map_image;
+          });
           this.favoritesUserMaps = userMaps;
         }
       );

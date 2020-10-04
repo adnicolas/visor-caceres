@@ -39,6 +39,9 @@ export class UserMapsListComponent extends ParentComponent implements OnInit {
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (userMaps) => {
+          userMaps.forEach(userMap => {
+            userMap.img = userMap.img ? userMap.img : environment.default_visor_map_image;
+          });
           this.userMaps = userMaps;
         }
       );
