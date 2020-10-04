@@ -5,30 +5,39 @@
         <p-selectButton [styleClass]="'small'" formControlName="subjectsOption" [options]="subjectsOptions"
           (onChange)="feedForm()">
         </p-selectButton>
-        <table>
-          <thead>
-            <th>Nombre</th>
-            <th>Lectura</th>
-            <th>Escritura</th>
-            <th>Administración</th>
-          </thead>
-          <tbody>
-            <ng-container formArrayName="permissions" *ngFor="let row of permissions().controls ; let i=index">
-              <tr [formGroupName]="i">
-                <td [style.textAlign]="'center'">{{row.get('subjectName').value}}</td>
-                <td [style.textAlign]="'center'">
-                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="read">
-                </td>
-                <td [style.textAlign]="'center'">
-                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="write">
-                </td>
-                <td [style.textAlign]="'center'">
-                  <input [style.cursor]="'pointer'" type="checkbox" formControlName="admin">
-                </td>
-              </tr>
-            </ng-container>
-          </tbody>
-        </table>
+        <div class="p-col-12 p-md-6 p-lg-3">
+          <table>
+            <thead>
+              <th>Nombre</th>
+              <th>Lectura</th>
+              <th>Escritura</th>
+              <th>Administración</th>
+            </thead>
+            <tbody>
+              <ng-container formArrayName="permissions" *ngFor="let row of permissions().controls ; let i=index">
+                <tr [formGroupName]="i">
+                  <td [style.textAlign]="'center'">{{row.get('subjectName').value}}</td>
+                  <td>
+                    <the-input-switch [share]="true" styleClass="row-share" formControlName="read"
+                      [disabled]="row.get('write').value">
+                    </the-input-switch>
+                  </td>
+                  <td>
+                    <the-input-switch [share]="true" class="row-share" formControlName="write"
+                      (onChange)="handleChange($event, i, false)" [disabled]="row.get('admin').value">
+                    </the-input-switch>
+                  </td>
+                  <td>
+                    <the-input-switch [share]="true" class="row-share" formControlName="admin"
+                      (onChange)="handleChange($event, i, true)">
+                    </the-input-switch>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
   </the-toolbar-container>

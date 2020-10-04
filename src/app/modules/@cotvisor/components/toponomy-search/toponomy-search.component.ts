@@ -146,8 +146,10 @@ export class ToponomySearchComponent extends ParentComponent implements OnDestro
       .subscribe(
         (data) => {
           // this.spinnerService.closeLoading();
-          const feature = new ol.format.WKT().readFeature(data.geom, { featureProjection: environment.map_view.default_projection, dataProjection: 'EPSG:4326' });
           const activeMap = this.mapService.getActiveMap();
+          const currentProj = activeMap.getView().getProjection().getCode();
+          // const feature = new ol.format.WKT().readFeature(data.geom, { featureProjection: environment.map_view.default_projection, dataProjection: 'EPSG:4326' });
+          const feature = new ol.format.WKT().readFeature(data.geom, { featureProjection: currentProj, dataProjection: 'EPSG:4326' });
           // Elimino todas las búsquedas anteriores, evitando que se reinicie el componente
           this.reset = false;
           this.mapService.clearSearchLayer();

@@ -86,7 +86,7 @@ export class ViewConfigsService extends ParentAdminService {
           this.notifyLoading(false);
           return viewConfigModel;
         }),
-        catchError((error) => this.servicesErrorManager.handleError(error, op)));
+        catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject)));
   }
 
   /**
@@ -107,7 +107,7 @@ export class ViewConfigsService extends ParentAdminService {
         this.notifyLoading(false);
         return viewConfigModel;
       }),
-        catchError((error) => this.servicesErrorManager.handleError(error, op)));
+        catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject)));
   }
 
   /**
@@ -132,7 +132,7 @@ export class ViewConfigsService extends ParentAdminService {
           this.viewsSubject.next(this.views);
           this.notifyLoading(false);
         }),
-        catchError((error) => this.servicesErrorManager.handleError(error, op))
+        catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject))
       );
   }
 
@@ -158,7 +158,7 @@ export class ViewConfigsService extends ParentAdminService {
           this.viewsSubject.next(this.views);
           this.notifyLoading(false);
         }),
-        catchError((error) => this.servicesErrorManager.handleError(error, op))
+        catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject))
       );
   }
 
@@ -180,7 +180,7 @@ export class ViewConfigsService extends ParentAdminService {
           this.viewsSubject.next(this.views);
           this.notifyLoading(false);
         }),
-        catchError((error) => this.servicesErrorManager.handleError(error, op))
+        catchError((error) => this.servicesErrorManager.handleError(error, op, this.loadingSubject))
       );
   }
 

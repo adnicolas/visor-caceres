@@ -1,3 +1,5 @@
+@import 'variables';
+
 :host {
   display: flex;
   align-items: center;
@@ -44,4 +46,12 @@
   label {
     font-size: 0.8em;
   }
+}
+
+.input-switch.share {
+  padding-left: 30%;
+}
+
+.input-switch.darkMode {
+  color: $primaryBg;
 }

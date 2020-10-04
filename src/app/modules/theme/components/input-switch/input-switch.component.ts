@@ -26,8 +26,10 @@ export class InputSwitchComponent implements ControlValueAccessor {
 
   @Input() toolTip: string;
   @Input() label: string;
-  @Input() small: false;
   @Input() disabled: boolean = false;
+  @Input() small = false;
+  @Input() darkMode = false;
+  @Input() share = false;
 
   value: boolean;
 

@@ -146,9 +146,9 @@ export class ShareOptionsComponent extends ParentComponent implements OnInit {
     return this.fb.group({
       id: subject.id,
       subjectName: subject.subjectName,
-      read: subject.read,
-      write: subject.write,
-      admin: subject.admin
+      read: [{ value: subject.read, disabled: false }],
+      write: [{ value: subject.write, disabled: false }],
+      admin: [{ value: subject.admin, disabled: false }]
     });
   }
 
