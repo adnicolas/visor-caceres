@@ -3,9 +3,9 @@ import { UserMapModel } from '@cotvisor-admin/models';
 import { UserMapsService } from '@cotvisor-admin/services';
 import { ParentComponent } from '@cotvisor/classes/parent/parent-component.class';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { takeUntil } from 'rxjs/operators';
 import { ConfirmDialogService } from '@theme/services/confirm-dialog.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'cot-user-maps-list',
@@ -39,6 +39,9 @@ export class UserMapsListComponent extends ParentComponent implements OnInit {
       .pipe(takeUntil(this.unSubscribe))
       .subscribe(
         (userMaps) => {
+          userMaps.forEach(userMap => {
+            userMap.img = userMap.img ? userMap.img : environment.default_visor_map_image;
+          });
           this.userMaps = userMaps;
         }
       );
