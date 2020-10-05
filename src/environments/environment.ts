@@ -381,7 +381,7 @@ export const environment = {
       layer: 'OI.OrthoimageCoverage',
       // crossOrigin: 'Anonymous'
     },
-    imgUrl: 'assets/images/basemaps/caceres_pnoa.jpg.png'
+    imgUrl: 'assets/images/basemaps/caceres_pnoa.jpg'
   }
   ],
 
