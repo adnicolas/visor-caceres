@@ -35,18 +35,18 @@
         <div class="no-padding">
           <img [src]="$any(layer).activeStyle.legendURL[0].onlineResource | unescapeHtml" class="legend-image">
         </div>
-          <the-button label="{{'TOC.LAYER.ITEM.OPEN_LEGEND' | translate }}" (click)="toggleLegendWindow(layer)">
-          </the-button>
-        </div>
+        <the-button label="{{'TOC.LAYER.ITEM.OPEN_LEGEND' | translate }}" (onClick)="toggleLegendWindow(layer)">
+        </the-button>
       </div>
     </div>
   </div>
+</div>
 
 
-  <the-window *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length" displayPosition='bottom-left'
-    [name]='$any(layer).name' yOffset='10' xOffset='50' [canBeClosed]='true' [hidden]="!openLegendWindow"
-    (closed)="onLegendWindowClose()">
-    <div class="legend-window-container" *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length">
-      <img [src]="$any(layer).activeStyle.legendURL[0].onlineResource | unescapeHtml" class="legend-window-image">
+<the-window *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length" displayPosition='bottom-right'
+  [name]='$any(layer).name' yOffset='150' xOffset='50' [canBeClosed]='true' [hidden]="!openLegendWindow"
+  (closed)="onLegendWindowClose()">
+  <div class="legend-window-container" *ngIf="$any(layer).activeStyle && $any(layer).activeStyle.legendURL.length">
+    <img [src]="$any(layer).activeStyle.legendURL[0].onlineResource | unescapeHtml" class="legend-window-image">
   </div>
-  </the-window>
+</the-window>
