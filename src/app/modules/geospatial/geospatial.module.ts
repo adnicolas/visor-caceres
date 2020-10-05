@@ -61,6 +61,8 @@ import { ShareModule } from '@cotvisor-admin/modules/share/share.module';
 import { UsersGroupsModule } from '@cotvisor-admin/modules/users-groups/users-groups.module';
 import { UsersGroupsDetailComponent } from './components/users-groups-detail/users-groups-detail.component';
 import { UsersGroupsListComponent } from './components/users-groups-list/users-groups-list.component';
+import { SearchPanelComponent } from './components/search-panel/search-panel.component';
+
 @NgModule({
   declarations: [
     LayersLoaderComponent,
@@ -107,7 +109,8 @@ import { UsersGroupsListComponent } from './components/users-groups-list/users-g
     MapsSummaryComponent,
     LayersSummaryComponent,
     UsersGroupsDetailComponent,
-    UsersGroupsListComponent
+    UsersGroupsListComponent,
+    SearchPanelComponent
   ],
   exports: [
     EjemplosPanelComponent,
@@ -149,7 +152,8 @@ import { UsersGroupsListComponent } from './components/users-groups-list/users-g
     ViewsSummaryComponent,
     LayersSummaryComponent,
     UsersGroupsDetailComponent,
-    UsersGroupsListComponent
+    UsersGroupsListComponent,
+    SearchPanelComponent
   ],
   providers: [
     ScenesService,

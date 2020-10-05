@@ -226,6 +226,8 @@
   "PRINT.NO_LEGENDS": "There are no layers with legends",
   "PRINT.CHOOSE_LEGENDS": "Choose legends",
 
+  "SEARCH.TITLE": "Buscador",
+
   "COMPARATOR.COLUMNS": "Cols",
   "COMPARATOR.ADD_COLUMN": "Add column",
   "COMPARATOR.REMOVE_COLUMN": "Delete column",
