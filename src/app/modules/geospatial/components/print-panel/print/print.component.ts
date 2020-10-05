@@ -8,6 +8,7 @@ import { VsLayerWMS } from '@cotvisor/models/vs-layer-wms';
 import { VsLayerWMTS } from '@cotvisor/models/vs-layer-wmts';
 import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'gss-print',
@@ -24,8 +25,10 @@ export class PrintComponent extends ParentComponent implements OnInit, OnDestroy
   public srs: string;
   public formatTypes: any;
   public format: any;
-  public legends: Array<{ layerName: string; url: string }> = [];
-  public selectedLegends: Array<{ layerName: string; url: string }> = [];
+  // public legends: Array<{ layerName: string; url: string }> = [];
+  public legends: SelectItem[] = [];
+  // public selectedLegends: Array<{ layerName: string; url: string }> = [];
+  public selectedLegends: SelectItem[] = [];
   public orientations: any[] = [{ name: 'horizontal' }, { name: 'vertical' }];
 
   public orientation: any;
@@ -151,7 +154,7 @@ export class PrintComponent extends ParentComponent implements OnInit, OnDestroy
       this.setMapEvents();
 
       // Recuperamos las leyendas de las capas visible
-      this.selectedLegends = [];
+      // this.selectedLegends = [];
       this.getLegends();
 
       // Recuperamos la proyección actual con su nombre
@@ -373,9 +376,10 @@ export class PrintComponent extends ParentComponent implements OnInit, OnDestroy
     // TODO: Comprobar que al eliminar una capa que tiene una leyenda activa, esta se quite del mapa de impresión
     const visibleLayers = this.map.getVisibleLayers();
     this.legends = [];
-    for (const layer of visibleLayers) {
-      if ((layer instanceof VsLayerWMS || layer instanceof VsLayerWMTS) && layer.activeStyle && layer.activeStyle.legendURL.length) {
-        this.legends.push({ layerName: layer.title, url: layer.activeStyle.legendURL[0].onlineResource });
+    for (let i = 0; i < visibleLayers.length; i++) {
+      if ((visibleLayers[i] instanceof VsLayerWMS || visibleLayers[i] instanceof VsLayerWMTS)
+        && (visibleLayers[i] as VsLayerWMS | VsLayerWMTS).activeStyle && (visibleLayers[i] as VsLayerWMS | VsLayerWMTS).activeStyle.legendURL.length) {
+        this.legends.push({ label: visibleLayers[i].title, icon: (visibleLayers[i] as VsLayerWMS | VsLayerWMTS).activeStyle.legendURL[0].onlineResource, value: i });
       }
     }
   }

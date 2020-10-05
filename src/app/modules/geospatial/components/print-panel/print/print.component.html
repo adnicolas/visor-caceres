@@ -105,7 +105,7 @@
             </div>
             <div *ngIf="legends.length > 0;" class="p-col-12">
               <the-multi-select [(ngModel)]="selectedLegends" name="mapLegends" [options]="legends"
-                [disabled]="!activationArray.legends" optionLabel="layerName" styleClass="ui-print-multiselect"
+                [disabled]="!activationArray.legends" styleClass="ui-print-multiselect"
                 defaultLabel='{{"PRINT.CHOOSE_LEGENDS" | translate }}'>
               </the-multi-select>
             </div>
@@ -117,7 +117,6 @@
             </div>
           </ng-template>
         </div>
-
         <!-- <div class="advise">
         description
       </div>
@@ -148,13 +147,13 @@
     <!-- MAPA Y DRAGGABLES -->
     <div class="innerPrinterContainer" #innerPrinterContainer>
       <div cdkDrag (mousedown)="changeZindex($event)" class="draggable card-draggable legend"
-        cdkDragBoundary=".innerPrinterContainer" *ngFor="let legend of selectedLegends"
+        cdkDragBoundary=".innerPrinterContainer" *ngFor="let legend of this.selectedLegends"
         [hidden]="!activationArray.legends">
         <div>
-          {{legend.layerName}}
+          {{legends[legend].label}}
         </div>
         <div>
-          <img [src]="legend.url" />
+          <img [src]="legends[legend].icon | unescapeHtml" />
         </div>
       </div>
 
